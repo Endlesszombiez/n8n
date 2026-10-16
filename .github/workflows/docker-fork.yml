@@ -1,0 +1,101 @@
+name: 'Docker: Publish fork'
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: docker-fork-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.repository != 'n8n-io/n8n'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    permissions:
+      contents: read
+      packages: write
+    env:
+      NODE_OPTIONS: '--max-old-space-size=6144'
+      TURBO_CONCURRENCY: '2'
+      PLATFORMS: linux/amd64
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
+        with:
+          node-version: '26.10.0'
+
+      - name: Read pnpm version
+        id: pnpm
+        run: node -e 'const p = require("./package.json"); console.log("version=" + p.packageManager.split("@")[1])' >> "$GITHUB_OUTPUT"
+
+      - name: Set up pnpm
+        uses: pnpm/setup@703c52620218391530e48b9e8870d5c0082e1b9b # v2.1.0
+        with:
+          version: ${{ steps.pnpm.outputs.version }}
+          install: false
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Compile application and JavaScript runner
+        run: pnpm build:n8n > build.log 2>&1
+
+      - name: Show build failure
+        if: failure()
+        run: tail -n 100 build.log 2>/dev/null || true
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@4d04d5d9486b7bd6fa91e7baf45bbb4f8b9deedd # v4.0.0
+
+      - name: Set image names
+        env:
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          repository="${REPOSITORY,,}"
+          echo "IMAGE_BASE_NAME=ghcr.io/$repository" >> "$GITHUB_ENV"
+          echo "RUNNERS_IMAGE_BASE_NAME=ghcr.io/$repository-runners" >> "$GITHUB_ENV"
+          echo "IMAGE_TAG=sha-$GITHUB_SHA" >> "$GITHUB_ENV"
+
+      - name: Build images for checks
+        run: docker buildx bake -f docker/docker-bake.hcl n8n runners --load
+
+      - name: Check application and native modules
+        run: |
+          docker run --rm "$IMAGE_BASE_NAME:$IMAGE_TAG" --version
+          docker run --rm --entrypoint node "$IMAGE_BASE_NAME:$IMAGE_TAG" -e '
+            const { createRequire } = require("node:module");
+            const load = createRequire("/usr/local/lib/node_modules/n8n/package.json");
+            load("sqlite3");
+            load("isolated-vm");
+          '
+          docker run --rm --entrypoint node "$RUNNERS_IMAGE_BASE_NAME:$IMAGE_TAG" --version
+          docker run --rm --entrypoint /opt/runners/task-runner-python/.venv/bin/python "$RUNNERS_IMAGE_BASE_NAME:$IMAGE_TAG" --version
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@b45d80f862d83dbcd57f89517bcf500b2ab88fb2 # v4.0.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish checked images
+        env:
+          N8N_TAGS: ${{ env.IMAGE_BASE_NAME }}:${{ env.IMAGE_TAG }},${{ env.IMAGE_BASE_NAME }}:fork
+          RUNNERS_TAGS: ${{ env.RUNNERS_IMAGE_BASE_NAME }}:${{ env.IMAGE_TAG }},${{ env.RUNNERS_IMAGE_BASE_NAME }}:fork
+        run: |
+          docker buildx bake -f docker/docker-bake.hcl n8n runners --push
+          {
+            echo '### Published Linux AMD64 images'
+            echo "- $IMAGE_BASE_NAME:$IMAGE_TAG"
+            echo "- $RUNNERS_IMAGE_BASE_NAME:$IMAGE_TAG"
+            echo 'Both images also have the moving tag `fork`.'
+          } >> "$GITHUB_STEP_SUMMARY"

@@ -1,0 +1,26 @@
+services:
+  n8n:
+    image: ${N8N_IMAGE:-ghcr.io/endlesszombiez/n8n}:${N8N_IMAGE_TAG:-fork}
+    restart: unless-stopped
+    ports:
+      - '127.0.0.1:5678:5678'
+    environment:
+      TZ: ${GENERIC_TIMEZONE:-America/New_York}
+      GENERIC_TIMEZONE: ${GENERIC_TIMEZONE:-America/New_York}
+      N8N_RUNNERS_MODE: external
+      N8N_RUNNERS_BROKER_LISTEN_ADDRESS: 0.0.0.0
+      N8N_RUNNERS_AUTH_TOKEN: ${N8N_RUNNERS_AUTH_TOKEN:?Set N8N_RUNNERS_AUTH_TOKEN in .env}
+    volumes:
+      - n8n_data:/home/node/.n8n
+
+  runners:
+    image: ${N8N_RUNNERS_IMAGE:-ghcr.io/endlesszombiez/n8n-runners}:${N8N_IMAGE_TAG:-fork}
+    restart: unless-stopped
+    depends_on:
+      - n8n
+    environment:
+      N8N_RUNNERS_TASK_BROKER_URI: http://n8n:5679
+      N8N_RUNNERS_AUTH_TOKEN: ${N8N_RUNNERS_AUTH_TOKEN:?Set N8N_RUNNERS_AUTH_TOKEN in .env}
+
+volumes:
+  n8n_data:
