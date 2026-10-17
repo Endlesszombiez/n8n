@@ -57,6 +57,7 @@ import {
 	createLazyRuntimeWorkspace,
 	createLazyWorkspaceRuntimeSkillSource,
 	loadInstanceAiPromptSkills,
+	loadInstanceAiRuntimeSkillSource,
 	resolvePromptProfile,
 	describePromptProfile,
 	setTracePromptVersion,
@@ -2318,9 +2319,15 @@ export class InstanceAiService {
 		}
 	}
 
-	private createAgentMemoryOptions(user: User, threadId: string, runId: string) {
+	private createAgentMemoryOptions(
+		user: User,
+		threadId: string,
+		runId: string,
+		memoryModelId: ModelConfig | undefined,
+	) {
 		return {
 			observationalMemory: {
+				model: memoryModelId,
 				observerThresholdTokens:
 					this.runState.getObserverThresholdTokens(threadId) ??
 					this.instanceAiConfig.observerMessageTokens,
@@ -2621,6 +2628,11 @@ export class InstanceAiService {
 			proxyBaseUrl && tokenManager
 				? await this.modelService.resolveProxyModel(user, proxyBaseUrl, tokenManager, proxyContext)
 				: await this.modelService.resolveAgentModelConfig(user, proxyContext);
+		const memoryModelId = await this.modelService.resolveMemoryModelConfig(user, modelId, {
+			proxyBaseUrl,
+			tokenManager,
+			proxyContext,
+		});
 
 		const gates = experimentGates ?? (await this.adapterService.resolveExperimentGates(user));
 		const {
@@ -2902,6 +2914,9 @@ export class InstanceAiService {
 				});
 				runtimeSkills = createLazyWorkspaceRuntimeSkillSource({
 					source: allRuntimeSkills,
+					// The sandbox stores every bundled skill, the same set the image and
+					// snapshot bake, so the prebaked skills bundle is reused.
+					bundleSource: loadInstanceAiRuntimeSkillSource(),
 					workspace: runtimeSkillWorkspace,
 					resolveVerifiedBundles: async () => (await getSandboxEntry())?.verifiedBundles,
 					logger: this.logger,
@@ -2995,6 +3010,7 @@ export class InstanceAiService {
 			workflowTasks,
 			plannedTaskService,
 			modelId,
+			memoryModelId,
 			orchestrationContext,
 			conversationHistory,
 			aiPreferencesEnabled,
@@ -5283,7 +5299,7 @@ export class InstanceAiService {
 			orchestrationContext: environment.orchestrationContext,
 			mcpServers,
 			mcpManager: this.mcpClientManager,
-			memoryConfig: this.createAgentMemoryOptions(user, threadId, runId),
+			memoryConfig: this.createAgentMemoryOptions(user, threadId, runId, environment.memoryModelId),
 			memory: environment.memory,
 			checkpointStore: this.checkpointStore,
 			onMemoryTaskEvent: this.memoryTaskObserverFor(threadId, tracing),
