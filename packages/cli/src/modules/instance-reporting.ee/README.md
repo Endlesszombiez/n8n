@@ -149,7 +149,7 @@ There are two credentials. The token wins when it is set.
 certificate, the string `License.loadCertStr()` returns (`N8N_LICENSE_CERT`,
 or the persisted certificate of an activated license), as the `licenseCert`
 field of the body. The receiver verifies that the certificate was issued by
-n8n and then discards it; nothing from it is stored. There is no token to
+n8n - Warp and then discards it; nothing from it is stored. There is no token to
 configure or distribute.
 
 The certificate is read fresh for every report, so a renewed license is sent

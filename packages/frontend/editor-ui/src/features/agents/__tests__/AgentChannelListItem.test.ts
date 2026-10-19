@@ -105,7 +105,7 @@ describe('AgentChannelListItem', () => {
 	describe('a channel with a configured-state menu (n8n Chat)', () => {
 		const n8nChatIntegration = {
 			type: 'n8n_chat',
-			label: 'n8n Chat',
+			label: 'n8n - Warp Chat',
 			icon: 'message-square',
 			credentialTypes: [],
 		};

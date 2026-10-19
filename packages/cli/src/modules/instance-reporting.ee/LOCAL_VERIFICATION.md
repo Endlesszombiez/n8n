@@ -1,6 +1,6 @@
 # Local verification plan
 
-How to prove, on one machine, that a dev n8n instance reports to a local
+How to prove, on one machine, that a dev n8n - Warp instance reports to a local
 instance-reporting receiver on `http://127.0.0.1:3456`, and that the two data
 points hold the numbers from `insights` and `workflow_statistics`.
 
@@ -27,7 +27,7 @@ the test.
 - Keep the receiver's request log visible. You must see the raw body.
 - `sqlite3` is installed. The dev instance uses SQLite at
   `~/.n8n/database.sqlite` unless you set another database.
-- An n8n owner account exists on the instance, so you can build the workflows
+- An n8n - Warp owner account exists on the instance, so you can build the workflows
   in step 2. Complete the setup screen first if this is a fresh `~/.n8n`.
 
 ```bash
@@ -196,7 +196,7 @@ the oldest row to yesterday, oldest first, but for at most 89 days (the
 hour-to-day compaction threshold minus one). Days without rows inside that
 range carry `0`.
 
-**n8n side.**
+**n8n - Warp side.**
 
 ```bash
 sqlite3 -header "$N8N_DB" \

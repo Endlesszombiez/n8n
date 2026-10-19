@@ -20,7 +20,7 @@ End-to-end tests for the Instance AI feature, using recorded LLM responses repla
 
 ## Architecture Overview
 
-Instance AI tests exercise an agentic LLM system that builds and executes n8n workflows. Each test sends a chat message, the LLM orchestrates tool calls (workspace file tools, build-workflow, executions, etc.), and the test asserts on the resulting UI state.
+Instance AI tests exercise an agentic LLM system that builds and executes n8n - Warp workflows. Each test sends a chat message, the LLM orchestrates tool calls (workspace file tools, build-workflow, executions, etc.), and the test asserts on the resulting UI state.
 
 The challenge: LLM API calls are expensive, non-deterministic, and unavailable in CI. The solution is a record/replay architecture with two layers:
 
@@ -40,13 +40,13 @@ Frontend            →  Real DB state                   →  Real DB state
 
 ### Why Not Pure Mocking?
 
-The Instance AI frontend loads workflow previews via an iframe that fetches real workflow data from the n8n API. If tools are fully mocked, the database has no workflows, and the preview shows nothing. By executing tools for real during replay, the database contains actual workflows, executions, and credentials that the frontend can render.
+The Instance AI frontend loads workflow previews via an iframe that fetches real workflow data from the n8n - Warp API. If tools are fully mocked, the database has no workflows, and the preview shows nothing. By executing tools for real during replay, the database contains actual workflows, executions, and credentials that the frontend can render.
 
 ## How Recording Works
 
 When running locally with a real `ANTHROPIC_API_KEY`:
 
-1. **Proxy captures LLM traffic**: All HTTP from the n8n container routes through a MockServer proxy (`HTTP_PROXY`/`HTTPS_PROXY`). Anthropic API calls (`POST /v1/messages`) are intercepted and recorded.
+1. **Proxy captures LLM traffic**: All HTTP from the n8n - Warp container routes through a MockServer proxy (`HTTP_PROXY`/`HTTPS_PROXY`). Anthropic API calls (`POST /v1/messages`) are intercepted and recorded.
 
 2. **Tool calls are traced**: Every tool invocation is recorded to a `TraceWriter` with the tool name, agent role, input, and output. Suspend/resume events (human-in-the-loop approvals) are recorded separately.
 
@@ -60,7 +60,7 @@ Both are saved under `expectations/instance-ai/<test-slug>/`.
 
 In CI (no API key):
 
-1. **Fixture setup loads artifacts**: The `instanceAiProxySetup` auto-fixture reads proxy expectations and trace events from disk, uploads them to MockServer and the n8n container respectively.
+1. **Fixture setup loads artifacts**: The `instanceAiProxySetup` auto-fixture reads proxy expectations and trace events from disk, uploads them to MockServer and the n8n - Warp container respectively.
 
 2. **LLM calls hit MockServer**: The proxy returns pre-recorded responses in sequence. Each expectation fires once (`remainingTimes: 1`), except the last `/v1/messages` expectation which is unlimited (fallback for any extra calls).
 
@@ -114,7 +114,7 @@ would fail when replay produces different IDs or other runtime data.
 
 ### Shared State Across Runs
 
-A single test may trigger multiple n8n "runs" — the orchestrator run or a planned
+A single test may trigger multiple n8n - Warp "runs" — the orchestrator run or a planned
 task follow-up. The `TraceIndex` and
 `IdRemapper` are shared across all runs within one test (keyed by the test slug),
 so cursor positions and ID mappings persist correctly.
@@ -136,7 +136,7 @@ real. The `IdRemapper` translates IDs in both directions.
 | `workflows(action="setup")` | Configures workflow nodes |
 | `nodes(action="type-definition")` | Reads the local node catalog |
 | `executions(action="get")` | Reads execution results |
-| `credentials` | Reads or changes credential metadata through the local n8n services |
+| `credentials` | Reads or changes credential metadata through the local n8n - Warp services |
 | `data-tables` | Creates real data tables |
 | `ask-user` | May contain IDs in response |
 
@@ -234,7 +234,7 @@ expectations/instance-ai/should-send-message-and-receive-assistant-response/
 
 - `sequence` = zero-padded write order within the recording, used to keep replay deterministic when multiple matching requests are recorded in the same millisecond
 - `unknown-host` = Anthropic API (CONNECT tunneling hides the real host)
-- `api-staging.n8n.io` = n8n community nodes API
+- `api-staging.n8n.io` = n8n - Warp community nodes API
 
 ### Sequential Loading
 
@@ -269,7 +269,7 @@ Enabled by `E2E_TESTS=true` (set automatically by the Playwright fixture base):
 
 | Endpoint | Purpose |
 |----------|---------|
-| `POST /rest/instance-ai/test/tool-trace` | Load trace events into n8n memory |
+| `POST /rest/instance-ai/test/tool-trace` | Load trace events into n8n - Warp memory |
 | `GET /rest/instance-ai/test/tool-trace/:slug` | Retrieve recorded events |
 | `DELETE /rest/instance-ai/test/tool-trace/:slug` | Clear between tests |
 
@@ -318,7 +318,7 @@ This overwrites `expectations/instance-ai/<test-slug>/` with fresh recordings.
 
 ### Local-build mode (no docker, real Anthropic key)
 
-For fast iteration against a local n8n build — skips the container and proxy
+For fast iteration against a local n8n - Warp build — skips the container and proxy
 stack entirely. Tests hit the real Anthropic API directly. This mode does
 **not** record proxy expectations.
 

@@ -1,6 +1,6 @@
 # @n8n/backend-module-quick-connect
 
-Backend feature module. The n8n runtime loads the module through the lazy import in
+Backend feature module. The n8n - Warp runtime loads the module through the lazy import in
 `packages/cli/src/modules/modules.manifest.ts`.
 
 ```bash

@@ -103,15 +103,15 @@ function shouldShowHelp(): boolean {
 
 function printUsage(): void {
 	console.log(`
-n8n-computer-use — Local AI gateway for n8n Assistant
+n8n-computer-use — Local AI gateway for n8n - Warp Assistant
 
 Usage:
-  npx @n8n/computer-use <url> <token>          Connect directly to n8n instance
-  npx @n8n/computer-use <url> <token> <dir>    Connect directly to n8n instance and specify the directory
+  npx @n8n/computer-use <url> <token>          Connect directly to n8n - Warp instance
+  npx @n8n/computer-use <url> <token> <dir>    Connect directly to n8n - Warp instance and specify the directory
   npx @n8n/computer-use --url <url> --api-key <token>
 
 Positional arguments:
-  url        n8n instance URL (e.g. https://my-instance.app.n8n.cloud)
+  url        n8n - Warp instance URL (e.g. https://my-instance.app.n8n.cloud)
   token      Gateway token (from "Connect local computer" in the + menu)
 
 Global options:

@@ -9,7 +9,7 @@ export const ldapFields: INodeProperties[] = [
 		name: 'dn',
 		type: 'string',
 		default: '',
-		placeholder: 'e.g. ou=users,dc=n8n,dc=io',
+		placeholder: 'e.g. ou=users,dc=n8n - Warp,dc=io',
 		required: true,
 		typeOptions: {
 			alwaysOpenEditWindow: false,
@@ -26,7 +26,7 @@ export const ldapFields: INodeProperties[] = [
 		name: 'dn',
 		type: 'string',
 		default: '',
-		placeholder: 'e.g. ou=users,dc=n8n,dc=io',
+		placeholder: 'e.g. ou=users,dc=n8n - Warp,dc=io',
 		required: true,
 		typeOptions: {
 			alwaysOpenEditWindow: false,
@@ -43,7 +43,7 @@ export const ldapFields: INodeProperties[] = [
 		name: 'dn',
 		type: 'string',
 		default: '',
-		placeholder: 'e.g. ou=users,dc=n8n,dc=io',
+		placeholder: 'e.g. ou=users,dc=n8n - Warp,dc=io',
 		required: true,
 		typeOptions: {
 			alwaysOpenEditWindow: false,
@@ -60,7 +60,7 @@ export const ldapFields: INodeProperties[] = [
 		name: 'dn',
 		type: 'string',
 		default: '',
-		placeholder: 'e.g. cn=john,ou=users,dc=n8n,dc=io',
+		placeholder: 'e.g. cn=john,ou=users,dc=n8n - Warp,dc=io',
 		required: true,
 		typeOptions: {
 			alwaysOpenEditWindow: false,
@@ -77,7 +77,7 @@ export const ldapFields: INodeProperties[] = [
 		name: 'dn',
 		type: 'string',
 		default: '',
-		placeholder: 'e.g. ou=users,dc=n8n,dc=io',
+		placeholder: 'e.g. ou=users,dc=n8n - Warp,dc=io',
 		required: true,
 		typeOptions: {
 			alwaysOpenEditWindow: false,
@@ -94,7 +94,7 @@ export const ldapFields: INodeProperties[] = [
 		name: 'dn',
 		type: 'string',
 		default: '',
-		placeholder: 'e.g. ou=users,dc=n8n,dc=io',
+		placeholder: 'e.g. ou=users,dc=n8n - Warp,dc=io',
 		required: true,
 		typeOptions: {
 			alwaysOpenEditWindow: false,
@@ -147,7 +147,7 @@ export const ldapFields: INodeProperties[] = [
 		name: 'targetDn',
 		type: 'string',
 		default: '',
-		placeholder: 'e.g. cn=nathan,ou=users,dc=n8n,dc=io',
+		placeholder: 'e.g. cn=nathan,ou=users,dc=n8n - Warp,dc=io',
 		required: true,
 		displayOptions: {
 			show: {
@@ -291,7 +291,7 @@ export const ldapFields: INodeProperties[] = [
 		name: 'baseDN',
 		type: 'string',
 		default: '',
-		placeholder: 'e.g. ou=users, dc=n8n, dc=io',
+		placeholder: 'e.g. ou=users, dc=n8n - Warp, dc=io',
 		required: true,
 		displayOptions: {
 			show: {

@@ -17,7 +17,7 @@ export class ClearLicenseCommand extends BaseCommand {
 		const license = Container.get(License);
 		await license.init({ isCli: true });
 		await license.clear();
-		this.logger.info('Done. Restart n8n to take effect.');
+		this.logger.info('Done. Restart n8n - Warp to take effect.');
 	}
 
 	async catch(error: Error) {

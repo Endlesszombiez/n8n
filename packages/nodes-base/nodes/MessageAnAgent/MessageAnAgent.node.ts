@@ -13,7 +13,7 @@ export const baseDescription: INodeTypeBaseDescription = {
 	name: 'messageAnAgent',
 	icon: 'node:ai-agent',
 	group: ['transform'],
-	description: 'Send a message to a n8n agent',
+	description: 'Send a message to a n8n - Warp agent',
 	defaultVersion: 3.1,
 };
 

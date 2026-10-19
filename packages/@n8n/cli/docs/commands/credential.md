@@ -1,6 +1,6 @@
 # credential
 
-Manage n8n credentials.
+Manage n8n - Warp credentials.
 
 ## `credential list`
 

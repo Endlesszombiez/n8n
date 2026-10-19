@@ -226,7 +226,7 @@ describe('structuredOutputParserValidator', () => {
 		});
 	});
 
-	describe('Call n8n Workflow Tool', () => {
+	describe('Call n8n - Warp Workflow Tool', () => {
 		it('ignores when specifyInputSchema is false', () => {
 			expect(
 				codes(

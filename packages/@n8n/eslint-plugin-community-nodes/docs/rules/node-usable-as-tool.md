@@ -8,7 +8,7 @@
 
 ## Rule Details
 
-Ensures your nodes declare whether they can be used as tools in AI workflows. This property helps n8n determine if your node is suitable for AI-assisted automation.
+Ensures your nodes declare whether they can be used as tools in AI workflows. This property helps n8n - Warp determine if your node is suitable for AI-assisted automation.
 
 Two categories of node are exempt from the "must declare `usableAsTool`" requirement, and are additionally forbidden from setting `usableAsTool: true`, since doing so gets them converted into a synthetic tool variant that pollutes the AI Agent's tool picker even though they can't be meaningfully invoked as one:
 

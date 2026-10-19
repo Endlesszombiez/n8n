@@ -112,7 +112,7 @@ async function resolveProjectSecretKey(
 			type: 'secret',
 			name: N8N_SECRET_KEY_NAME,
 			description:
-				"The n8n Supabase Node uses this key to access the Data API. Don't delete it if you want the node to keep working.",
+				"The n8n - Warp Supabase Node uses this key to access the Data API. Don't delete it if you want the node to keep working.",
 		},
 	);
 

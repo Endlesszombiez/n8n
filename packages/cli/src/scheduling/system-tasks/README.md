@@ -1,6 +1,6 @@
 # System tasks
 
-A system task is background work that n8n runs on a schedule, such as a cleanup,
+A system task is background work that n8n - Warp runs on a schedule, such as a cleanup,
 a refresh or a report. No workflow owns it.
 
 Use a system task instead of `setInterval`, a cron library or

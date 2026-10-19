@@ -8,7 +8,7 @@
 
 User-facing labels in a node — the node's `displayName`, each property's
 `displayName`, and the `name` of entries in `options` arrays — are rendered
-directly in the n8n editor. Emoji in these labels render inconsistently across
+directly in the n8n - Warp editor. Emoji in these labels render inconsistently across
 platforms, break alphabetical sorting and search, and clash with the editor's
 visual language. This rule flags any emoji character (pictographs such as 🚀 or
 ✅, and regional-indicator flag emoji such as 🇺🇸) found in a `name` or

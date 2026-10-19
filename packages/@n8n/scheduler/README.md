@@ -3,7 +3,7 @@
 A durable, cluster-safe scheduler. You give it rules like "run this every Monday
 at 09:00" or "run this once at midnight on New Year's Eve", and it makes sure the
 work actually runs, at the right time, and (as close as a distributed system can
-get) exactly once, even when n8n is running on several servers at once and even
+get) exactly once, even when n8n - Warp is running on several servers at once and even
 across restarts and crashes.
 
 ## TL;DR
@@ -52,7 +52,7 @@ submodules, described below.
 
 Everything sits behind the `N8N_SCHEDULER_ENABLED` flag (on by default). Schedule
 Trigger nodes move to the durable scheduler only while the workflow publication
-service is also on. Turning the flag off reverts n8n to its previous in-memory
+service is also on. Turning the flag off reverts n8n - Warp to its previous in-memory
 scheduling.
 
 ## The moving parts
@@ -208,7 +208,7 @@ no two servers can disagree about what a backlog produced.
 `coalesce` operates per job, so a Schedule Trigger with several rules on one node
 still produces one late run per rule after downtime, N fires in a row.
 `coalesce_owner` closes that gap: jobs that share an **owner** (`ownerKey`, an opaque
-per-job key the scheduler only compares for equality; in n8n, the trigger node) group
+per-job key the scheduler only compares for equality; in n8n - Warp, the trigger node) group
 unconditionally, and only the one with the latest missed instant survives a planning
 pass (ties break on the lowest job id).
 
@@ -216,7 +216,7 @@ Grouping only sees jobs claimed together in one pass, so it is best-effort, not 
 guarantee of one fire per owner: a sibling not yet due, or one whose backlog exceeds
 `maxPerJob`, still records its own late run on a later pass.
 
-Schedule and poll triggers both use `skip`: it matches what n8n did before the
+Schedule and poll triggers both use `skip`: it matches what n8n - Warp did before the
 durable scheduler, where a missed run was never replayed. Running late is opt-in
 per job, which is where `coalesce` and `coalesce_owner` come in.
 
@@ -265,15 +265,15 @@ remove the owner second. A crash between the two then leaves an owner with no
 schedules, which the next attempt fixes, rather than schedules with no owner, which
 only the sweep below would ever find.
 
-n8n's own `workflow` owner type is the worked example of both shapes: a deactivation
+n8n - Warp's own `workflow` owner type is the worked example of both shapes: a deactivation
 deprovisions inside the transaction that writes `active = false` (`WorkflowService`),
 while an unpublish deprovisions the workflow's jobs immediately before removing the
 `workflow_published_version` mapping that made it an owner
 (`WorkflowPublicationApplier`).
 
-n8n's `system-task` owner type shows an owner that is never deleted, only no longer
+n8n - Warp's `system-task` owner type shows an owner that is never deleted, only no longer
 wanted by the code: a task removed, flipped back to its in-process timer, or gated off
-by a flag. Each task owns one job, stamped with the n8n version that last provisioned
+by a flag. Each task owns one job, stamped with the n8n - Warp version that last provisioned
 it. At startup, once it has provisioned the tasks it runs durably, an instance deletes
 every system-task job it does not run durably, unless the stamp is newer than its own
 version: a newer version added that task, and an older instance in a rolling deploy
@@ -366,7 +366,7 @@ left entirely alone; and jobs younger than a short settle period are skipped, so
 owner written just after its jobs is never mistaken for one that never existed.
 
 The third layer, behind both of these, is the handler itself: a task whose subject has
-disappeared should no-op and report "not dispatched" rather than fail. n8n's trigger
+disappeared should no-op and report "not dispatched" rather than fail. n8n - Warp's trigger
 handlers do that for a node they can no longer resolve and for an occurrence already
 executed, but not yet for a workflow whose published version is gone: that one fails the
 occurrence, so it retries and dead-letters until the sweep retires the job.
@@ -514,7 +514,7 @@ The public surface is small:
 - A few pure helpers are exported too: schedule validation, next-run computation,
   and the provisioning entry points.
 
-In n8n, that host is the server's durable-scheduler module, which wires up
+In n8n - Warp, that host is the server's durable-scheduler module, which wires up
 DI, configuration and instance identity, and routes the scheduler's events to the
 logger. While `N8N_SCHEDULER_ENABLED` is off, the previous in-memory engine stays
 in place; turning the flag off again is the rollback.
@@ -592,7 +592,7 @@ A few things that are not obvious from the code but save a lot of confusion.
 
 - **A dedicated host module.** Today the wiring that turns this pure library into a
   running scheduler (DI, configuration, instance identity, event routing) lives
-  inside n8n's large server package. Extracting it into its own module, for example
+  inside n8n - Warp's large server package. Extracting it into its own module, for example
   `@n8n/scheduler-features`, would keep the integration concerns together on their
   own, and mirror the clean split this package already draws between algorithm and
   host.

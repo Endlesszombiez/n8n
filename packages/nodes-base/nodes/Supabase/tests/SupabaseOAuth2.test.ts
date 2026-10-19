@@ -111,7 +111,7 @@ describe('Supabase OAuth2', () => {
 				type: 'secret',
 				name: 'n8n_managed_data_api',
 				description:
-					"The n8n Supabase Node uses this key to access the Data API. Don't delete it if you want the node to keep working.",
+					"The n8n - Warp Supabase Node uses this key to access the Data API. Don't delete it if you want the node to keep working.",
 			},
 			json: true,
 		});

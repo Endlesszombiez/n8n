@@ -104,7 +104,7 @@ export class AzureStorageSharedKeyApi implements ICredentialType {
 					name: 'Custom',
 					value: 'custom',
 					description:
-						'A private endpoint or a custom domain. An administrator must enable custom endpoints on this n8n instance.',
+						'A private endpoint or a custom domain. An administrator must enable custom endpoints on this n8n - Warp instance.',
 				},
 			],
 			default: 'blob.core.windows.net',
@@ -122,7 +122,7 @@ export class AzureStorageSharedKeyApi implements ICredentialType {
 				},
 			},
 			description:
-				'The https:// URL of the storage endpoint. The account name must be in the hostname. An administrator must set <code>N8N_AZURE_STORAGE_CUSTOM_ENDPOINTS_ENABLED=true</code> on this n8n instance. Endpoints with the account name in the path, such as Azurite, do not work.',
+				'The https:// URL of the storage endpoint. The account name must be in the hostname. An administrator must set <code>N8N_AZURE_STORAGE_CUSTOM_ENDPOINTS_ENABLED=true</code> on this n8n - Warp instance. Endpoints with the account name in the path, such as Azurite, do not work.',
 		},
 		{
 			displayName: 'Base URL',

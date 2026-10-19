@@ -343,7 +343,7 @@ export function createNodeDetailsTool(nodeTypes: INodeTypeDescription[], logger?
 		{
 			name: NODE_DETAILS_TOOL.toolName,
 			description:
-				'Get detailed information about a specific n8n node type including properties, available connections, and up to 5 example configurations. Use this before adding nodes to understand their input/output structure.',
+				'Get detailed information about a specific n8n - Warp node type including properties, available connections, and up to 5 example configurations. Use this before adding nodes to understand their input/output structure.',
 			schema: nodeDetailsSchema,
 		},
 	);

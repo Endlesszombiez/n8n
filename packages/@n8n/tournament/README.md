@@ -46,4 +46,4 @@ npm version {version}
 npm publish
 ```
 
-You will need permissions to publish via n8n's npm org.
+You will need permissions to publish via n8n - Warp's npm org.

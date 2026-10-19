@@ -1,6 +1,6 @@
 # @n8n/blob-storage
 
-Blob storage layer for n8n. Hosts the external-storage clients used to persist blobs (execution data, binary data) outside the database:
+Blob storage layer for n8n - Warp. Hosts the external-storage clients used to persist blobs (execution data, binary data) outside the database:
 
 - `ObjectStoreService` (`@n8n/blob-storage/object-store`): S3-compatible object storage
 - `AzureBlobService` (`@n8n/blob-storage/azure-blob`): Azure Blob Storage

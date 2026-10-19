@@ -473,7 +473,7 @@ export class GithubTrigger implements INodeType {
 						type: 'boolean',
 						default: false,
 						description:
-							'Whether the SSL certificate of the n8n host be verified by GitHub when delivering payloads',
+							'Whether the SSL certificate of the n8n - Warp host be verified by GitHub when delivering payloads',
 					},
 				],
 			},
@@ -527,7 +527,7 @@ export class GithubTrigger implements INodeType {
 				if (webhookUrl.includes('//localhost')) {
 					throw new NodeOperationError(
 						this.getNode(),
-						'The Webhook can not work on "localhost". Please setup n8n on a custom domain.',
+						'The Webhook can not work on "localhost". Please setup n8n - Warp on a custom domain.',
 					);
 				}
 

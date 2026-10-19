@@ -324,7 +324,7 @@ function propertiesUi(
 						default: 'default',
 						displayOptions: { show: { type: ['date'] } },
 						description:
-							'Time zone to use. By default n8n timezone is used. Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>.',
+							'Time zone to use. By default n8n - Warp timezone is used. Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>.',
 					},
 					{
 						displayName: 'File URLs',

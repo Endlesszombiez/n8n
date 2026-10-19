@@ -15,7 +15,7 @@ import { createVectorStoreNode, MemoryVectorStoreManager } from '@n8n/ai-utiliti
 
 const warningBanner: INodeProperties = {
 	displayName:
-		'<strong>For experimental use only</strong>: Data is stored in memory and will be lost if n8n restarts. Data may also be cleared if available memory gets low, and is accessible to all users of this instance. <a href="https://docs.n8n.io/integrations/builtin/cluster-nodes/root-nodes/n8n-nodes-langchain.vectorstoreinmemory/">More info</a>',
+		'<strong>For experimental use only</strong>: Data is stored in memory and will be lost if n8n - Warp restarts. Data may also be cleared if available memory gets low, and is accessible to all users of this instance. <a href="https://docs.n8n.io/integrations/builtin/cluster-nodes/root-nodes/n8n-nodes-langchain.vectorstoreinmemory/">More info</a>',
 	name: 'notice',
 	type: 'notice',
 	default: '',

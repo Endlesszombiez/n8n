@@ -1,7 +1,7 @@
 # @n8n/mcp-browser
 
 MCP server that gives AI agents full control over Chrome. Connects to the
-user's real installed browser via the **n8n AI Browser Bridge** extension, using
+user's real installed browser via the **n8n - Warp AI Browser Bridge** extension, using
 their actual profile, cookies, and sessions. Action tools return an
 accessibility snapshot with every response for single-roundtrip interaction.
 
@@ -65,7 +65,7 @@ CLI flags take precedence over environment variables.
 ## Prerequisites
 
 1. **Chrome** (or Brave/Edge) installed
-2. **n8n AI Browser Bridge** extension loaded in Chrome:
+2. **n8n - Warp AI Browser Bridge** extension loaded in Chrome:
    - Open `chrome://extensions`
    - Enable Developer mode
    - Click "Load unpacked" and select the `mcp-browser-extension` directory

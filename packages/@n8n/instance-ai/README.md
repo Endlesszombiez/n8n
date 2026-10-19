@@ -1,12 +1,12 @@
 # @n8n/instance-ai
 
-Instance AI is the agent runtime behind the n8n Assistant experience in n8n. It
+Instance AI is the agent runtime behind the n8n - Warp Assistant experience in n8n - Warp. It
 lets users ask for help with workflows, executions, credentials, nodes, and
-workflow building from inside an n8n instance.
+workflow building from inside an n8n - Warp instance.
 
 The package contains the agent prompts, tool registry, workflow-builder logic,
 workspace adapters, tracing helpers, and evaluation harnesses. The HTTP API,
-database entities, settings, and n8n service adapters live in
+database entities, settings, and n8n - Warp service adapters live in
 `packages/cli/src/modules/instance-ai`.
 
 ## What It Does
@@ -15,21 +15,21 @@ Instance AI is built around a deep-agent loop:
 
 - An orchestrator agent receives the user's request and maintains the plan.
 - Evaluation setup runs in the orchestrator through the config-evals skill.
-- Domain tools read and update n8n resources through backend adapters.
+- Domain tools read and update n8n - Warp resources through backend adapters.
 - Observational memory condenses long conversations.
 - Workflow building runs in a sandbox workspace, validates generated TypeScript,
-  and submits the workflow through the n8n backend.
+  and submits the workflow through the n8n - Warp backend.
 
-The workflow builder requires sandboxing. The default provider is the n8n
+The workflow builder requires sandboxing. The default provider is the n8n - Warp
 sandbox service. Daytona remains an explicit provider for environments that
 still need it.
 
 ## Running Locally
 
-Instance AI is a backend module, so run it through n8n rather than this package
+Instance AI is a backend module, so run it through n8n - Warp rather than this package
 directly.
 
-### 1. Start the n8n Sandbox Service
+### 1. Start the n8n - Warp Sandbox Service
 
 From the repo root:
 
@@ -55,7 +55,7 @@ Expected response:
 {"status":"ok"}
 ```
 
-### 2. Start n8n With Instance AI Configured
+### 2. Start n8n - Warp With Instance AI Configured
 
 In a second terminal:
 
@@ -83,7 +83,7 @@ export N8N_SANDBOX_SERVICE_URL="http://localhost:${N8N_SANDBOX_PORT}"
 export N8N_SANDBOX_SERVICE_API_KEY=n8n-sandbox-ci-key
 ```
 
-For n8n running inside the same Docker network as the sandbox service, use the
+For n8n - Warp running inside the same Docker network as the sandbox service, use the
 internal service URL instead:
 
 ```bash

@@ -32,7 +32,7 @@ export const sendMessageResponse = {
 			type: 'private',
 		},
 		date: 1732960606,
-		text: 'a\n\nThis message was sent automatically with n8n',
+		text: 'a\n\nThis message was sent automatically with n8n - Warp',
 		entities: [
 			{
 				offset: 3,
@@ -135,7 +135,7 @@ export const sendLocationMessageResponse = {
 				type: 'private',
 			},
 			date: 1732960606,
-			text: 'a\n\nThis message was sent automatically with n8n',
+			text: 'a\n\nThis message was sent automatically with n8n - Warp',
 			entities: [
 				{
 					offset: 3,

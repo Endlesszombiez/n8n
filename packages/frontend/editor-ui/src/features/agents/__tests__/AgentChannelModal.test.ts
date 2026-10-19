@@ -1144,7 +1144,7 @@ describe('AgentChannelModal', () => {
 		});
 	});
 
-	describe('n8n Chat', () => {
+	describe('n8n - Warp Chat', () => {
 		it('hides n8n Chat when its feature flag is off', async () => {
 			n8nChatFlag.value = false;
 			const wrapper = mountModal('list');

@@ -6,7 +6,7 @@
 
 ## Rule Details
 
-The `description` field in `package.json` is what users see when discovering your community node package on npm and inside n8n. It must be present and non-empty so that users can understand what the package does before installing it.
+The `description` field in `package.json` is what users see when discovering your community node package on npm and inside n8n - Warp. It must be present and non-empty so that users can understand what the package does before installing it.
 
 The `n8n-nodes-starter` template ships with `"description": ""`, which is a common oversight. This rule catches both a missing `description` key and the unchanged placeholder.
 

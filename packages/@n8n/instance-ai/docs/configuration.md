@@ -21,7 +21,7 @@ persisted in settings takes precedence over `N8N_INSTANCE_AI_SANDBOX_PROVIDER`.
 | `N8N_INSTANCE_AI_SUPPORTS_STRUCTURED_OUTPUTS` | string | unset | Optional `true`/`false` for `custom/*` structured-output support. Unset = known-model map; still unresolved = omit. |
 | `N8N_INSTANCE_AI_MCP_SERVERS` | string | `''` | Comma-separated MCP server configs. Format: `name=url,name=url` |
 | `N8N_INSTANCE_AI_LOCAL_GATEWAY_DISABLED` | boolean | `false` | Disable the local gateway (filesystem, shell, browser) for all users |
-| `N8N_AI_ALLOW_SENDING_PARAMETER_VALUES` | boolean | `true` | Deprecated; removal is planned for v4. Allow Instance AI to receive workflow and node parameter values. The effective value is `true` only when this variable and the "Send actual data values" setting in Settings > AI usage are both on. Instance AI reads it at the start of each run. When it is `false`, the adapter hides parameter values and execution data, and the Assistant runs in a limited mode: it cannot create or edit workflows. After it is turned on, the Assistant must read a workflow again before it can rebuild or save it. This is a global n8n AI setting. |
+| `N8N_AI_ALLOW_SENDING_PARAMETER_VALUES` | boolean | `true` | Deprecated; removal is planned for v4. Allow Instance AI to receive workflow and node parameter values. The effective value is `true` only when this variable and the "Send actual data values" setting in Settings > AI usage are both on. Instance AI reads it at the start of each run. When it is `false`, the adapter hides parameter values and execution data, and the Assistant runs in a limited mode: it cannot create or edit workflows. After it is turned on, the Assistant must read a workflow again before it can rebuild or save it. This is a global n8n - Warp AI setting. |
 
 For built-in providers, the setup service recognizes `ANTHROPIC_API_KEY`,
 `COHERE_API_KEY`, `DEEPSEEK_API_KEY`, `GOOGLE_GENERATIVE_AI_API_KEY`,
@@ -52,7 +52,7 @@ The PostHog flag `118_instance_ai_setup_overhaul` selects the setup flow.
 `variant` enables the async panel. `control` or an unavailable assignment uses
 the wizard. For local testing, set
 `N8N_FEATURE_FLAG_OVERRIDES='{"118_instance_ai_setup_overhaul":"variant"}'`
-on the n8n server, then restart it and reload the editor. Use `control` to test
+on the n8n - Warp server, then restart it and reload the editor. Use `control` to test
 the wizard.
 
 ### Debugging
@@ -72,7 +72,7 @@ the wizard.
 | `N8N_INSTANCE_AI_GATEWAY_API_KEY` | string | `''` | Static API key for the local gateway. It authenticates initialization, SSE, responses, and disconnect. It is not user-scoped and cannot create credentials. When empty, use dynamic user pairing. |
 
 Local machine access requires the `@n8n/computer-use` gateway daemon. The user
-selects the local-computer setup action in n8n, copies the generated command,
+selects the local-computer setup action in n8n - Warp, copies the generated command,
 and runs it on their machine. The command contains the instance URL and a
 short-lived pairing token.
 
@@ -95,13 +95,13 @@ without search results. `research(action="fetch-url")` still works.
 | Variable | Type | Default | Description |
 |----------|------|---------|-------------|
 | `N8N_INSTANCE_AI_SANDBOX_ENABLED` | boolean | `false` | Enable sandbox-backed workflow building. When false, workflow builder capability is unavailable. |
-| `N8N_INSTANCE_AI_SANDBOX_PROVIDER` | string | `n8n-sandbox` | Sandbox provider: `n8n-sandbox` for the n8n sandbox service, or `daytona` for the Daytona provider. On self-hosted, a provider selected in Instance AI settings takes precedence. |
+| `N8N_INSTANCE_AI_SANDBOX_PROVIDER` | string | `n8n-sandbox` | Sandbox provider: `n8n-sandbox` for the n8n - Warp sandbox service, or `daytona` for the Daytona provider. On self-hosted, a provider selected in Instance AI settings takes precedence. |
 | `DAYTONA_API_URL` | string | `''` | Daytona API URL (e.g. `https://app.daytona.io/api`). Required when provider is `daytona`. |
 | `DAYTONA_API_KEY` | string | `''` | Daytona API key for authentication. Required when provider is `daytona`. |
-| `N8N_SANDBOX_SERVICE_URL` | string | `''` | n8n sandbox service URL. Required when provider is `n8n-sandbox`. |
-| `N8N_SANDBOX_SERVICE_API_KEY` | string | `''` | API key for the n8n sandbox service. Optional when an `httpHeaderAuth` credential is selected in admin settings. |
+| `N8N_SANDBOX_SERVICE_URL` | string | `''` | n8n - Warp sandbox service URL. Required when provider is `n8n-sandbox`. |
+| `N8N_SANDBOX_SERVICE_API_KEY` | string | `''` | API key for the n8n - Warp sandbox service. Optional when an `httpHeaderAuth` credential is selected in admin settings. |
 | `N8N_INSTANCE_AI_SANDBOX_IMAGE` | string | `daytonaio/sandbox:0.5.0` | Docker image for the Daytona sandbox. |
-| `N8N_INSTANCE_AI_SANDBOX_SNAPSHOT` | string | `''` | Overrides the full Daytona snapshot name (e.g. `n8n/instance-ai:2.27.3`) used to create sandboxes. Defaults to the versioned snapshot derived from the running n8n version. It applies only in proxy mode. A missing or unusable snapshot fails sandbox creation because proxy mode cannot upload an image-build context. |
+| `N8N_INSTANCE_AI_SANDBOX_SNAPSHOT` | string | `''` | Overrides the full Daytona snapshot name (e.g. `n8n/instance-ai:2.27.3`) used to create sandboxes. Defaults to the versioned snapshot derived from the running n8n - Warp version. It applies only in proxy mode. A missing or unusable snapshot fails sandbox creation because proxy mode cannot upload an image-build context. |
 | `N8N_INSTANCE_AI_SANDBOX_TIMEOUT` | number | `300000` | Default command timeout in the sandbox (milliseconds). |
 | `N8N_INSTANCE_AI_SANDBOX_CREATE_TIMEOUT_SECONDS` | number | `900` | Eval-harness-only Daytona cold-provisioning timeout in seconds. It must be a positive integer. |
 | `N8N_INSTANCE_AI_SANDBOX_NAME_PREFIX` | string | `''` | Prefix prepended to every Daytona sandbox name (e.g. `eval-baseline-daily`). Also surfaced as a `name_prefix` label. Empty in production. |
@@ -164,7 +164,7 @@ redactor is a separate layer and is unaffected. There are no
 ## Provider connections
 
 On self-hosted deployments, owners and admins can configure the model, sandbox, and
-web-search connections from the n8n Assistant settings page. These connections are
+web-search connections from the n8n - Warp Assistant settings page. These connections are
 managed centrally and are not offered as workflow-canvas credentials.
 
 The environment variables above remain the fallback when no provider connection is
@@ -215,8 +215,8 @@ approval-wrapped MCP tools; specialized background agents do not.
 
 ## Storage
 
-Instance AI memory persists in the main n8n database via TypeORM — the same
-PostgreSQL or SQLite instance n8n already uses. No separate memory database or
+Instance AI memory persists in the main n8n - Warp database via TypeORM — the same
+PostgreSQL or SQLite instance n8n - Warp already uses. No separate memory database or
 LibSQL file is required.
 
 The same storage backend is used for:
@@ -230,7 +230,7 @@ The same storage backend is used for:
 The event bus transport is selected automatically:
 
 - **Single instance**: In-process `EventEmitter` — zero infrastructure
-- **Queue mode**: Redis Pub/Sub — uses n8n's existing Redis connection
+- **Queue mode**: Redis Pub/Sub — uses n8n - Warp's existing Redis connection
 
 Events are persisted to the durable event log, which is the only storage
 path — there is no setting to turn it off. Coalesced step-level facts

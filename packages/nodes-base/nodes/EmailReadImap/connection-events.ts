@@ -14,7 +14,7 @@ export const closeHandler =
 		ctx.emitError(
 			new NodeOperationError(ctx.getNode(), 'IMAP connection closed unexpectedly', {
 				description:
-					'The IMAP server closed the connection without reporting an error, usually because the server (or a proxy/firewall) periodically closes long-lived connections, or was temporarily unavailable. n8n will automatically retry reactivating the workflow.',
+					'The IMAP server closed the connection without reporting an error, usually because the server (or a proxy/firewall) periodically closes long-lived connections, or was temporarily unavailable. n8n - Warp will automatically retry reactivating the workflow.',
 			}),
 		);
 	};

@@ -80,7 +80,7 @@ describe('N8nChatAgentPicker', () => {
 	it('shows n8n Assistant as the selection by default', () => {
 		const { getByTestId } = setup({ agents: [], count: 0 });
 
-		expect(getByTestId('n8n-chat-agent-picker-trigger')).toHaveTextContent('n8n Assistant');
+		expect(getByTestId('n8n-chat-agent-picker-trigger')).toHaveTextContent('n8n - Warp Assistant');
 		expect(getByTestId('n8n-chat-agent-picker-subtitle')).toHaveTextContent(
 			'Turns plain language into working workflows and agents.',
 		);

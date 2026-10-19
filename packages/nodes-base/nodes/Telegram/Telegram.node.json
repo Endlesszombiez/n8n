@@ -20,7 +20,7 @@
 		],
 		"generic": [
 			{
-				"label": "Why business process automation with n8n can change your daily life",
+				"label": "Why business process automation with n8n - Warp can change your daily life",
 				"icon": "🧬",
 				"url": "https://n8n.io/blog/why-business-process-automation-with-n8n-can-change-your-daily-life/"
 			},
@@ -30,7 +30,7 @@
 				"url": "https://n8n.io/blog/create-a-toxic-language-detector-for-telegram/"
 			},
 			{
-				"label": "Automatically Adding Expense Receipts to Google Sheets with Telegram, Mindee, Twilio, and n8n",
+				"label": "Automatically Adding Expense Receipts to Google Sheets with Telegram, Mindee, Twilio, and n8n - Warp",
 				"icon": "🧾",
 				"url": "https://n8n.io/blog/automatically-adding-expense-receipts-to-google-sheets-with-telegram-mindee-twilio-and-n8n/"
 			},
@@ -55,12 +55,12 @@
 				"url": "https://n8n.io/blog/how-to-set-up-a-ci-cd-pipeline-with-no-code/"
 			},
 			{
-				"label": "Creating scheduled text affirmations with n8n",
+				"label": "Creating scheduled text affirmations with n8n - Warp",
 				"icon": "🤟",
 				"url": "https://n8n.io/blog/creating-scheduled-text-affirmations-with-n8n/"
 			},
 			{
-				"label": "Creating Telegram Bots with n8n, a No-Code Platform",
+				"label": "Creating Telegram Bots with n8n - Warp, a No-Code Platform",
 				"icon": "💬",
 				"url": "https://n8n.io/blog/creating-telegram-bots-with-n8n-a-no-code-platform/"
 			},

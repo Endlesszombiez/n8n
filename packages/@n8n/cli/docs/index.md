@@ -2,8 +2,8 @@
 layout: home
 
 hero:
-  name: n8n CLI
-  text: Manage n8n from the terminal
+  name: n8n - Warp CLI
+  text: Manage n8n - Warp from the terminal
   tagline: A lightweight client CLI for workflows, executions, credentials, and more.
   actions:
     - theme: brand

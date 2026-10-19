@@ -20,7 +20,7 @@ const MANIFEST_SCHEMA = `https://developer.microsoft.com/json-schemas/teams/v${M
 /** Matches the colour of the bundled icons, which are used when the agent's are not. */
 const ACCENT_COLOR = '#EA4B71';
 
-const DEFAULT_APP_NAME = 'n8n Agent';
+const DEFAULT_APP_NAME = 'n8n - Warp Agent';
 
 /**
  * Fixed namespace for the manifest id, so the GUID for an agent never changes.

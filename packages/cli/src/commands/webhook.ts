@@ -18,7 +18,7 @@ import { BaseCommand } from './base-command';
 
 @Command({
 	name: 'webhook',
-	description: 'Starts n8n webhook process. Intercepts only production URLs.',
+	description: 'Starts n8n - Warp webhook process. Intercepts only production URLs.',
 })
 export class Webhook extends BaseCommand {
 	protected server = Container.get(WebhookServer);
@@ -35,7 +35,7 @@ export class Webhook extends BaseCommand {
 	 * get removed.
 	 */
 	async stopProcess() {
-		this.logger.info('\nStopping n8n...');
+		this.logger.info('\nStopping n8n - Warp...');
 
 		try {
 			await this.externalHooks?.run('n8n.stop');
@@ -68,7 +68,7 @@ export class Webhook extends BaseCommand {
 		await this.initCrashJournal();
 		this.logger.debug('Crash journal initialized');
 
-		this.logger.info('Starting n8n webhook process...');
+		this.logger.info('Starting n8n - Warp webhook process...');
 		this.logger.debug(`Host ID: ${this.instanceSettings.hostId}`);
 
 		await super.init();

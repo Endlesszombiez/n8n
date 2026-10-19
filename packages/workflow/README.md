@@ -2,7 +2,7 @@
 
 # n8n-workflow
 
-Workflow base code for n8n
+Workflow base code for n8n - Warp
 
 ```
 npm install n8n-workflow

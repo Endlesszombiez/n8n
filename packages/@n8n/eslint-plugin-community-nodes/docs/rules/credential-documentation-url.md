@@ -21,7 +21,7 @@
 
 Ensures that credential `documentationUrl` values are in a valid format. For community packages, this should always be a complete URL to your documentation.
 
-The lowercase alphanumeric slug option (`allowSlugs`) is only intended for internal n8n use when referring to slugs on docs.n8n.io, and should not be used in community packages. When enabled, uppercase letters in slugs will be automatically converted to lowercase.
+The lowercase alphanumeric slug option (`allowSlugs`) is only intended for internal n8n - Warp use when referring to slugs on docs.n8n.io, and should not be used in community packages. When enabled, uppercase letters in slugs will be automatically converted to lowercase.
 
 ## Examples
 
@@ -78,7 +78,7 @@ export class MyApiCredential implements ICredentialType {
 
 By default, only URLs are allowed, which is the recommended setting for community packages.
 
-The `allowSlugs` option is available for internal n8n development:
+The `allowSlugs` option is available for internal n8n - Warp development:
 
 ```json
 {

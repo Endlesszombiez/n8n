@@ -651,7 +651,7 @@ describe('verifyIntegrity', () => {
 		const promise = verifyIntegrity(packageName, version, registryUrl, integrity);
 		await expect(promise).rejects.toThrow(UnexpectedError);
 		await expect(promise).rejects.toThrow(
-			'Failed to verify package checksum. Try restarting n8n and attempting the installation again.',
+			'Failed to verify package checksum. Try restarting n8n - Warp and attempting the installation again.',
 		);
 	});
 
@@ -727,7 +727,7 @@ describe('verifyIntegrity', () => {
 			const promise = verifyIntegrity(packageName, version, registryUrl, integrity);
 			await expect(promise).rejects.toThrow(UnexpectedError);
 			await expect(promise).rejects.toThrow(
-				'Failed to verify package checksum. Try restarting n8n and attempting the installation again.',
+				'Failed to verify package checksum. Try restarting n8n - Warp and attempting the installation again.',
 			);
 
 			expect(mockAsyncExec).toHaveBeenCalledTimes(1);
@@ -806,7 +806,7 @@ describe('verifyIntegrity', () => {
 			const promise = verifyIntegrity(packageName, version, registryUrl, integrity);
 			await expect(promise).rejects.toThrow(UnexpectedError);
 			await expect(promise).rejects.toThrow(
-				'Failed to verify package checksum. Try restarting n8n and attempting the installation again.',
+				'Failed to verify package checksum. Try restarting n8n - Warp and attempting the installation again.',
 			);
 
 			expect(mockAsyncExec).toHaveBeenCalledTimes(1);

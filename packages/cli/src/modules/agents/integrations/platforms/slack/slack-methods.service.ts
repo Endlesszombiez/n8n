@@ -31,7 +31,7 @@ import type { Agent } from '../../../entities/agent.entity';
 import { AgentRepository } from '../../../repositories/agent.repository';
 import { stringProperty } from '../../integration-helpers';
 
-const DEFAULT_SLACK_APP_NAME = 'n8n Agent';
+const DEFAULT_SLACK_APP_NAME = 'n8n - Warp Agent';
 
 const REQUIRED_BOT_EVENTS = [
 	'app_mention',

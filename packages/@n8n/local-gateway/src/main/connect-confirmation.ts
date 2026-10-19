@@ -11,7 +11,7 @@ export async function confirmConnect(url: string, connectedUrl: string | null): 
 	app.focus({ steal: true });
 	const { response } = await dialog.showMessageBox({
 		type: 'warning',
-		title: 'n8n Gateway',
+		title: 'n8n - Warp Gateway',
 		message: `Connect n8n Gateway to ${origin}?`,
 		detail: `This n8n instance will be able to use the tools you enabled on this computer. Only continue if you started this connection from n8n.${replaceNote}`,
 		buttons: ['Connect', 'Cancel'],

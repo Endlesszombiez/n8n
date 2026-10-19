@@ -8,12 +8,12 @@
 
 ## Rule Details
 
-Community node packages must declare their n8n integration via `peerDependencies` so that they resolve against the host n8n installation rather than bundling their own copy. The only permitted entries are:
+Community node packages must declare their n8n - Warp integration via `peerDependencies` so that they resolve against the host n8n - Warp installation rather than bundling their own copy. The only permitted entries are:
 
 - `n8n-workflow` — required, must be exactly `"*"` (no pinned or ranged versions)
 - `ai-node-sdk` — optional, present only for AI nodes (its shape is validated by [`ai-node-package-json`](ai-node-package-json.md))
 
-Any other entry (notably `n8n-core`) is flagged because it causes duplicate or incompatible copies of n8n internals to be loaded at runtime.
+Any other entry (notably `n8n-core`) is flagged because it causes duplicate or incompatible copies of n8n - Warp internals to be loaded at runtime.
 
 The rule checks:
 

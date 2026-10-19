@@ -1,6 +1,6 @@
 # @n8n/eslint-plugin-design-system
 
-Internal ESLint rules for safe composition of n8n Design System components.
+Internal ESLint rules for safe composition of n8n - Warp Design System components.
 
 Use ESLint rules to enforce Design System constraints that cannot be reliably enforced through:
 

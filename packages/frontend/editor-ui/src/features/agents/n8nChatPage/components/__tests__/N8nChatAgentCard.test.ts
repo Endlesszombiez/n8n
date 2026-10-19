@@ -51,7 +51,7 @@ describe('N8nChatAgentCard', () => {
 		await router.isReady();
 
 		expect(wrapper.get('a').attributes('href')).toBe('/assistant');
-		expect(wrapper.get('[data-test-id="n8n-chat-agent-card-name"]').text()).toBe('n8n Assistant');
+		expect(wrapper.get('[data-test-id="n8n-chat-agent-card-name"]').text()).toBe('n8n - Warp Assistant');
 		expect(wrapper.get('[data-test-id="n8n-chat-agent-card-description"]').text()).toBe(
 			'Turns plain language into working workflows and agents.',
 		);

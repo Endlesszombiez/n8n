@@ -6,7 +6,7 @@
 
 ## Rule Details
 
-Every community node package must declare a `version` field in its `package.json`. npm refuses to publish a package without a valid [semantic version](https://semver.org/), and n8n relies on the version to track and update installed community packages.
+Every community node package must declare a `version` field in its `package.json`. npm refuses to publish a package without a valid [semantic version](https://semver.org/), and n8n - Warp relies on the version to track and update installed community packages.
 
 This rule reports a missing `version` key as well as a value that is not a valid semantic version string (for example `"1.0"`, `"v1.0.0"`, a range like `"^1.0.0"`, an empty string, or a non-string value).
 

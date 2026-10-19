@@ -665,7 +665,7 @@ describe('CommunityPackagesLifecycleService', () => {
 			communityPackagesService.findInstalledPackage.mockResolvedValue(mockPackage('1.0.0'));
 			communityPackagesService.updatePackage.mockRejectedValue(
 				new IncompatibleNodesApiVersionError(
-					"This community node isn't compatible with your version of n8n. Update n8n to use it.",
+					"This community node isn't compatible with your version of n8n - Warp. Update n8n - Warp to use it.",
 					{ requiredNodesApiVersion: '3', supportedNodesApiVersion: '1' },
 				),
 			);

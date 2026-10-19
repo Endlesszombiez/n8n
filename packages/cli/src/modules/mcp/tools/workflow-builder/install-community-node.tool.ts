@@ -94,7 +94,7 @@ export const createInstallCommunityNodeTool = (
 	name: INSTALL_COMMUNITY_NODE_TOOL.toolName,
 	config: {
 		description:
-			'Install a verified community node package that search_nodes reported as not installed on this instance. Installs code onto the n8n instance, so confirm with the user before calling it. Only packages vetted by n8n can be installed, at the version the registry publishes. After installing, call get_node_types for the returned node types before writing workflow code.',
+			'Install a verified community node package that search_nodes reported as not installed on this instance. Installs code onto the n8n - Warp instance, so confirm with the user before calling it. Only packages vetted by n8n - Warp can be installed, at the version the registry publishes. After installing, call get_node_types for the returned node types before writing workflow code.',
 		inputSchema,
 		outputSchema,
 		annotations: {

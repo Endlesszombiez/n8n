@@ -1,12 +1,12 @@
 # @n8n/computer-use
 
-Computer Use for n8n Assistant. Bridges a remote n8n instance with your
+Computer Use for n8n - Warp Assistant. Bridges a remote n8n - Warp instance with your
 local machine — filesystem, shell, screenshots, mouse/keyboard, and browser
 automation.
 
 ## Why
 
-n8n Assistant runs in the cloud but may need access to your local
+n8n - Warp Assistant runs in the cloud but may need access to your local
 environment: reading project files, running shell commands, capturing
 screenshots, controlling the browser, or using mouse and keyboard. This
 gateway exposes these capabilities as tools that the agent can call
@@ -31,9 +31,9 @@ Shell execution runs inside an OS-level sandbox, see [Shell sandboxing](#shell-s
 
 ### Connect with a pairing token
 
-In n8n, select the local-computer setup action and copy the generated command.
+In n8n - Warp, select the local-computer setup action and copy the generated command.
 The command contains your instance URL and a short-lived pairing token. Run
-that command on the computer that you want n8n to access.
+that command on the computer that you want n8n - Warp to access.
 
 ```bash
 # The generated command has this form
@@ -124,7 +124,7 @@ take precedence.
 
 > **Note:** When connecting to a non-cloud instance (any origin not matching
 > `https://*.app.n8n.cloud`), resource confirmations are always prompted in the terminal —
-> instance-side confirmation is only available for n8n cloud instances.
+> instance-side confirmation is only available for n8n - Warp cloud instances.
 
 ## Module reference
 

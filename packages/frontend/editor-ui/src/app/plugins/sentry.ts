@@ -7,7 +7,7 @@ import { getAndParseConfigFromMetaTag } from '@n8n/stores/metaTagConfig';
 const ignoredErrors = [
 	{ instanceof: AxiosError },
 	{ instanceof: ResponseError, message: /ECONNREFUSED/ },
-	{ instanceof: ResponseError, message: "Can't connect to n8n." },
+	{ instanceof: ResponseError, message: "Can't connect to n8n - Warp." },
 	{ instanceof: ResponseError, message: 'Unauthorized' },
 	{ instanceof: ResponseError, message: 'Session not found' },
 	{ instanceof: ResponseError, message: /Your most recent changes may be lost/ },

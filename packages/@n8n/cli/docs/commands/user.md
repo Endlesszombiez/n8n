@@ -1,6 +1,6 @@
 # user
 
-View n8n users.
+View n8n - Warp users.
 
 ## `user list`
 

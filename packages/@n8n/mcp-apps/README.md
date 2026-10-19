@@ -1,6 +1,6 @@
 # @n8n/mcp-apps
 
-UI resources and server helpers that let the n8n MCP server return **MCP
+UI resources and server helpers that let the n8n - Warp MCP server return **MCP
 Apps** — small, sandboxed HTML/Vue experiences rendered inside MCP clients
 that support the
 [`@modelcontextprotocol/ext-apps`](https://www.npmjs.com/package/@modelcontextprotocol/ext-apps)
@@ -20,8 +20,8 @@ helpers used by `packages/cli` to register them as MCP resources and tools.
 Today the package ships a single app, `workflow-preview`, which is rendered
 after the `create_workflow_from_code` MCP tool returns. It loads the sanitized
 workflow graph through the existing `get_workflow_details` MCP tool, renders the
-existing n8n demo canvas in an iframe, and keeps a button to open the freshly
-created workflow in n8n. New apps can be added alongside it (see
+existing n8n - Warp demo canvas in an iframe, and keeps a button to open the freshly
+created workflow in n8n - Warp. New apps can be added alongside it (see
 [Adding a new app](#adding-a-new-app)).
 
 ## Package layout
@@ -74,7 +74,7 @@ Each app:
   through `onhostcontextchanged` and reflects it on the document.
 - Reads the originating tool's `structuredContent` via `ontoolresult` to
   populate its own state.
-- Calls `app.callServerTool(...)` when it needs fresh n8n data from the MCP
+- Calls `app.callServerTool(...)` when it needs fresh n8n - Warp data from the MCP
   server. The workflow preview uses this to call `get_workflow_details` with
   the created workflow ID.
 - Calls `app.openLink({ url })` to ask the host to navigate — never opens
@@ -85,7 +85,7 @@ URL handling is locked down by `isAllowedWorkflowUrl` in
 host are accepted, both when reading the tool result and right before calling
 `openLink`. This is defense in depth on top of the host's own validation.
 
-The workflow preview iframe loads the shared n8n preview service
+The workflow preview iframe loads the shared n8n - Warp preview service
 (`WORKFLOW_PREVIEW_ORIGIN`). The preview is instance-agnostic: the workflow
 graph is pushed into the iframe via `postMessage` rather than fetched from the
 instance, so a single origin renders both cloud and self-hosted workflows. The

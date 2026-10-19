@@ -15,7 +15,7 @@ const LogStreamingPlaceholderView = async () =>
 export const LogStreamingModule = defineFrontendModule({
 	id: 'log-streaming',
 	name: 'Log streaming',
-	description: 'Send n8n events to external destinations',
+	description: 'Send n8n - Warp events to external destinations',
 	icon: 'log-in',
 	modals: LOG_STREAMING_MODALS,
 	placeholderPage: {

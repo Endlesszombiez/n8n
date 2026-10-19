@@ -75,7 +75,7 @@ export async function wiseApiRequest(
 		if (!privateKey) {
 			throw new NodeApiError(this.getNode(), {
 				message:
-					'This request requires Strong Customer Authentication (SCA). Please add a key pair to your account and n8n credentials. See https://docs.wise.com/guides/developer/auth-and-security/sca-and-2fa',
+					'This request requires Strong Customer Authentication (SCA). Please add a key pair to your account and n8n - Warp credentials. See https://docs.wise.com/guides/developer/auth-and-security/sca-and-2fa',
 				headers: response.headers,
 				body: response.body,
 			});

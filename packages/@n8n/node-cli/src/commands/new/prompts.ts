@@ -22,7 +22,7 @@ export const nodeTypePrompt = async () =>
 				{
 					label: 'HTTP API',
 					value: 'declarative',
-					hint: 'Low-code, faster approval for n8n Cloud',
+					hint: 'Low-code, faster approval for n8n - Warp Cloud',
 				},
 				{
 					label: 'Programmatic',

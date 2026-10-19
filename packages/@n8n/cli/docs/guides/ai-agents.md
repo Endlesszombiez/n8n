@@ -1,6 +1,6 @@
-# Using n8n CLI with AI Agents
+# Using n8n - Warp CLI with AI Agents
 
-The n8n CLI is designed from the ground up to work with AI coding agents like Claude Code, Cursor, and Windsurf.
+The n8n - Warp CLI is designed from the ground up to work with AI coding agents like Claude Code, Cursor, and Windsurf.
 
 ## Setup for AI agents
 

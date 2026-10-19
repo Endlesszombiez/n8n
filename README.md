@@ -1,10 +1,10 @@
 ![Banner image](https://user-images.githubusercontent.com/10284570/173569848-c624317f-42b1-45a6-ab09-f0ea3c247648.png)
 
-# n8n – The Platform for AI Agents and Workflow Automation
+# n8n - Warp – The Platform for AI Agents and Workflow Automation
 
 Fair-code platform to build and deploy AI agents and workflows. Combine a visual canvas with custom code, run it self-hosted or in the [cloud](https://app.n8n.cloud/login), and connect to 1500+ integrations. AI automation you can trust with real work, from prototype to production.
 
-![n8n.io - Screenshot](https://raw.githubusercontent.com/n8n-io/n8n/master/assets/n8n-screenshot-readme.png)
+![n8n - Warp - Screenshot](https://raw.githubusercontent.com/n8n-io/n8n/master/assets/n8n-screenshot-readme.png)
 
 ## Key Capabilities
 
@@ -23,7 +23,7 @@ do not include changes from this fork.
 
 ## Quick Start
 
-Try n8n instantly with our install script (requires [Docker](https://www.docker.com/)):
+Try n8n - Warp instantly with our install script (requires [Docker](https://www.docker.com/)):
 
 ```sh
 curl -fsSL https://get.n8n.io | sh
@@ -54,7 +54,7 @@ Need help? Our community forum is the place to get support and connect with othe
 
 ## License
 
-n8n is [fair-code](https://faircode.io) distributed under the [Sustainable Use License](https://github.com/n8n-io/n8n/blob/master/LICENSE.md) and [n8n Enterprise License](https://github.com/n8n-io/n8n/blob/master/LICENSE_EE.md).
+n8n - Warp is [fair-code](https://faircode.io) distributed under the [Sustainable Use License](https://github.com/n8n-io/n8n/blob/master/LICENSE.md) and [n8n Enterprise License](https://github.com/n8n-io/n8n/blob/master/LICENSE_EE.md).
 
 - **Source Available**: Always visible source code
 - **Self-Hostable**: Deploy anywhere
@@ -72,7 +72,7 @@ Found a bug 🐛 or have a feature idea ✨? Check our [Contributing Guide](http
 
 Want to shape the future of automation? Check out our [job posts](https://n8n.io/careers) and join our team!
 
-## What does n8n mean?
+## What does n8n - Warp mean?
 
 **Short answer:** It means "nodemation" and is pronounced as n-eight-n.
 

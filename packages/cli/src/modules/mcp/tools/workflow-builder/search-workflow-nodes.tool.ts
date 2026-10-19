@@ -88,7 +88,7 @@ export const createSearchWorkflowNodesTool = (
 	name: CODE_BUILDER_SEARCH_NODES_TOOL.toolName,
 	config: {
 		description:
-			'Search for n8n nodes by service name, trigger type, or utility function. Set usage="agentTool" to return only Agent-compatible tool nodes. Returns node IDs, discriminators (resource/operation/mode), and related nodes needed for get_node_types.',
+			'Search for n8n - Warp nodes by service name, trigger type, or utility function. Set usage="agentTool" to return only Agent-compatible tool nodes. Returns node IDs, discriminators (resource/operation/mode), and related nodes needed for get_node_types.',
 		inputSchema,
 		outputSchema,
 		annotations: {

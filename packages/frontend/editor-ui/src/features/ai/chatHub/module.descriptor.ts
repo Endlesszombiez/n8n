@@ -26,7 +26,7 @@ const SettingsChatHubView = async () =>
 export const ChatModule = defineFrontendModule({
 	id: 'chat-hub',
 	name: 'Chat',
-	description: 'Chat with LLM models or your n8n AI agents.',
+	description: 'Chat with LLM models or your n8n - Warp AI agents.',
 	icon: 'chat',
 	modals: [
 		{

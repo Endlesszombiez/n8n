@@ -211,7 +211,7 @@ function mapResult(result?: NodeOutput) {
 			'A connected tool returned an engine request to its parent agent, which is only supported for top-level node execution.',
 			{
 				description:
-					'If you are seeing this from a nested AgentToolV3 sub-agent, update n8n — recent versions resolve sub-agent engine requests inline.',
+					'If you are seeing this from a nested AgentToolV3 sub-agent, update n8n - Warp — recent versions resolve sub-agent engine requests inline.',
 			},
 		);
 	} else if (containsBinaryData(result) && !containsDataThatIsUsefulToTheAgent(result)) {

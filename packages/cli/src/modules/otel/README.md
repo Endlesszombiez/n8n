@@ -1,13 +1,13 @@
 ## Workflow level OTEL
 This module enables workflow level telemetry
 
-The module should work in complete isolation - plugging into n8n to add tracing. When switched off no otel items should be loaded
+The module should work in complete isolation - plugging into n8n - Warp to add tracing. When switched off no otel items should be loaded
 
 It is based upon and an extension of the work done in the community by:
 @gabrielhmsantos - https://github.com/gabrielhmsantos/n8n-tracekit
 
 ### Testing
-Given OTEL often involves events triggered from elsewhere within the n8n system integration testing is preferred.
+Given OTEL often involves events triggered from elsewhere within the n8n - Warp system integration testing is preferred.
 
 ### Attributes
 All attributes are listed in `otel.constants.ts`
@@ -59,12 +59,12 @@ project name holds the user's name and email.
   when the project lookup fails. A reconstructed crash span reads it, so it shows the
   identity of the last segment.
 
-This key is n8n's single source of truth for the execution identity. Inbound and outbound
+This key is n8n - Warp's single source of truth for the execution identity. Inbound and outbound
 baggage (GOV-143) decides what it reads from this key and what it adds to baggage.
 
 ### Start marker spans
 
-A span leaves n8n only when it ends. A marker span tells a trace backend that an execution
+A span leaves n8n - Warp only when it ends. A marker span tells a trace backend that an execution
 or a node started, before the real span ends.
 
 | Environment variable                       | Default | Marker                                       |
@@ -74,7 +74,7 @@ or a node started, before the real span ends.
 
 - A marker is a child of the span that it announces. Its duration is 0 ms.
 - A marker has the start attributes of its parent and the execution identity. The node
-  marker does not have node custom tags, because n8n sets them when the node ends.
+  marker does not have node custom tags, because n8n - Warp sets them when the node ends.
 - Each `workflow.execute` span gets one workflow marker. A resume after a Wait node starts a
   new segment with its own `workflow.execute` span.
 - In queue mode, main and the worker each send a `workflow.execute` span for each segment,
@@ -219,7 +219,7 @@ exporters:
     trace_storage: memory
 ```
 
-Start n8n & point it at the jaeger instance
+Start n8n - Warp & point it at the jaeger instance
 ```
 cd packages/cli
 N8N_OTEL_ENABLED=true N8N_OTEL_EXPORTER_OTLP_ENDPOINT=http://127.0.0.1:4318 pnpm run dev
@@ -251,9 +251,9 @@ Notes:
 - The endpoint scheme controls TLS for **both** protocols: `https://` uses TLS,
   `http://` does not. There is no `grpc://` scheme.
 - Because the scheme is load-bearing, `N8N_OTEL_EXPORTER_OTLP_ENDPOINT` must be an
-  `http://` or `https://` URL. n8n logs a warning and uses the default endpoint if
+  `http://` or `https://` URL. n8n - Warp logs a warning and uses the default endpoint if
   the value has another scheme or no scheme, e.g. `localhost:4318`. The scheme is
-  matched case-insensitively, and n8n lowercases it before it reaches the exporter.
+  matched case-insensitively, and n8n - Warp lowercases it before it reaches the exporter.
 - gRPC endpoints take **no URL path**, so `N8N_OTEL_EXPORTER_OTLP_TRACING_PATH` is
   ignored when the protocol is `grpc`.
 - `N8N_OTEL_EXPORTER_OTLP_HEADERS` entries are sent as gRPC metadata. Keys are
@@ -272,5 +272,5 @@ Notes:
   `OTEL_EXPORTER_OTLP_CLIENT_KEY` and `OTEL_EXPORTER_OTLP_CLIENT_CERTIFICATE`, so a
   collector behind a private CA, or one that needs mTLS, can fail the check and
   still receive spans.
-- n8n has no setting for a custom CA or mTLS. Use the upstream
+- n8n - Warp has no setting for a custom CA or mTLS. Use the upstream
   `OTEL_EXPORTER_OTLP_*` certificate variables above, or `NODE_EXTRA_CA_CERTS`.

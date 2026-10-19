@@ -1,6 +1,6 @@
 # workflow
 
-Manage n8n workflows.
+Manage n8n - Warp workflows.
 
 ## `workflow list`
 

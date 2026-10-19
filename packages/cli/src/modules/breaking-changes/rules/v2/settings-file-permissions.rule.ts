@@ -19,7 +19,7 @@ export class SettingsFilePermissionsRule implements IBreakingChangeInstanceRule 
 			version: 'v2',
 			title: 'Enforce settings file permissions',
 			description:
-				'n8n now enforces stricter permissions on configuration files for improved security',
+				'n8n - Warp now enforces stricter permissions on configuration files for improved security',
 			category: BreakingChangeCategory.infrastructure,
 			impact: 'behaviorChanges',
 			documentationUrl:
@@ -53,7 +53,7 @@ export class SettingsFilePermissionsRule implements IBreakingChangeInstanceRule 
 				{
 					title: 'Settings file permissions will be enforced',
 					description:
-						'n8n will now enforce chmod 600 permissions on configuration files. This may affect Docker/Kubernetes setups with volume mounts.',
+						'n8n - Warp will now enforce chmod 600 permissions on configuration files. This may affect Docker/Kubernetes setups with volume mounts.',
 					level: 'warning',
 				},
 			],

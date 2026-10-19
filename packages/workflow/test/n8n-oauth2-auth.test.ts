@@ -120,7 +120,7 @@ describe('n8nOAuth2Auth', () => {
 			validation: { valid: false, reason },
 		});
 
-		const result = await n8nOAuth2Auth(context, { realm: 'n8n MCP Server' });
+		const result = await n8nOAuth2Auth(context, { realm: 'n8n - Warp MCP Server' });
 
 		expect(result).toBe('handled');
 		expect(response.writeHead).toHaveBeenCalledWith(code, {

@@ -1,6 +1,6 @@
 # audit
 
-Generate a security audit report for your n8n instance.
+Generate a security audit report for your n8n - Warp instance.
 
 ## `audit`
 

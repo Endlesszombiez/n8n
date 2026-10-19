@@ -179,7 +179,7 @@ export const calendarFields: INodeProperties[] = [
 				name: 'timezone',
 				type: 'resourceLocator',
 				default: { mode: 'list', value: '' },
-				description: 'Time zone used in the response. By default n8n timezone is used.',
+				description: 'Time zone used in the response. By default n8n - Warp timezone is used.',
 				modes: [
 					{
 						displayName: 'Timezone',

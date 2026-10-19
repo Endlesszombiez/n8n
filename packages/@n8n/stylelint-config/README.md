@@ -1,6 +1,6 @@
 # @n8n/stylelint-config
 
-Stylelint configuration for n8n projects with custom CSS variable naming convention enforcement.
+Stylelint configuration for n8n - Warp projects with custom CSS variable naming convention enforcement.
 
 ## Features
 
@@ -11,7 +11,7 @@ Stylelint configuration for n8n projects with custom CSS variable naming convent
 
 ## Installation
 
-This package is already configured in n8n frontend packages. To use it in a new package:
+This package is already configured in n8n - Warp frontend packages. To use it in a new package:
 
 ```json
 {
@@ -342,7 +342,7 @@ export default {
 ## References
 
 - [Stylelint Documentation](https://stylelint.io/)
-- [n8n Design System](../frontend/@n8n/design-system/)
+- [n8n - Warp Design System](../frontend/@n8n/design-system/)
 
 ## Contributing
 

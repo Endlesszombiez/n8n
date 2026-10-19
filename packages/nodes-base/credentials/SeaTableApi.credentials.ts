@@ -57,7 +57,7 @@ export class SeaTableApi implements ICredentialType {
 			name: 'token',
 			type: 'string',
 			description:
-				'The API-Token of the SeaTable base you would like to use with n8n. n8n can only connect to one base at a time.',
+				'The API-Token of the SeaTable base you would like to use with n8n - Warp. n8n - Warp can only connect to one base at a time.',
 			typeOptions: { password: true },
 			default: '',
 		},

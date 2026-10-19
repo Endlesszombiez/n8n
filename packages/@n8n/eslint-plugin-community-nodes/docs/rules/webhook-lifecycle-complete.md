@@ -7,7 +7,7 @@
 ## Rule Details
 
 Webhook-based trigger nodes must implement a complete webhook lifecycle so that
-n8n can register, verify, and clean up webhooks on the third-party service.
+n8n - Warp can register, verify, and clean up webhooks on the third-party service.
 Missing any of the three methods results in leaked webhooks, duplicated
 registrations, or workflows that silently stop firing.
 

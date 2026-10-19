@@ -126,7 +126,7 @@ describe('AgentIntegrationPersistenceService', () => {
 		chatIntegrationRegistry.list.mockReturnValue([
 			{
 				type: 'n8n_chat',
-				displayLabel: 'n8n Chat',
+				displayLabel: 'n8n - Warp Chat',
 				displayIcon: 'message-square',
 				credentialTypes: [],
 				internal: true,

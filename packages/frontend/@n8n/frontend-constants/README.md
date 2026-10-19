@@ -1,6 +1,6 @@
 # @n8n/frontend-constants
 
-Shared, framework-agnostic constants for n8n's front-end packages. The
+Shared, framework-agnostic constants for n8n - Warp's front-end packages. The
 package-reachable home for values (such as router view identifiers) that
 multiple front-end packages need without depending on the `editor-ui` app.
 

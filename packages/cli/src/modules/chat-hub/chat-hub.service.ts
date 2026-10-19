@@ -622,7 +622,7 @@ export class ChatHubService {
 		const tz = timeZone ?? this.globalConfig.generic.timezone;
 
 		if (model.provider !== 'n8n') {
-			throw new BadRequestError('Manual execution is only supported for n8n workflow agents');
+			throw new BadRequestError('Manual execution is only supported for n8n - Warp workflow agents');
 		}
 
 		const credentialId = this.getModelCredential(model, credentials);
@@ -904,7 +904,7 @@ export class ChatHubService {
 		const tz = timeZone ?? this.globalConfig.generic.timezone;
 
 		if (model.provider !== 'n8n') {
-			throw new BadRequestError('Manual execution is only supported for n8n workflow agents');
+			throw new BadRequestError('Manual execution is only supported for n8n - Warp workflow agents');
 		}
 
 		let result: {
@@ -1139,7 +1139,7 @@ export class ChatHubService {
 		const tz = timeZone ?? this.globalConfig.generic.timezone;
 
 		if (model.provider !== 'n8n') {
-			throw new BadRequestError('Manual execution is only supported for n8n workflow agents');
+			throw new BadRequestError('Manual execution is only supported for n8n - Warp workflow agents');
 		}
 
 		const { retryOfMessageId, previousMessageId, workflow } =

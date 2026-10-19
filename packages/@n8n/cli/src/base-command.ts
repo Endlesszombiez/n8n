@@ -16,7 +16,7 @@ export abstract class BaseCommand extends Command {
 	static override baseFlags = {
 		url: Flags.string({
 			char: 'u',
-			description: 'n8n instance URL (or N8N_URL env var)',
+			description: 'n8n - Warp instance URL (or N8N_URL env var)',
 			env: 'N8N_URL',
 		}),
 		apiKey: Flags.string({

@@ -147,7 +147,7 @@ export class DeprecationService {
 		{
 			envVar: 'N8N_AI_ALLOW_SENDING_PARAMETER_VALUES',
 			message:
-				'This variable is deprecated and will be removed in v4. While it is set to `false`, n8n Assistant cannot create or edit workflows.',
+				'This variable is deprecated and will be removed in v4. While it is set to `false`, n8n - Warp Assistant cannot create or edit workflows.',
 			checkValue: (value?: string) =>
 				value !== undefined && ['false', '0'].includes(value.toLowerCase()),
 		},
@@ -187,7 +187,7 @@ export class DeprecationService {
 		{
 			envVar: 'EXECUTIONS_PROCESS',
 			message:
-				'n8n does not support `own` mode since May 2023. Please remove this environment variable to allow n8n to start. If you need the isolation and performance gains, please consider queue mode: https://docs.n8n.io/hosting/scaling/queue-mode/',
+				'n8n - Warp does not support `own` mode since May 2023. Please remove this environment variable to allow n8n - Warp to start. If you need the isolation and performance gains, please consider queue mode: https://docs.n8n.io/hosting/scaling/queue-mode/',
 			checkValue: (value: string | undefined): value is 'own' => value === 'own',
 		},
 	];

@@ -1,6 +1,6 @@
 # Backend module
 
-A backend module is a self-contained unit of backend functionality tied to a specific n8n feature.
+A backend module is a self-contained unit of backend functionality tied to a specific n8n - Warp feature.
 
 Benefits of modularity:
 
@@ -111,7 +111,7 @@ The entrypoint is responsible for providing:
 
 A module entrypoint may or may not need to implement all of these methods.
 
-Why do we use dynamic imports in entrypoint methods? `await import('...')` ensures we load module-specific logic **only when needed**, so that n8n instances which do not have a module enabled, or do not have licensed access to it, do not pay for the performance cost. Linting enforces that relative imports in the entrypoint use dynamic imports. Loading on demand is also the reason why the entrypoint does not use dependency injection, and forbids it via linting.
+Why do we use dynamic imports in entrypoint methods? `await import('...')` ensures we load module-specific logic **only when needed**, so that n8n - Warp instances which do not have a module enabled, or do not have licensed access to it, do not pay for the performance cost. Linting enforces that relative imports in the entrypoint use dynamic imports. Loading on demand is also the reason why the entrypoint does not use dependency injection, and forbids it via linting.
 
 A module may be fully behind a license flag:
 

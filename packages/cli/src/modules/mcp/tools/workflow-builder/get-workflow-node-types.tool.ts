@@ -71,7 +71,7 @@ export const createGetWorkflowNodeTypesTool = (
 	name: CODE_BUILDER_GET_NODE_TYPES_TOOL.toolName,
 	config: {
 		description:
-			'Get TypeScript type definitions for n8n nodes. Returns exact parameter names and structures. MUST be called before writing workflow code or configuring node-backed tools — guessing parameter names creates invalid configurations. Pass nodeIds as an array of objects like { nodeId: "n8n-nodes-base.gmail" }. Include discriminators (resource/operation/mode) from search_nodes results.',
+			'Get TypeScript type definitions for n8n - Warp nodes. Returns exact parameter names and structures. MUST be called before writing workflow code or configuring node-backed tools — guessing parameter names creates invalid configurations. Pass nodeIds as an array of objects like { nodeId: "n8n-nodes-base.gmail" }. Include discriminators (resource/operation/mode) from search_nodes results.',
 		inputSchema,
 		outputSchema,
 		annotations: {

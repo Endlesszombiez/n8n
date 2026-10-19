@@ -1,6 +1,6 @@
 ## Overview
 
-`createVectorStoreNode` is a factory function that generates n8n nodes for vector store operations. It abstracts the common functionality needed for vector stores while allowing specific implementations to focus only on their unique aspects.
+`createVectorStoreNode` is a factory function that generates n8n - Warp nodes for vector store operations. It abstracts the common functionality needed for vector stores while allowing specific implementations to focus only on their unique aspects.
 
 ## Purpose
 

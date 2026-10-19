@@ -1,6 +1,6 @@
 # variable
 
-Manage n8n environment variables.
+Manage n8n - Warp environment variables.
 
 ## `variable list`
 

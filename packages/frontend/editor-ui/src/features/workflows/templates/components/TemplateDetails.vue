@@ -89,7 +89,7 @@ const redirectToSearchPage = (node: ITemplatesNode) => {
 					{{ i18n.baseText('template.details.created') }}
 					<TimeAgo :date="template.createdAt" />
 					{{ i18n.baseText('template.details.by') }}
-					{{ template.user ? template.user.username : 'n8n team' }}
+					{{ template.user ? template.user.username : i18n.baseText('branding.teamName') }}
 				</N8nText>
 			</div>
 			<div :class="$style.text">

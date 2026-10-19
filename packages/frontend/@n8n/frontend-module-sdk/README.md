@@ -1,6 +1,6 @@
 # @n8n/frontend-module-sdk
 
-The frontend module contract and registries for n8n editor modules.
+The frontend module contract and registries for n8n - Warp editor modules.
 
 This package owns the `FrontendModuleDescription` descriptor type, the
 `defineFrontendModule()` helper that declares one, plus the modal, resource and

@@ -858,7 +858,7 @@ export const messageTypeFields: INodeProperties[] = [
 		name: 'mediaPath',
 		type: 'options',
 		default: 'useMediaLink',
-		description: 'Use a link, an ID, or n8n to upload an audio file',
+		description: 'Use a link, an ID, or n8n - Warp to upload an audio file',
 		options: [
 			{
 				name: 'Link',
@@ -890,7 +890,7 @@ export const messageTypeFields: INodeProperties[] = [
 		name: 'mediaPath',
 		type: 'options',
 		default: 'useMediaLink',
-		description: 'Use a link, an ID, or n8n to upload a document',
+		description: 'Use a link, an ID, or n8n - Warp to upload a document',
 		options: [
 			{
 				name: 'Link',
@@ -907,7 +907,7 @@ export const messageTypeFields: INodeProperties[] = [
 				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
 				name: 'n8n',
 				value: 'useMedian8n',
-				description: 'Upload a binary file on the item being processed in n8n',
+				description: 'Upload a binary file on the item being processed in n8n - Warp',
 			},
 		],
 		displayOptions: {
@@ -922,7 +922,7 @@ export const messageTypeFields: INodeProperties[] = [
 		name: 'mediaPath',
 		type: 'options',
 		default: 'useMediaLink',
-		description: 'Use a link, an ID, or n8n to upload an image',
+		description: 'Use a link, an ID, or n8n - Warp to upload an image',
 		options: [
 			{
 				name: 'Link',
@@ -939,7 +939,7 @@ export const messageTypeFields: INodeProperties[] = [
 				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
 				name: 'n8n',
 				value: 'useMedian8n',
-				description: 'Upload a binary file on the item being processed in n8n',
+				description: 'Upload a binary file on the item being processed in n8n - Warp',
 			},
 		],
 		displayOptions: {
@@ -954,7 +954,7 @@ export const messageTypeFields: INodeProperties[] = [
 		name: 'mediaPath',
 		type: 'options',
 		default: 'useMediaLink',
-		description: 'Use a link, an ID, or n8n to upload a video',
+		description: 'Use a link, an ID, or n8n - Warp to upload a video',
 		options: [
 			{
 				name: 'Link',
@@ -971,7 +971,7 @@ export const messageTypeFields: INodeProperties[] = [
 				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
 				name: 'n8n',
 				value: 'useMedian8n',
-				description: 'Upload a binary file on the item being processed in n8n',
+				description: 'Upload a binary file on the item being processed in n8n - Warp',
 			},
 		],
 		displayOptions: {

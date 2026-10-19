@@ -28,8 +28,8 @@ and category metadata during initialization. It does not upload an initial
 directory tree. Files and directory trees are read on demand through the
 advertised tools.
 
-The bridge is outbound from the daemon to n8n. It works for cloud deployments
-without exposing a daemon port to the n8n server. For a self-hosted deployment,
+The bridge is outbound from the daemon to n8n - Warp. It works for cloud deployments
+without exposing a daemon port to the n8n - Warp server. For a self-hosted deployment,
 the user must add `--allowed-origins <instance-origin>` to the generated command.
 
 ## Instance AI Interface
@@ -77,7 +77,7 @@ complete tool and command reference.
 The generated-command flow starts only after an explicit user action. It does
 not require the frontend to contact a localhost endpoint.
 
-1. The user selects the local-computer setup action in n8n.
+1. The user selects the local-computer setup action in n8n - Warp.
 2. The frontend requests a one-time link from
    `POST /rest/instance-ai/gateway/create-link`.
 3. The frontend displays the generated command. The command contains the
@@ -93,7 +93,7 @@ status from the backend response.
 ## Gateway Protocol
 
 All daemon endpoints use `X-Gateway-Key`. The paths below are relative to the
-n8n REST base.
+n8n - Warp REST base.
 
 | Method | Path | Authentication | Body or result |
 |--------|------|----------------|----------------|

@@ -438,7 +438,7 @@ export function isAttachmentRejectedByProviderError(error: unknown): boolean {
  * `quota_exhausted` error state; kept in sync with the FE i18n copy.
  */
 export const QUOTA_EXHAUSTED_USER_MESSAGE =
-	"You've run out of AI credits. Upgrade your plan to continue using the n8n Assistant.";
+	"You've run out of AI credits. Upgrade your plan to continue using the n8n - Warp Assistant.";
 
 const OPERATIONAL_ERROR_USER_MESSAGE =
 	'I hit an operational error before I could finish that response. Please try again.';
@@ -1498,7 +1498,7 @@ export class InstanceAiService {
 				});
 				this.eventService.emit('instance-ai-run-refused', { reason: 'instance_run_limit' });
 				throw new InstanceAiRunLimitError(
-					'This n8n instance is already running the maximum number of assistant conversations. Try again in a moment.',
+					'This n8n - Warp instance is already running the maximum number of assistant conversations. Try again in a moment.',
 					{ reason: 'instance_run_limit', limit: maxConcurrentRuns },
 				);
 			}
@@ -3779,7 +3779,7 @@ export class InstanceAiService {
 	private async doSchedulePlannedTasks(user: User, threadId: string): Promise<void> {
 		const revalidated = await this.revalidateActiveUser(user.id);
 		if (!revalidated) {
-			this.logger.warn('Cancelling run: user no longer authorized for n8n Assistant', {
+			this.logger.warn('Cancelling run: user no longer authorized for n8n - Warp Assistant', {
 				userId: user.id,
 				threadId,
 			});
@@ -5187,7 +5187,7 @@ export class InstanceAiService {
 			if (suspended?.user.id === requestingUserId) {
 				this.cancelRun(suspended.threadId);
 			}
-			this.logger.warn('Rejecting confirmation: user no longer authorized for n8n Assistant', {
+			this.logger.warn('Rejecting confirmation: user no longer authorized for n8n - Warp Assistant', {
 				userId: requestingUserId,
 				requestId,
 			});
@@ -5842,7 +5842,7 @@ export class InstanceAiService {
 
 		const activeUser = await this.revalidateActiveUser(user.id);
 		if (!activeUser) {
-			this.logger.warn('Cancelling suspended run: user no longer authorized for n8n Assistant', {
+			this.logger.warn('Cancelling suspended run: user no longer authorized for n8n - Warp Assistant', {
 				userId: user.id,
 				threadId,
 				requestId,

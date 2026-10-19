@@ -245,9 +245,9 @@ export class TeamsEntraProvisioningService {
 	 */
 	private async createApp(token: string, agentId: string, agentName: string): Promise<CreatedApp> {
 		const displayName = sanitiseAppName(
-			`${agentName || 'n8n Agent'} (n8n)`,
+			`${agentName || 'n8n - Warp Agent'} (n8n)`,
 			APP_NAME_MAX,
-			'n8n Agent (n8n)',
+			'n8n - Warp Agent (n8n - Warp)',
 		);
 		const uniqueName = `${UNIQUE_NAME_PREFIX}${agentId}`;
 
@@ -398,7 +398,7 @@ export class TeamsEntraProvisioningService {
 				`/applications/${objectId}/addPassword`,
 				{
 					passwordCredential: {
-						displayName: 'n8n agent channel',
+						displayName: 'n8n - Warp agent channel',
 						endDateTime: endDateTime.toISOString(),
 					},
 				},

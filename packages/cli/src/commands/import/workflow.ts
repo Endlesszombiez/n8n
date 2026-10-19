@@ -119,7 +119,7 @@ export class ImportWorkflowsCommand extends BaseCommand<z.infer<typeof flagsSche
 
 		if (flags.activeState === 'fromJson' && this.globalConfig.executions.mode !== 'queue') {
 			throw new UserError(
-				'The "--activeState=fromJson" flag can only be used when n8n is running in queue or multi-main mode. In regular deployment mode, workflow activation is not supported.',
+				'The "--activeState=fromJson" flag can only be used when n8n - Warp is running in queue or multi-main mode. In regular deployment mode, workflow activation is not supported.',
 			);
 		}
 

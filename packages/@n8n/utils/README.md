@@ -11,7 +11,7 @@ A collection of utility functions that provide common functionality for both Fro
 ## Features
 
 - **Reusable Logic**: Build complex, stateful functionality using modular composable functions that you can easily reuse.
-- **Consistent Patterns**: Enjoy a unified approach across n8n packages, making integration and maintenance a breeze.
+- **Consistent Patterns**: Enjoy a unified approach across n8n - Warp packages, making integration and maintenance a breeze.
 - **Type-Safe & Reliable**: Benefit from TypeScript support, which improves the developer experience and code robustness.
 - **Universal Functionality**: Designed to work seamlessly on both the front-end and back-end.
 - **Easily Testable**: A modular design that simplifies testing, maintenance, and rapid development.

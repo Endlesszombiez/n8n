@@ -6,7 +6,7 @@
 
 ## Rule Details
 
-n8n supports themed icons via the `{ light, dark }` object form, and the
+n8n - Warp supports themed icons via the `{ light, dark }` object form, and the
 marketplace/preview UI renders both variants for nodes that aren't installed yet.
 A single icon file often renders poorly on one of the two themes (for example, a
 dark glyph on a dark background).

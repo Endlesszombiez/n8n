@@ -1,6 +1,6 @@
 # promotions
 
-Move projects between n8n instances through a Git repository. One instance
+Move projects between n8n - Warp instances through a Git repository. One instance
 **promotes** its projects to a branch. Another instance **applies** that branch
 to itself.
 

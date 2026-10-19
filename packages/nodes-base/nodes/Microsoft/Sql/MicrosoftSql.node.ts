@@ -104,7 +104,7 @@ export class MicrosoftSql implements INodeType {
 				placeholder: 'SELECT id, name FROM product WHERE quantity > $1 AND price <= $2',
 				required: true,
 				description:
-					"The SQL query to execute. You can use n8n expressions and $1, $2, $3, etc to refer to the 'Query Parameters' set in options below.",
+					"The SQL query to execute. You can use n8n - Warp expressions and $1, $2, $3, etc to refer to the 'Query Parameters' set in options below.",
 				hint: 'Consider using query parameters to prevent SQL injection attacks. Add them in the options below',
 			},
 			{

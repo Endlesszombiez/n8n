@@ -229,7 +229,7 @@ export function validateSafeRedirectUrl(url: string | undefined): string | null 
 
 export function createDescriptionMetadata(description: string) {
 	return description === ''
-		? 'n8n form'
+		? 'n8n - Warp form'
 		: description.replace(/^\s*\n+|<\/?[^>]+(>|$)/g, '').slice(0, 150);
 }
 
@@ -418,11 +418,11 @@ export const validateResponseModeConfiguration = (context: IWebhookFunctions) =>
 		throw new NodeOperationError(
 			context.getNode(),
 			new Error(
-				'The "Respond to Webhook" node is not supported in workflows initiated by the "n8n Form Trigger"',
+				'The "Respond to Webhook" node is not supported in workflows initiated by the "n8n - Warp Form Trigger"',
 			),
 			{
 				description:
-					'To configure your response, add an "n8n Form" node and set the "Page Type" to "Form Ending"',
+					'To configure your response, add an "n8n - Warp Form" node and set the "Page Type" to "Form Ending"',
 			},
 		);
 	}

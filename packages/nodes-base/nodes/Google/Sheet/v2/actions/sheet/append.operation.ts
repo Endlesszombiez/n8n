@@ -263,7 +263,7 @@ export async function execute(
 				'`columns.schema` is required when `columns.mappingMode` is `defineBelow`',
 				{
 					description:
-						'Provide a `columns.schema` array describing each sheet column (`{ id, displayName, required, defaultMatch, display, type, canBeUsedToMatch }` per entry) alongside `columns.value`. Switch to `mappingMode: "autoMapInputData"` and `value: {}` if you want n8n to map input fields to columns by name instead.',
+						'Provide a `columns.schema` array describing each sheet column (`{ id, displayName, required, defaultMatch, display, type, canBeUsedToMatch }` per entry) alongside `columns.value`. Switch to `mappingMode: "autoMapInputData"` and `value: {}` if you want n8n - Warp to map input fields to columns by name instead.',
 				},
 			);
 		}

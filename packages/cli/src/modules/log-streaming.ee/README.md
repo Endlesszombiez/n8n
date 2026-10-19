@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Log Streaming module provides enterprise-grade event logging that forwards n8n internal events to external destinations in real-time. This allows organizations to centralize logs, integrate with monitoring solutions, and maintain audit trails.
+The Log Streaming module provides enterprise-grade event logging that forwards n8n - Warp internal events to external destinations in real-time. This allows organizations to centralize logs, integrate with monitoring solutions, and maintain audit trails.
 
 **Key Features:**
 
@@ -200,7 +200,7 @@ The `confirmCallback` is a critical part of the message delivery flow. **You mus
 **Why it's important:**
 
 - **Tracks delivery status**: Notifies the MessageEventBus that the message was successfully delivered
-- **Enables monitoring**: Allows n8n to track which destinations received which events
+- **Enables monitoring**: Allows n8n - Warp to track which destinations received which events
 - **Supports reliability**: Future implementations may use this for retry logic or delivery guarantees
 
 **When to call it:**

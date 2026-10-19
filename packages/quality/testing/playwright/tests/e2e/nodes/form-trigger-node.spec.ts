@@ -90,7 +90,7 @@ test.describe(
 			await n8n.ndv.clickBackToCanvasButton();
 
 			// Add Form node (next page) by selecting the "Next Form Page" action
-			await n8n.canvas.addNode('n8n Form', { closeNDV: false, action: 'Next Form Page' });
+			await n8n.canvas.addNode('n8n - Warp Form', { closeNDV: false, action: 'Next Form Page' });
 
 			// Add a single field to the Form node
 			await n8n.ndv.addFixedCollectionItem();

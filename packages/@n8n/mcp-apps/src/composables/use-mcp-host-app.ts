@@ -42,7 +42,7 @@ export function useMcpHostApp({ name, version }: UseMcpHostAppOptions) {
 			connectionError.value = error;
 			bootMs.value = Math.round(performance.now());
 			connectionStatus.value = 'failed';
-			console.error('[n8n MCP App] Failed to connect to host', error);
+			console.error('[n8n - Warp MCP App] Failed to connect to host', error);
 		}
 	});
 

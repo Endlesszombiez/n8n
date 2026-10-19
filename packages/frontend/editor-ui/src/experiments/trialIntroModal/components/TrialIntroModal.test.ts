@@ -122,7 +122,7 @@ describe('TrialIntroModal', () => {
 		expect(
 			getByRole('heading', { level: 1, name: 'Your free trial has started' }),
 		).toBeInTheDocument();
-		expect(getByText('Welcome to n8n')).toBeInTheDocument();
+		expect(getByText('Welcome to n8n - Warp')).toBeInTheDocument();
 		expect(getByTestId('trial-intro-countdown-pill')).toHaveTextContent('Ends in 13d 2h 5m');
 
 		expect(getByTestId('trial-intro-stat-ai-credits')).toHaveTextContent((800).toLocaleString());

@@ -35,7 +35,7 @@ export class MicrosoftTeamsTrigger implements INodeType {
 		group: ['trigger'],
 		version: 1,
 		description:
-			'Triggers workflows in n8n based on events from Microsoft Teams, such as new messages or team updates, using specified configurations.',
+			'Triggers workflows in n8n - Warp based on events from Microsoft Teams, such as new messages or team updates, using specified configurations.',
 		subtitle: 'Microsoft Teams Trigger',
 		defaults: {
 			name: 'Microsoft Teams Trigger',

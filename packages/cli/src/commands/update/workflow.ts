@@ -60,9 +60,9 @@ export class UpdateWorkflowCommand extends BaseCommand<z.infer<typeof flagsSchem
 				throw error;
 			}
 
-			this.logger.info('Note: Changes will not take effect if n8n is running.');
+			this.logger.info('Note: Changes will not take effect if n8n - Warp is running.');
 			this.logger.info(
-				'Please restart n8n for changes to take effect if n8n is currently running.',
+				'Please restart n8n - Warp for changes to take effect if n8n - Warp is currently running.',
 			);
 			return;
 		}
@@ -91,8 +91,8 @@ export class UpdateWorkflowCommand extends BaseCommand<z.infer<typeof flagsSchem
 			await workflowRepository.unpublishAll();
 		}
 
-		this.logger.info('Note: Changes will not take effect if n8n is running.');
-		this.logger.info('Please restart n8n for changes to take effect if n8n is currently running.');
+		this.logger.info('Note: Changes will not take effect if n8n - Warp is running.');
+		this.logger.info('Please restart n8n - Warp for changes to take effect if n8n - Warp is currently running.');
 	}
 
 	async catch(error: Error) {

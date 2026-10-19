@@ -6,11 +6,11 @@
 
 ## Rule Details
 
-The `dependencies` field in `package.json` declares packages that are installed alongside the node at runtime. In the context of n8n community nodes this is dangerous:
+The `dependencies` field in `package.json` declares packages that are installed alongside the node at runtime. In the context of n8n - Warp community nodes this is dangerous:
 
-- Community nodes run inside the shared n8n runtime alongside all other installed nodes. Any package listed in `dependencies` gets installed into that shared environment and can shadow or conflict with versions already used by n8n or other nodes.
+- Community nodes run inside the shared n8n - Warp runtime alongside all other installed nodes. Any package listed in `dependencies` gets installed into that shared environment and can shadow or conflict with versions already used by n8n - Warp or other nodes.
 - Unlike application packages, community nodes should not own their runtime environment. Shared libraries must be declared in `peerDependencies` (so the host runtime supplies them) or bundled at build time into the published artifact.
-- A non-empty `dependencies` section is a strong signal that the package was scaffolded from a generic Node.js template without adapting it to the n8n community node model.
+- A non-empty `dependencies` section is a strong signal that the package was scaffolded from a generic Node.js template without adapting it to the n8n - Warp community node model.
 
 ## Examples
 

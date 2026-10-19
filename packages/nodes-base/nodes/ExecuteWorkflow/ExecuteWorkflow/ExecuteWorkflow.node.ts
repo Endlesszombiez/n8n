@@ -177,7 +177,7 @@ workflowInputs: {
 			},
 			{
 				displayName:
-					'The "Local File" and "URL" sources are deprecated and will be removed in a future version. Import the workflow into this n8n instance and use the "Database" source, or paste its JSON into the "Parameter" source instead.',
+					'The "Local File" and "URL" sources are deprecated and will be removed in a future version. Import the workflow into this n8n - Warp instance and use the "Database" source, or paste its JSON into the "Parameter" source instead.',
 				name: 'sourceDeprecationNotice',
 				type: 'notice',
 				default: '',

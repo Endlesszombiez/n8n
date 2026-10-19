@@ -197,7 +197,7 @@ export class GitLabHostClient implements GitHostClient {
 			}
 			if (tlsErrorCodes.has(code)) {
 				throw new BadRequestError(
-					'Could not verify the GitLab certificate. Check the certificate and configure a trusted certificate authority on the n8n server.',
+					'Could not verify the GitLab certificate. Check the certificate and configure a trusted certificate authority on the n8n - Warp server.',
 				);
 			}
 			if (['ETIMEDOUT', 'ECONNABORTED'].includes(code)) {
@@ -207,12 +207,12 @@ export class GitLabHostClient implements GitHostClient {
 			}
 			if (code === 'ENOTFOUND') {
 				throw new BadRequestError(
-					'Could not resolve the GitLab hostname. Check the GitLab URL and the n8n server DNS settings.',
+					'Could not resolve the GitLab hostname. Check the GitLab URL and the n8n - Warp server DNS settings.',
 				);
 			}
 			if (code === 'UNKNOWN') {
 				throw new ServiceUnavailableError(
-					'Could not complete the GitLab API request. Try again. If it keeps failing, check the n8n server logs.',
+					'Could not complete the GitLab API request. Try again. If it keeps failing, check the n8n - Warp server logs.',
 				);
 			}
 			throw new ServiceUnavailableError(

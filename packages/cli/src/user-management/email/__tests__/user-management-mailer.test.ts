@@ -89,7 +89,7 @@ describe('UserManagementMailer', () => {
 			expect(nodeMailer.sendMail).toHaveBeenCalledWith({
 				body: expect.stringContaining(`href="${inviteEmailData.inviteAcceptUrl}"`),
 				emailRecipients: email,
-				subject: 'You have been invited to n8n',
+				subject: 'You have been invited to n8n - Warp',
 			});
 		});
 
@@ -99,7 +99,7 @@ describe('UserManagementMailer', () => {
 			expect(nodeMailer.sendMail).toHaveBeenCalledWith({
 				body: expect.stringContaining(`href="${passwordResetData.passwordResetUrl}"`),
 				emailRecipients: email,
-				subject: 'n8n password reset',
+				subject: 'n8n - Warp password reset',
 			});
 		});
 
@@ -123,7 +123,7 @@ describe('UserManagementMailer', () => {
 				expect(nodeMailer.sendMail).toHaveBeenNthCalledWith(index + 1, {
 					body: expect.stringContaining(`href="https://n8n.url/workflow/${workflow.id}"`),
 					emailRecipients: `${id}@user.com`,
-					subject: 'Sharer has shared an n8n workflow with you',
+					subject: 'Sharer has shared an n8n - Warp workflow with you',
 				});
 
 				const callBody = nodeMailer.sendMail.mock.calls[index][0].body;
@@ -150,7 +150,7 @@ describe('UserManagementMailer', () => {
 				expect(nodeMailer.sendMail).toHaveBeenNthCalledWith(index + 1, {
 					body: expect.stringContaining('href="https://n8n.url/home/credentials"'),
 					emailRecipients: `${id}@user.com`,
-					subject: 'Sharer has shared an n8n credential with you',
+					subject: 'Sharer has shared an n8n - Warp credential with you',
 				});
 
 				const callBody = nodeMailer.sendMail.mock.calls[index][0].body;
@@ -183,7 +183,7 @@ describe('UserManagementMailer', () => {
 			expect(result.emailSent).toBe(true);
 			expect(nodeMailer.sendMail).toHaveBeenCalledWith({
 				emailRecipients: 'owner@example.com',
-				subject: 'Your n8n API key was revoked',
+				subject: 'Your n8n - Warp API key was revoked',
 				body: expect.stringContaining('href="https://n8n.url/settings/api"'),
 			});
 
@@ -234,7 +234,7 @@ describe('UserManagementMailer', () => {
 			expect(result.emailSent).toBe(true);
 			expect(nodeMailer.sendMail).toHaveBeenCalledWith({
 				emailRecipients: 'owner@example.com',
-				subject: 'Your n8n MCP client access was revoked',
+				subject: 'Your n8n - Warp MCP client access was revoked',
 				body: expect.stringContaining('href="https://n8n.url/settings/mcp"'),
 			});
 

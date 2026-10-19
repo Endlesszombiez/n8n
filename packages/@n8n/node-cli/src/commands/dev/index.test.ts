@@ -79,7 +79,7 @@ describe('dev command', () => {
 		const calls = vi.mocked(runCommands).mock.calls[0]?.[0];
 		expect(calls?.commands).toHaveLength(2);
 		expect(calls?.commands[0]?.name).toBe('TypeScript Build (watching)');
-		expect(calls?.commands[1]?.name).toBe('n8n Server');
+		expect(calls?.commands[1]?.name).toBe('n8n - Warp Server');
 	});
 
 	tmpdirTest('creates symlink in default custom folder location', async ({ tmpdir }) => {
@@ -136,7 +136,7 @@ describe('dev command', () => {
 		await command.run();
 
 		const calls = vi.mocked(runCommands).mock.calls[0]?.[0];
-		const n8nCommand = calls?.commands.find((c) => c.name === 'n8n Server');
+		const n8nCommand = calls?.commands.find((c) => c.name === 'n8n - Warp Server');
 
 		expect(n8nCommand).toBeDefined();
 		expect(n8nCommand?.env).toMatchObject({

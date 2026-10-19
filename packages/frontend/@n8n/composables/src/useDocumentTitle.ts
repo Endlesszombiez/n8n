@@ -1,6 +1,6 @@
 import { ref, type Ref } from 'vue';
 
-const DEFAULT_TITLE = 'n8n';
+const DEFAULT_TITLE = 'n8n - Warp';
 const DEFAULT_TAGLINE = 'Workflow Automation';
 
 export type WorkflowTitleStatus =
@@ -14,8 +14,8 @@ export type WorkflowTitleStatus =
 export interface UseDocumentTitleOptions {
 	/**
 	 * The release channel (e.g., 'stable', 'beta', 'dev').
-	 * If not provided or 'stable', the title will be 'n8n'.
-	 * Otherwise, it will be 'n8n[CHANNEL]'.
+	 * If not provided or 'stable', the title will be 'n8n - Warp'.
+	 * Otherwise, it will be 'n8n - Warp[CHANNEL]'.
 	 */
 	releaseChannel?: string;
 	/**

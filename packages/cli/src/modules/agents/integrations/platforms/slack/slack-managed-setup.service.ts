@@ -491,7 +491,7 @@ export class SlackManagedSetupService {
 		const managerCredentialId = stringProperty(rawData, 'managerCredentialId');
 		const teamId = stringProperty(rawData, 'teamId');
 		if (!managedAppId || !managerCredentialId || !teamId) {
-			throw new BadRequestError('The Slack connection is not managed by n8n');
+			throw new BadRequestError('The Slack connection is not managed by n8n - Warp');
 		}
 		return { credential, rawData, managedAppId, managerCredentialId, teamId };
 	}

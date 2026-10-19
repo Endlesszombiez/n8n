@@ -1,6 +1,6 @@
 # @n8n/codemirror-lang-html
 
-HTML + n8n expression language support for CodeMirror 6.
+HTML + n8n - Warp expression language support for CodeMirror 6.
 
 Based on:
 - [`@codemirror/lang-html`](https://github.com/codemirror/lang-html) (src)

@@ -2,7 +2,7 @@
 
 # n8n-editor-ui
 
-The UI to create and update n8n workflows
+The UI to create and update n8n - Warp workflows
 
 ```
 npm install n8n -g

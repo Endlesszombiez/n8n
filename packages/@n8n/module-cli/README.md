@@ -1,6 +1,6 @@
 # @n8n/module-cli
 
-Interactive scaffolder for n8n modules.
+Interactive scaffolder for n8n - Warp modules.
 
 ```bash
 pnpm n8n-module-sdk create                    # prompts for name and stack

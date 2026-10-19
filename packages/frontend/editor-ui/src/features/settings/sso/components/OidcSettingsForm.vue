@@ -403,10 +403,7 @@ onMounted(async () => {
 				<small v-if="isAdditionalScopesInvalid" :class="$style.fieldError"
 					>Use spaces to separate scopes. Commas and semicolons are not allowed.</small
 				>
-				<small v-else
-					>By default n8n requests <code>openid</code>, <code>profile</code> and <code>email</code>.
-					If you need other scopes, define them here space separated.</small
-				>
+				<small v-else v-n8n-html="i18n.baseText('settings.sso.oidc.defaultScopesHint')" />
 			</div>
 		</div>
 		<div :class="$style.card">
@@ -434,7 +431,7 @@ onMounted(async () => {
 			<div :class="$style.settingsItem">
 				<div :class="$style.settingsItemLabel">
 					<label>Log out from identity provider</label>
-					<small>Also end your session at the identity provider when signing out of n8n</small>
+					<small>{{ i18n.baseText('settings.sso.oidc.logoutHint') }}</small>
 				</div>
 				<div :class="$style.settingsItemControl">
 					<N8nSelect

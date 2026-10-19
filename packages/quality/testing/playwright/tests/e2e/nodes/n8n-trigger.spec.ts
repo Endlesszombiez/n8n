@@ -26,7 +26,7 @@ const makeN8nTriggerWorkflow = (events: TriggerEventType[]) => {
 		type: 'n8n-nodes-base.n8nTrigger',
 		version: 1,
 		config: {
-			name: 'n8n Trigger',
+			name: 'n8n - Warp Trigger',
 			parameters: { events },
 		},
 	});

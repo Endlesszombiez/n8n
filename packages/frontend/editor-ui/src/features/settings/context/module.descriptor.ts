@@ -17,7 +17,7 @@ export const ContextModule: FrontendModuleDescription = {
 	id: 'context',
 	name: 'Context',
 	description:
-		'Reusable preferences and skills for the n8n assistant, agents and connected AI tools',
+		'Reusable preferences and skills for the n8n - Warp assistant, agents and connected AI tools',
 	icon: 'brain',
 	routes: [
 		{

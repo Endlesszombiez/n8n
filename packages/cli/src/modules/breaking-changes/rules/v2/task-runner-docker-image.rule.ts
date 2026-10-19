@@ -56,7 +56,7 @@ export class TaskRunnerDockerImageRule implements IBreakingChangeInstanceRule {
 				{
 					action: 'Configure external task runners',
 					description:
-						'Set up external task runners using the n8nio/runners image and configure n8n to connect to them using N8N_RUNNERS_MODE=external',
+						'Set up external task runners using the n8nio/runners image and configure n8n - Warp to connect to them using N8N_RUNNERS_MODE=external',
 				},
 				{
 					action: 'Review task runner documentation',

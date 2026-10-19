@@ -234,7 +234,7 @@ export class NotionV1 implements INodeType {
 				returnData.unshift({
 					name: 'Default',
 					value: 'default',
-					description: 'Timezone set in n8n',
+					description: 'Timezone set in n8n - Warp',
 				});
 				return returnData;
 			},

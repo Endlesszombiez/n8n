@@ -3234,7 +3234,7 @@ describe('validateResponseModeConfiguration', () => {
 		]);
 
 		expect(() => validateResponseModeConfiguration(webhookFunctions)).toThrow(
-			'The "Respond to Webhook" node is not supported in workflows initiated by the "n8n Form Trigger"',
+			'The "Respond to Webhook" node is not supported in workflows initiated by the "n8n - Warp Form Trigger"',
 		);
 	});
 

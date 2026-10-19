@@ -1,6 +1,6 @@
 # @n8n/chat-hub
 
-Common utility functions for n8n Chat Hub.
+Common utility functions for n8n - Warp Chat Hub.
 
 ## Purpose
 

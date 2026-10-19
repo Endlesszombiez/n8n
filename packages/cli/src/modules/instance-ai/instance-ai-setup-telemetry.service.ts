@@ -262,7 +262,7 @@ export class InstanceAiSetupTelemetryService {
 			this.emitSandboxConfigured(previous, next, connectionsUpdated.sandbox);
 			await this.emitSearchConfigured(previous, next, connectionsUpdated.search);
 		} catch (error) {
-			this.logger.warn('Failed to report n8n Assistant setup telemetry', {
+			this.logger.warn('Failed to report n8n - Warp Assistant setup telemetry', {
 				error: ensureError(error).message,
 			});
 		}
@@ -295,7 +295,7 @@ export class InstanceAiSetupTelemetryService {
 				await this.buildSetupSnapshot(),
 			);
 		} catch (error) {
-			this.logger.warn('Failed to record n8n Assistant setup completion', {
+			this.logger.warn('Failed to record n8n - Warp Assistant setup completion', {
 				error: ensureError(error).message,
 			});
 		}

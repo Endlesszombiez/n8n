@@ -1,6 +1,6 @@
 # Component specification
 
-A flexible dropdown menu component that provides contextual actions and options. It combines the functionality of `ActionDropdown` and `ActionToggle`, offering a unified interface for dropdown menus across n8n.
+A flexible dropdown menu component that provides contextual actions and options. It combines the functionality of `ActionDropdown` and `ActionToggle`, offering a unified interface for dropdown menus across n8n - Warp.
 
 It's built on Reka UI's `DropdownMenu` for accessibility and interaction patterns.
 

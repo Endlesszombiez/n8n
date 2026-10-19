@@ -4,13 +4,21 @@
 		<mj-section padding="0 20px">
 			<mj-column>
 				<mj-include path="./_logo.mjml" />
-				<mj-text font-size="22px" font-weight="400">Your workflows need changes before the upgrade to n8n {{ targetVersion }}</mj-text>
+				<mj-text font-size="22px" font-weight="400"
+					>Your workflows need changes before the upgrade to n8n - Warp {{ targetVersion }}</mj-text
+				>
 				<mj-text>Hi {{ firstName }},</mj-text>
-				<mj-text>{{ notifierName }} asked you to resolve the migration finding <b>"{{ ruleTitle }}"</b> on the workflows you own. The upgrade to n8n {{ targetVersion }} changes how these workflows behave.</mj-text>
+				<mj-text
+					>{{ notifierName }} asked you to resolve the migration finding <b>"{{ ruleTitle }}"</b> on
+					the workflows you own. The upgrade to n8n - Warp {{ targetVersion }} changes how these
+					workflows behave.</mj-text
+				>
 				<mj-text>
 					<ul>
 						{{#each workflows}}
-						<li><a href="{{ this.url }}">{{ this.name }}</a></li>
+						<li>
+							<a href="{{ this.url }}">{{ this.name }}</a>
+						</li>
 						{{/each}}
 					</ul>
 				</mj-text>

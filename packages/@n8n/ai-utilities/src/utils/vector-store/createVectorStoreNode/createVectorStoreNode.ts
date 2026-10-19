@@ -30,7 +30,7 @@ import {
 import { getConnectionHintNoticeField } from '../../shared-fields';
 
 const ragStarterCallout: INodeProperties = {
-	displayName: 'Tip: Get a feel for vector stores in n8n with our',
+	displayName: 'Tip: Get a feel for vector stores in n8n - Warp with our',
 	name: 'ragStarterCallout',
 	type: 'callout',
 	typeOptions: {

@@ -1,10 +1,10 @@
 # Breaking Changes Detection Module
 
-A rule-based system for detecting breaking changes before migrating to a new n8n version.
+A rule-based system for detecting breaking changes before migrating to a new n8n - Warp version.
 
 ## Overview
 
-This module scans the n8n instance (workflows, configuration, environment) to identify issues that will be affected by breaking changes in the target version.
+This module scans the n8n - Warp instance (workflows, configuration, environment) to identify issues that will be affected by breaking changes in the target version.
 
 ## Architecture
 

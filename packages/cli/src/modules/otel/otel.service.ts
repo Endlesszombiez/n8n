@@ -212,7 +212,7 @@ export class OtelService {
 
 		this.hasLoggedForeignGlobalApiOwner = true;
 		this.logger.info(
-			'Another library owns the global OpenTelemetry API, so n8n workflow tracing runs on its own tracer provider',
+			'Another library owns the global OpenTelemetry API, so n8n - Warp workflow tracing runs on its own tracer provider',
 		);
 	}
 

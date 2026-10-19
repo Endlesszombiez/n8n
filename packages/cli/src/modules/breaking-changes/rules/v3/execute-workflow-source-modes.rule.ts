@@ -42,7 +42,7 @@ export class ExecuteWorkflowSourceModesRule implements IBreakingChangeWorkflowRu
 			{
 				action: 'Switch to the "Database" source',
 				description:
-					'Import the referenced workflow into this n8n instance and select it via the "Database" source on the flagged Execute Sub-workflow node.',
+					'Import the referenced workflow into this n8n - Warp instance and select it via the "Database" source on the flagged Execute Sub-workflow node.',
 			},
 			{
 				action: 'Or define the workflow JSON in the node',
@@ -64,7 +64,7 @@ export class ExecuteWorkflowSourceModesRule implements IBreakingChangeWorkflowRu
 		return reportAffectedNodes(affectedNodes, (node) => ({
 			title: `Node '${node.name}' uses the removed "${SOURCE_LABELS[node.parameters.source as string]}" source`,
 			description:
-				'This source is being removed. Import the referenced workflow into this n8n instance and use the "Database" source, or paste its JSON into the "Parameter" source.',
+				'This source is being removed. Import the referenced workflow into this n8n - Warp instance and use the "Database" source, or paste its JSON into the "Parameter" source.',
 			level: 'error',
 		}));
 	}

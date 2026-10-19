@@ -114,7 +114,7 @@ Default.args = {
 		},
 		{
 			id: 'install',
-			title: 'Install n8n',
+			title: 'Install n8n - Warp',
 			description: 'Prepare your environment',
 		},
 		{

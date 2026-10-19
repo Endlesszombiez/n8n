@@ -215,7 +215,7 @@ export const listN8nChatThreads = async (
 		},
 	});
 	if (!isN8nChatThreadsResponse(response)) {
-		throw new UnexpectedError('Unexpected n8n Chat threads response shape');
+		throw new UnexpectedError('Unexpected n8n - Warp Chat threads response shape');
 	}
 	return response;
 };

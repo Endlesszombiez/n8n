@@ -1,7 +1,7 @@
 # Policy infrastructure module
 
 The shared layer that every policy feature is built on. It runs the registered
-`@PolicyCheck()` classes at fixed points in n8n and turns their answers into one
+`@PolicyCheck()` classes at fixed points in n8n - Warp and turns their answers into one
 of three outcomes: cleared, blocked by policy, or blocked because a check failed.
 
 The module holds no policy of its own. A policy feature adds a check class and a

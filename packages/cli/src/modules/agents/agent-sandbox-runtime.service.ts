@@ -459,7 +459,7 @@ export class AgentSandboxRuntimeService {
 		const normalizedServiceUrl = serviceUrl?.trim();
 		if (!normalizedServiceUrl) {
 			throw new OperationalError(
-				'Agent knowledge sandbox requires the n8n sandbox service URL. Set N8N_SANDBOX_SERVICE_URL.',
+				'Agent knowledge sandbox requires the n8n - Warp sandbox service URL. Set N8N_SANDBOX_SERVICE_URL.',
 			);
 		}
 

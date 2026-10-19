@@ -197,7 +197,7 @@ export function createNodeSearchTool(nodeTypes: INodeTypeDescription[]) {
 		},
 		{
 			name: NODE_SEARCH_TOOL.toolName,
-			description: `Search for n8n nodes by name or find sub-nodes that output specific connection types. Use this before adding nodes to find the correct node types.
+			description: `Search for n8n - Warp nodes by name or find sub-nodes that output specific connection types. Use this before adding nodes to find the correct node types.
 
 Search modes:
 1. Name search (default): Search nodes by name/description

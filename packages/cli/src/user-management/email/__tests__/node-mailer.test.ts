@@ -83,7 +83,7 @@ describe('NodeMailer', () => {
 
 			await nodeMailer.sendMail({
 				emailRecipients: 'user@test.com',
-				subject: 'You have been invited to n8n',
+				subject: 'You have been invited to n8n - Warp',
 				body,
 			});
 
@@ -103,7 +103,7 @@ describe('NodeMailer', () => {
 
 			await nodeMailer.sendMail({
 				emailRecipients: 'user@test.com',
-				subject: 'n8n password reset',
+				subject: 'n8n - Warp password reset',
 				body,
 			});
 
@@ -125,7 +125,7 @@ describe('NodeMailer', () => {
 
 			await nodeMailer.sendMail({
 				emailRecipients: 'user@test.com',
-				subject: 'Sharer has shared an n8n workflow with you',
+				subject: 'Sharer has shared an n8n - Warp workflow with you',
 				body,
 			});
 
@@ -145,7 +145,7 @@ describe('NodeMailer', () => {
 
 			await nodeMailer.sendMail({
 				emailRecipients: 'user@test.com',
-				subject: 'Sharer has shared an n8n credential with you',
+				subject: 'Sharer has shared an n8n - Warp credential with you',
 				body,
 			});
 
@@ -186,7 +186,7 @@ describe('NodeMailer', () => {
 
 			await nodeMailer.sendMail({
 				emailRecipients: 'user@test.com',
-				subject: 'n8n has automatically autodeactivated a workflow',
+				subject: 'n8n - Warp has automatically autodeactivated a workflow',
 				body,
 			});
 

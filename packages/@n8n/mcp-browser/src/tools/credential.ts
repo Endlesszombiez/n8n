@@ -143,7 +143,7 @@ function browserCreateCredential(
 	return {
 		name: 'browser_create_credential',
 		description:
-			'Assemble secrets captured with browser_capture_secret into a new n8n credential. Literal fields go in `data`; fields that must come from the buffer go in `resolveData` (leaf values are buffer field names). The buffer is cleared after success unless clear=false.',
+			'Assemble secrets captured with browser_capture_secret into a new n8n - Warp credential. Literal fields go in `data`; fields that must come from the buffer go in `resolveData` (leaf values are buffer field names). The buffer is cleared after success unless clear=false.',
 		inputSchema: browserCreateCredentialSchema,
 		async execute(args, context: ToolContext) {
 			requireSecretsBuffer(context);
@@ -195,7 +195,7 @@ function requireSecretsBuffer(
 	context: ToolContext,
 ): asserts context is ToolContext & { secretsBuffer: SecretsBuffer } {
 	if (!context.secretsBuffer) {
-		throw new Error('This tool is only available when running inside the n8n gateway context.');
+		throw new Error('This tool is only available when running inside the n8n - Warp gateway context.');
 	}
 }
 
@@ -203,7 +203,7 @@ function requireCreateCredential(context: ToolContext): asserts context is ToolC
 	createCredential: (payload: CreateCredentialPayload) => Promise<{ credentialId: string }>;
 } {
 	if (!context.createCredential) {
-		throw new Error('This tool is only available when running inside the n8n gateway context.');
+		throw new Error('This tool is only available when running inside the n8n - Warp gateway context.');
 	}
 }
 

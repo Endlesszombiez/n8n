@@ -1090,7 +1090,7 @@ export class McpService {
 			uri: 'n8n://workflow-sdk/reference',
 			config: {
 				description:
-					'Required n8n Workflow SDK reference for building workflows from code. Read this before writing workflow code.',
+					'Required n8n - Warp Workflow SDK reference for building workflows from code. Read this before writing workflow code.',
 			},
 			read: () => ({
 				contents: [

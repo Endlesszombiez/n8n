@@ -1,6 +1,6 @@
 # @n8n/crdt
 
-CRDT abstraction layer for n8n collaborative editing. Provides a unified API
+CRDT abstraction layer for n8n - Warp collaborative editing. Provides a unified API
 built on Yjs for real-time document synchronization.
 
 ## Quick Start

@@ -1,6 +1,6 @@
 # @n8n/stores
 
-A collection of Pinia stores that provide common data-related functionality across n8n's Front-End packages.
+A collection of Pinia stores that provide common data-related functionality across n8n - Warp's Front-End packages.
 
 ## Table of Contents
 

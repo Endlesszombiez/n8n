@@ -54,8 +54,8 @@ Source: [`packages/@n8n/agents/src/workspace/tools/`](../../../../@n8n/agents/sr
 
 ### Chat integration tools
 
-- Purpose: For each configured chat integration, the runtime attaches a context tool and an action tool. The context tool reads message context from the platform. The action tool acts on the platform, for example to send a message. The tool names use the integration type: `<type>_context` and `<type>_action`, for example `slack_context` and `slack_action`. A second connection of the same type gets a numeric suffix. n8n Chat adds `chat_context` and `chat_action`.
-- Attach condition: Top-level agent with at least one configured chat integration, or a run through n8n Chat.
+- Purpose: For each configured chat integration, the runtime attaches a context tool and an action tool. The context tool reads message context from the platform. The action tool acts on the platform, for example to send a message. The tool names use the integration type: `<type>_context` and `<type>_action`, for example `slack_context` and `slack_action`. A second connection of the same type gets a numeric suffix. n8n - Warp Chat adds `chat_context` and `chat_action`.
+- Attach condition: Top-level agent with at least one configured chat integration, or a run through n8n - Warp Chat.
 - Source: [`integrations/integration-tool-factory.ts`](./integrations/integration-tool-factory.ts).
 
 ### `delegate_subagent`

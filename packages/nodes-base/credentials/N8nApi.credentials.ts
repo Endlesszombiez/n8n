@@ -19,7 +19,7 @@ export class N8nApi implements ICredentialType {
 			type: 'string',
 			typeOptions: { password: true },
 			default: '',
-			description: 'The API key for the n8n instance',
+			description: 'The API key for the n8n - Warp instance',
 		},
 		{
 			displayName: 'Base URL',
@@ -27,7 +27,7 @@ export class N8nApi implements ICredentialType {
 			type: 'string',
 			default: '',
 			placeholder: 'https://<name>.app.n8n.cloud/api/v1',
-			description: 'The API URL of the n8n instance',
+			description: 'The API URL of the n8n - Warp instance',
 		},
 	];
 

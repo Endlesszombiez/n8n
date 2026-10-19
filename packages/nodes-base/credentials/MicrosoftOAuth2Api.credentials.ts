@@ -34,7 +34,7 @@ export class MicrosoftOAuth2Api implements ICredentialType {
 			],
 			default: 'clientSecret',
 			description:
-				'How n8n authenticates to Microsoft Entra when exchanging and refreshing tokens. Certificate signs a client assertion (private_key_jwt) instead of sending a client secret.',
+				'How n8n - Warp authenticates to Microsoft Entra when exchanging and refreshing tokens. Certificate signs a client assertion (private_key_jwt) instead of sending a client secret.',
 		},
 		// Overrides the `clientSecret` inherited from `oAuth2Api` so it only shows
 		// (and is only required) when using shared-secret authentication.
@@ -115,7 +115,7 @@ export class MicrosoftOAuth2Api implements ICredentialType {
 			},
 			default: '',
 			placeholder: 'openid offline_access Sites.Selected',
-			hint: 'Separate the scopes with spaces. Include offline_access so n8n can refresh the access token. Include openid so n8n can identify the signed-in account. Then add the scopes the node needs. The Microsoft credential documentation lists them.',
+			hint: 'Separate the scopes with spaces. Include offline_access so n8n - Warp can refresh the access token. Include openid so n8n - Warp can identify the signed-in account. Then add the scopes the node needs. The Microsoft credential documentation lists them.',
 		},
 		{
 			displayName: 'Auth URI Query Parameters',

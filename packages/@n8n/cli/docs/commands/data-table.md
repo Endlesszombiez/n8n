@@ -1,6 +1,6 @@
 # data-table
 
-Manage n8n data tables and their rows.
+Manage n8n - Warp data tables and their rows.
 
 ## `data-table list`
 

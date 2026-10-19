@@ -241,7 +241,7 @@ needs `gh` with the codespace scope, the same as `pnpm session`.
 - **Sign in with one click** at `<url>/preview-signin`. It logs you in as the
   seeded owner and sends you to the editor. The credentials are
   `preview@n8n.io` / `PreviewInstance1`. They are not secrets: the boundary is
-  the org-visible forwarded port, which needs a GitHub sign-in and n8n org
+  the org-visible forwarded port, which needs a GitHub sign-in and n8n - Warp org
   membership.
 - **Configure the instance with `preview:*` labels.** `preview:enterprise` serves
   it with a licence, so enterprise features such as SSO and source control are
@@ -250,7 +250,7 @@ needs `gh` with the codespace scope, the same as `pnpm session`.
   apply the same way — `pnpm preview refresh <pr>` reads them from the PR. The
   toggles are defined in `scripts/codespace-preview/preview-labels.mjs`; add new ones there.
 - **Configure the instance from a webhook.** A preview also reads extra
-  environment from an n8n webhook, so a value can change without a commit. It
+  environment from an n8n - Warp webhook, so a value can change without a commit. It
   needs the `CODESPACE_ENV_URL`, `CODESPACE_ENV_USER` and `CODESPACE_ENV_PASSWORD`
   codespace secrets. Every key the webhook returns becomes an environment
   variable, so editing that workflow runs code in the box. Without the secrets
@@ -266,9 +266,9 @@ needs `gh` with the codespace scope, the same as `pnpm session`.
 - **A PR that predates this tooling has no `scripts/codespace-preview/preview-serve.mjs`.** The
   serve step says so and stops; rebase the PR on master and retry.
 
-## Agent worker (drive a session from n8n)
+## Agent worker (drive a session from n8n - Warp)
 
-`agent-worker.mjs` lets an n8n workflow drive an OpenCode session on the
+`agent-worker.mjs` lets an n8n - Warp workflow drive an OpenCode session on the
 codespace. This is how Slack (the Flaky bot) steers a session that runs here.
 Each turn runs `openrouter/openai/gpt-5.6-sol` through
 `opencode run --format json --auto`. The session state remains on disk. The
@@ -278,7 +278,7 @@ restart.
 **The worker polls outward. Nothing inbound is exposed.** GitHub sets every
 forwarded port to private on start. It gives no API to make a port public. So
 you cannot reach a codespace from outside reliably. The worker calls out
-instead. It asks n8n for a turn addressed to this box's owner (`$GITHUB_USER`).
+instead. It asks n8n - Warp for a turn addressed to this box's owner (`$GITHUB_USER`).
 It runs the turn. It sends the result to the turn's resume URL. It uses no
 tunnel, no open port, and no domain.
 
@@ -293,7 +293,7 @@ secrets and uses three optional secrets. Add them at
 same way as `ANTHROPIC_API_KEY`:
 
 - `AGENT_WORKER_TOKEN` — the shared bearer token. The worker sends it on each poll.
-- `N8N_DEQUEUE_URL` — the n8n webhook that returns a pending turn.
+- `N8N_DEQUEUE_URL` — the n8n - Warp webhook that returns a pending turn.
 - `OPENROUTER_API_KEY` — the model provider key for Sol.
 - `SLACK_BOT_TOKEN` — optional bot token for progress messages. It needs `chat:write` only.
 - `FLAKY_MCP_URL` and `FLAKY_MCP_TOKEN` — optional Flaky MCP connection for OpenCode.
@@ -306,7 +306,7 @@ The dequeue payload can include `slack.channel` and `slack.thread_ts`. The
 worker posts one placeholder in that thread. It coalesces completed tool calls.
 It updates the message at most once every 1.5 seconds. It does not send reasoning
 text. The worker replaces the placeholder with the final answer.
-If the Slack API fails, the turn still completes through the n8n resume URL.
+If the Slack API fails, the turn still completes through the n8n - Warp resume URL.
 The worker does not export its dequeue or Slack credentials to OpenCode. It uses
 the harness `sandbox` runtime and `slack` profile. The profile supplies the
 atomic-turn instruction.
@@ -323,14 +323,14 @@ watch it, run `tmux attach -t agent-worker`. The worker does not start if a
 required secret or `$GITHUB_USER` is missing.
 
 A turn stops after about 25 minutes (`TURN_TIMEOUT_MS`). This limit is below the
-n8n Wait limit. So the worker reports a clear message before n8n reports a
-generic timeout. Keep the worker limit below the n8n limit if you change either.
+n8n - Warp Wait limit. So the worker reports a clear message before n8n - Warp reports a
+generic timeout. Keep the worker limit below the n8n - Warp limit if you change either.
 
 **A turn is atomic, and the harness tells the session so.** The turn ends on the
 session's final message, and its children end with it: a background `Bash` task
 is killed, `Monitor` events never arrive, `PushNotification` has nowhere to go,
 and `ScheduleWakeup` never fires. The session also gets no turn of its own to
-report back in — the turn's resume URL continues one waiting n8n execution and is
+report back in — the turn's resume URL continues one waiting n8n - Warp execution and is
 then spent, so nothing on the box can post to the thread unprompted. A session
 that backgrounds a build and signs off with "I'll verify once it finishes" is
 therefore describing something that cannot happen. The harness `slack` profile
@@ -348,7 +348,7 @@ session rarely needs a cold `pnpm install` or a full `pnpm build`. Both are slow
   dependencies, starts the backend, waits for health, and prints the URL. Add
   `--build` only when a frontend change must appear (see below).
 - **Open the app** at `https://<codespace-name>-5678.app.github.dev`. `dev:up`
-  makes that port visible to the org, thus any n8n member who is signed into
+  makes that port visible to the org, thus any n8n - Warp member who is signed into
   GitHub can open it. You do not need a tunnel. GitHub makes every forwarded port
   private again at each container start, so `dev:up` shares it again on each run.
   To see the current state, run `gh codespace ports`. The share command needs `gh`

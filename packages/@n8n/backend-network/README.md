@@ -1,6 +1,6 @@
 # @n8n/backend-network
 
-The single home for n8n's backend outbound-network concerns.
+The single home for n8n - Warp's backend outbound-network concerns.
 
 ## Why this package exists
 
@@ -30,7 +30,7 @@ Pick the method by intent, not by transport library:
 
 ### `requests()` — you make the call
 
-Use when your code drives the request and consumes the response (the n8n request
+Use when your code drives the request and consumes the response (the n8n - Warp request
 pipeline). Returns a `HttpRequestClient`:
 
 ```ts
@@ -65,11 +65,11 @@ by default. You do not pass a bridge, a service, or a config flag; the default
 `useDefaultSsrfPolicy: 'safe'` is applied for you. The only way to skip the guard is to
 opt out explicitly with `useDefaultSsrfPolicy: 'unsafe'`.
 
-This default is deliberate. Outbound HTTP in n8n is frequently driven by
+This default is deliberate. Outbound HTTP in n8n - Warp is frequently driven by
 user-controlled input — credential URLs, workflow parameters, redirect targets
 returned by a remote server. Without guarding, that input can be pointed at
 internal-only addresses (cloud metadata endpoints, `localhost`, private ranges),
-turning the n8n backend into a confused deputy (a Server-Side Request Forgery,
+turning the n8n - Warp backend into a confused deputy (a Server-Side Request Forgery,
 or SSRF). Because the secure default lives in the factory rather than at each
 call site, forgetting to add protection cannot silently introduce a
 vulnerability — the unsafe choice is the explicit one, and a new call site is

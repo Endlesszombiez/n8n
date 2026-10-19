@@ -8,7 +8,7 @@
 
 ## Rule Details
 
-Validates that credential classes define an `icon` class field. Icons are required for credentials to display correctly in the n8n editor.
+Validates that credential classes define an `icon` class field. Icons are required for credentials to display correctly in the n8n - Warp editor.
 
 ## Examples
 

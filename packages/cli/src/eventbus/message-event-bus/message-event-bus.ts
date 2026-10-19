@@ -325,7 +325,7 @@ export class MessageEventBus extends EventEmitter {
 
 			if (recoveredIds.length > 0) {
 				this.logger.warn(`Found unfinished executions: ${recoveredIds.join(', ')}`);
-				this.logger.info('This could be due to a crash of an active workflow or a restart of n8n');
+				this.logger.info('This could be due to a crash of an active workflow or a restart of n8n - Warp');
 			}
 
 			if (

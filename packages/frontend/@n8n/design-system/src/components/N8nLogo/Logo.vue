@@ -90,7 +90,7 @@ onMounted(() => {
 	}
 }
 
-.logoText path {
+.logoText {
 	fill: var(--text-color);
 }
 

@@ -1,15 +1,15 @@
-# i18n in n8n
+# i18n in n8n - Warp
 
 ## Scope
 
-n8n allows for internalization of the majority of UI text:
+n8n - Warp allows for internalization of the majority of UI text:
 
 - base text, e.g. menu display items in the left-hand sidebar menu,
 - node text, e.g. parameter display names and placeholders in the node view,
 - credential text, e.g. parameter display names and placeholders in the credential modal,
 - header text, e.g. node display names and descriptions at various spots.
 
-Currently, n8n does _not_ allow for internalization of:
+Currently, n8n - Warp does _not_ allow for internalization of:
 
 - messages from outside the `editor-ui` package, e.g. `No active database connection`,
 - strings in certain Vue components, e.g. date time picker
@@ -27,7 +27,7 @@ Pending functionality:
 
 A **locale identifier** is a language code compatible with the [`Accept-Language` header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Language), e.g. `de` (German), `es` (Spanish), `ja` (Japanese). Regional variants of locale identifiers, such as `-AT` in `de-AT`, are _not_ supported. For a list of all locale identifiers, see [column 639-1 in this table](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
 
-By default, n8n runs in the `en` (English) locale. To have run it in a different locale, set the `N8N_DEFAULT_LOCALE` environment variable to a locale identifier. When running in a non-`en` locale, n8n will display UI strings for the selected locale and fall back to `en` for any untranslated strings.
+By default, n8n - Warp runs in the `en` (English) locale. To have run it in a different locale, set the `N8N_DEFAULT_LOCALE` environment variable to a locale identifier. When running in a non-`en` locale, n8n - Warp will display UI strings for the selected locale and fall back to `en` for any untranslated strings.
 
 ```
 export N8N_DEFAULT_LOCALE=de

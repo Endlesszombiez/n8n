@@ -761,7 +761,7 @@ describe('WorkflowPublicationApplier', () => {
 		expect(callOrder).toEqual(['remove', 'invalidate', 'advance', 'refresh', 'add']);
 	});
 
-	describe('n8n Trigger', () => {
+	describe('n8n - Warp Trigger', () => {
 		// Emits "Published Workflow Updated" from `trigger()` itself, so it only fires
 		// when re-registered: the diff must re-apply it on every version change.
 		const n8nTrigger = triggerNode('n8n', {

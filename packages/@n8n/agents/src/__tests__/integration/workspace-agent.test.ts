@@ -69,10 +69,10 @@ describe('workspace agent integration', () => {
 		expect(readResult).toBeDefined();
 		expect(readResult!.state).toBe('resolved');
 		expect((readResult as unknown as { output: { content: string } }).output.content).toContain(
-			'Hello from n8n!',
+			'Hello from n8n - Warp!',
 		);
 
-		expect(memFs.getFileContent('/greeting.txt')).toBe('Hello from n8n!');
+		expect(memFs.getFileContent('/greeting.txt')).toBe('Hello from n8n - Warp!');
 	});
 
 	it('agent uses workspace_execute_command tool', async () => {

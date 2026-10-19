@@ -42,7 +42,7 @@ export class RetrieverWorkflow implements INodeType {
 		iconColor: 'black',
 		group: ['transform'],
 		version: [1, 1.1],
-		description: 'Use an n8n Workflow as Retriever',
+		description: 'Use an n8n - Warp Workflow as Retriever',
 		defaults: {
 			name: 'Workflow Retriever',
 		},

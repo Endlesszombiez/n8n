@@ -80,7 +80,7 @@ export class MemoryBufferWindow implements INodeType {
 		iconColor: 'black',
 		group: ['transform'],
 		version: [1, 1.1, 1.2, 1.3, 1.4],
-		description: 'Stores in n8n memory, so no credentials required',
+		description: 'Stores in n8n - Warp memory, so no credentials required',
 		defaults: {
 			name: 'Simple Memory',
 		},
@@ -111,7 +111,7 @@ export class MemoryBufferWindow implements INodeType {
 			getConnectionHintNoticeField([NodeConnectionTypes.AiAgent]),
 			{
 				displayName:
-					'This node stores memory locally in the n8n instance. It is not compatible with Queue Mode or Multi-Main setups, as memory will not be shared across workers. For production use with scaling, consider using an external memory store such as Redis, Postgres, or another persistent memory node.',
+					'This node stores memory locally in the n8n - Warp instance. It is not compatible with Queue Mode or Multi-Main setups, as memory will not be shared across workers. For production use with scaling, consider using an external memory store such as Redis, Postgres, or another persistent memory node.',
 				name: 'scalingNotice',
 				type: 'notice',
 				default: '',

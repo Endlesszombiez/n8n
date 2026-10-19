@@ -11,11 +11,11 @@ import {
 import { getConnectionHintNoticeField } from '@n8n/ai-utilities';
 
 export const versionDescription: INodeTypeDescription = {
-	displayName: 'Call n8n Workflow Tool',
+	displayName: 'Call n8n - Warp Workflow Tool',
 	name: 'toolWorkflow',
 	group: ['transform'],
 	version: [1, 1.1, 1.2, 1.3],
-	description: 'Uses another n8n workflow as a tool. Allows packaging any n8n node(s) as a tool.',
+	description: 'Uses another n8n - Warp workflow as a tool. Allows packaging any n8n - Warp node(s) as a tool.',
 	defaults: {
 		name: 'Call n8n Workflow Tool',
 	},
@@ -177,7 +177,7 @@ export const versionDescription: INodeTypeDescription = {
 			required: true,
 			hint: 'The field in the last-executed node of the workflow that contains the response',
 			description:
-				'Where to find the data that this tool should return. n8n will look in the output of the last-executed node of the workflow for a field with this name, and return its value.',
+				'Where to find the data that this tool should return. n8n - Warp will look in the output of the last-executed node of the workflow for a field with this name, and return its value.',
 			displayOptions: {
 				show: {
 					'@version': [{ _cnd: { lt: 1.3 } }],

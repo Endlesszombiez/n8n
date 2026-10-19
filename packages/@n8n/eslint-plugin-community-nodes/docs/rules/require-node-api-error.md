@@ -1,4 +1,4 @@
-# Require NodeApiError or NodeOperationError for error wrapping in catch blocks. Raw errors lose HTTP context in the n8n UI (`@n8n/community-nodes/require-node-api-error`)
+# Require NodeApiError or NodeOperationError for error wrapping in catch blocks. Raw errors lose HTTP context in the n8n - Warp UI (`@n8n/community-nodes/require-node-api-error`)
 
 💼 This rule is enabled in the following configs: ✅ `recommended`, ☑️ `recommendedWithoutN8nCloudSupport`.
 
@@ -6,9 +6,9 @@
 
 ## Rule Details
 
-When errors are caught and re-thrown in n8n nodes, they must be wrapped in
+When errors are caught and re-thrown in n8n - Warp nodes, they must be wrapped in
 `NodeApiError` or `NodeOperationError`. Raw re-throws and generic `Error`
-constructors lose HTTP context (status code, response body, etc.) that the n8n
+constructors lose HTTP context (status code, response body, etc.) that the n8n - Warp
 UI relies on to display meaningful error information to users.
 
 ## Examples

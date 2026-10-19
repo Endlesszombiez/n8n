@@ -4,7 +4,7 @@ Manage CLI configuration (URL, API key).
 
 ## `config set-url`
 
-Set the n8n instance URL.
+Set the n8n - Warp instance URL.
 
 ```bash
 n8n-cli config set-url https://my-n8n.app.n8n.cloud

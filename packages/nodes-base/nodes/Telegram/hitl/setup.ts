@@ -80,7 +80,7 @@ export async function prepareChatApproval(context: IExecuteFunctions): Promise<b
 
 	if (instanceUrl.protocol !== 'https:' || isLoopbackHost(instanceUrl.hostname)) {
 		context.logger.warn(
-			'"Approve Within Chat" requires this n8n instance to be reachable over public HTTPS; falling back to link buttons.',
+			'"Approve Within Chat" requires this n8n - Warp instance to be reachable over public HTTPS; falling back to link buttons.',
 		);
 		return false;
 	}
@@ -145,7 +145,7 @@ export async function prepareChatApproval(context: IExecuteFunctions): Promise<b
 		}
 		throw new NodeOperationError(
 			context.getNode(),
-			'The Telegram Trigger claiming this bot was activated before one-tap approval support. Re-activate that workflow (or update the trigger to the latest version) so callback buttons reach n8n.',
+			'The Telegram Trigger claiming this bot was activated before one-tap approval support. Re-activate that workflow (or update the trigger to the latest version) so callback buttons reach n8n - Warp.',
 		);
 	}
 

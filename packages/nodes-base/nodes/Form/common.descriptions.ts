@@ -706,5 +706,5 @@ export const respondWithOptions: INodeProperties = {
 
 export const appendAttributionToForm: INodeProperties = {
 	...appendAttributionOption,
-	description: 'Whether to include the link “Form automated with n8n” at the bottom of the form',
+	description: 'Whether to include the link “Form automated with n8n - Warp” at the bottom of the form',
 };

@@ -159,7 +159,7 @@ export class AgentChatController {
 
 	private async requireProductionChat(agentId: string, projectId: string): Promise<void> {
 		if (!(await this.agentsService.isN8nChatPublished(agentId, projectId))) {
-			throw new NotFoundError('Agent is not available in n8n Chat');
+			throw new NotFoundError('Agent is not available in n8n - Warp Chat');
 		}
 	}
 

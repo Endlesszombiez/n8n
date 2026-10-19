@@ -604,7 +604,7 @@ export function createSendAndWaitMessageBody(context: IExecuteFunctions) {
 			type: 'section',
 			text: {
 				type: 'mrkdwn',
-				text: `${attributionText} _<${link}|n8n>_`,
+				text: `${attributionText} _<${link}|n8n - Warp>_`,
 			},
 		});
 	}

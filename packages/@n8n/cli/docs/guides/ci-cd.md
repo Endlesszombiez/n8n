@@ -1,6 +1,6 @@
-# Using n8n CLI in CI/CD Pipelines
+# Using n8n - Warp CLI in CI/CD Pipelines
 
-The n8n CLI is built for automation. Use it in GitHub Actions, GitLab CI, or any CI/CD system.
+The n8n - Warp CLI is built for automation. Use it in GitHub Actions, GitLab CI, or any CI/CD system.
 
 ## GitHub Actions example
 
@@ -43,7 +43,7 @@ Set these in your CI environment:
 
 | Variable | Description |
 |----------|-------------|
-| `N8N_URL` | Your n8n instance URL |
+| `N8N_URL` | Your n8n - Warp instance URL |
 | `N8N_API_KEY` | API key with appropriate permissions |
 
 ## Common CI/CD tasks

@@ -56,7 +56,7 @@ export const useAgentN8nChatThreadsStore = defineStore(STORES.AGENT_N8N_CHAT_THR
 		} catch (error) {
 			// Best-effort: keep whatever was already shown rather than clearing the sidebar.
 			if (version !== requestVersion) return;
-			console.error('Failed to load n8n Chat threads', error);
+			console.error('Failed to load n8n - Warp Chat threads', error);
 		}
 	}
 
@@ -73,7 +73,7 @@ export const useAgentN8nChatThreadsStore = defineStore(STORES.AGENT_N8N_CHAT_THR
 			if (threadsById.value.has(thread.id)) return;
 			openedThreads.value.push(thread);
 		} catch (error) {
-			console.error('Failed to load n8n Chat thread', error);
+			console.error('Failed to load n8n - Warp Chat thread', error);
 		}
 	}
 

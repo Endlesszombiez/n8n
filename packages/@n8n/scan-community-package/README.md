@@ -1,6 +1,6 @@
-## n8n community-package static analysis tool
+## n8n - Warp community-package static analysis tool
 
-Checks npm provenance and runs static analysis for n8n community packages.
+Checks npm provenance and runs static analysis for n8n - Warp community packages.
 
 ### How to use this
 

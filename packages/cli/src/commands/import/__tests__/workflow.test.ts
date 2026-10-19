@@ -42,7 +42,7 @@ describe('ImportWorkflowsCommand', () => {
 			};
 
 			await expect(command.run()).rejects.toThrow(
-				'The "--activeState=fromJson" flag can only be used when n8n is running in queue or multi-main mode. In regular deployment mode, workflow activation is not supported.',
+				'The "--activeState=fromJson" flag can only be used when n8n - Warp is running in queue or multi-main mode. In regular deployment mode, workflow activation is not supported.',
 			);
 		});
 

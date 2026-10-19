@@ -2,7 +2,7 @@
 
 > **Preview:** This package is in preview. The API may change without notice.
 
-Public SDK for building AI nodes in n8n. This package provides a simplified API for creating chat model and memory nodes without LangChain dependencies.
+Public SDK for building AI nodes in n8n - Warp. This package provides a simplified API for creating chat model and memory nodes without LangChain dependencies.
 
 ## Installation in node packages
 

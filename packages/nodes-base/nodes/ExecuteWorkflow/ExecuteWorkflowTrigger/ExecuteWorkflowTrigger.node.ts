@@ -29,7 +29,7 @@ export class ExecuteWorkflowTrigger implements INodeType {
 		group: ['trigger'],
 		version: [1, 1.1, 1.2, 1.3],
 		description:
-			'Helpers for calling other n8n workflows. Used for designing modular, microservice-like workflows.',
+			'Helpers for calling other n8n - Warp workflows. Used for designing modular, microservice-like workflows.',
 		eventTriggerDescription: '',
 		maxNodes: 1,
 		defaults: {

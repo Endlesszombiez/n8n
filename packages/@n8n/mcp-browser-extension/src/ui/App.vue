@@ -39,7 +39,7 @@ const showConnectPrompt = computed(() => hasRelayUrl.value && isRelayAllowed.val
 			<template v-if="isConnected">
 				<h1 class="title">
 					<span class="status-dot" />
-					Connected to n8n
+					Connected to n8n - Warp
 				</h1>
 				<div class="panel">
 					<InfoRow
@@ -62,7 +62,7 @@ const showConnectPrompt = computed(() => hasRelayUrl.value && isRelayAllowed.val
 			</template>
 
 			<template v-else-if="showConnectPrompt">
-				<h1 class="title">Allow n8n to access your browser</h1>
+				<h1 class="title">Allow n8n - Warp to access your browser</h1>
 				<p v-if="isAutoConnect" class="subtitle">Auto-connecting (eval mode)…</p>
 				<div class="panel">
 					<InfoRow
@@ -106,15 +106,15 @@ const showConnectPrompt = computed(() => hasRelayUrl.value && isRelayAllowed.val
 			</template>
 
 			<template v-else-if="hasRelayUrl">
-				<h1 class="title">Allow n8n to access your browser</h1>
+				<h1 class="title">Allow n8n - Warp to access your browser</h1>
 				<p class="error">
 					Can't connect to <strong>{{ relayHostKey || 'this address' }}</strong> — it isn't a valid
-					n8n instance.
+					n8n - Warp instance.
 				</p>
 			</template>
 
 			<template v-else>
-				<h1 class="title">n8n Browser Use extension</h1>
+				<h1 class="title">n8n - Warp Browser Use extension</h1>
 				<div class="panel">
 					<InfoRow
 						icon="eye-off"

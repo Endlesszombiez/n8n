@@ -116,7 +116,7 @@ export class OAuthCredentialResolver implements ICredentialResolver {
 				default: '',
 				placeholder: 'https://api.example.com',
 				description:
-					'Value the access token must carry in its aud claim, identifying this n8n instance as the intended recipient. Leave empty to skip the check. This is not the Client ID: configure your provider to issue an audience for n8n if it does not already.',
+					'Value the access token must carry in its aud claim, identifying this n8n - Warp instance as the intended recipient. Leave empty to skip the check. This is not the Client ID: configure your provider to issue an audience for n8n - Warp if it does not already.',
 			},
 			{
 				displayName: 'Subject Claim',

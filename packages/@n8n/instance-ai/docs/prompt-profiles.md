@@ -46,7 +46,7 @@ Because a version outranks a mode, pinning a `default`-mode profile such as
 `concise@1` also overrides a progressive building assignment. The operator pin
 is instance-wide so the two system prompts never fragment the prompt cache
 within one instance. An unknown pin fails the run instead of silently serving
-the default profile; the rest of n8n is unaffected.
+the default profile; the rest of n8n - Warp is unaffected.
 
 Internal follow-ups retain the selected version. Checkpoints store the request
 pin in `persistence.hostMetadata.promptVersion`. They do not store the operator

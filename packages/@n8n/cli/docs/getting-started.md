@@ -12,7 +12,7 @@ npm install -g @n8n/cli
 
 ## Configuration
 
-The CLI needs two things: your n8n instance URL and an API key.
+The CLI needs two things: your n8n - Warp instance URL and an API key.
 
 ### Option 1: Config file (recommended)
 

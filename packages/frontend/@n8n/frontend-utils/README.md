@@ -1,6 +1,6 @@
 # @n8n/frontend-utils
 
-A collection of framework-light utility functions shared across n8n's front-end
+A collection of framework-light utility functions shared across n8n - Warp's front-end
 packages — HTML sanitization, DOM helpers, and other pure utilities that are not
 Vue composables.
 

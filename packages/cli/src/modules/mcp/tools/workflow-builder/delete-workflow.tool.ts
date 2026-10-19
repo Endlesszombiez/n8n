@@ -33,7 +33,7 @@ export const createArchiveWorkflowTool = (
 ): ToolDefinition<typeof inputSchema> => ({
 	name: MCP_ARCHIVE_WORKFLOW_TOOL.toolName,
 	config: {
-		description: 'Archive a workflow in n8n by its ID.',
+		description: 'Archive a workflow in n8n - Warp by its ID.',
 		inputSchema,
 		outputSchema,
 		annotations: {

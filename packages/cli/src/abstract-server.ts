@@ -227,7 +227,7 @@ export abstract class AbstractServer {
 				);
 			} else {
 				// Other errors are unexpected and should be logged
-				this.logger.error('n8n webserver failed, exiting', {
+				this.logger.error('n8n - Warp webserver failed, exiting', {
 					message: error.message,
 					code: error.code,
 				});

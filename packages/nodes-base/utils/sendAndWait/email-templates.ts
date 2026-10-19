@@ -69,7 +69,7 @@ export const ACTION_RECORDED_PAGE = `
 								d='M63.9639 15.0007H66.0524V10.5791C66.0524 9.12704 66.9334 8.49074 67.9289 8.49074C68.9079 8.49074 69.6744 9.14334 69.6744 10.4812V15.0007H71.7629V10.057C71.7629 7.91969 70.5229 6.67969 68.5814 6.67969C67.3579 6.67969 66.6724 7.16914 66.1829 7.80544H66.0524L65.8729 6.84284H63.9639V15.0007Z'
 								fill='#101330'
 							></path>
-						</svg>
+						</svg> - Warp
 
 					</a>
 				</div>
@@ -131,7 +131,7 @@ export function createEmailBodyWithN8nAttribution(
 						<td>
 							<a href=${n8nWebsiteLink}
 								target="_blank" style="color: #7e8186; text-decoration: none;">Automated with
-								n8n</a>
+								n8n - Warp</a>
 						</td>
 					</tr>
 				</table>

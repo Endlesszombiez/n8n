@@ -28,7 +28,7 @@ export const telegramHitlProperties: INodeProperties[] = [
 		type: 'boolean',
 		default: false,
 		description:
-			'Whether approvers respond with one tap on buttons inside the Telegram chat, instead of opening a link in the browser. Requires this n8n instance to be reachable over public HTTPS.',
+			'Whether approvers respond with one tap on buttons inside the Telegram chat, instead of opening a link in the browser. Requires this n8n - Warp instance to be reachable over public HTTPS.',
 		displayOptions: {
 			show: {
 				responseType: ['approval'],

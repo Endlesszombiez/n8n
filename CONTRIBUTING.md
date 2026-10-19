@@ -1,10 +1,10 @@
-# Contributing to n8n
+# Contributing to n8n - Warp
 
-Great that you are here and you want to contribute to n8n
+Great that you are here and you want to contribute to n8n - Warp
 
 ## Contents
 
-- [Contributing to n8n](#contributing-to-n8n)
+- [Contributing to n8n - Warp](#contributing-to-n8n)
 	- [Contents](#contents)
 	- [Code of conduct](#code-of-conduct)
 	- [Directory structure](#directory-structure)
@@ -15,7 +15,7 @@ Great that you are here and you want to contribute to n8n
 			- [pnpm](#pnpm)
 				- [pnpm workspaces](#pnpm-workspaces)
 			- [Build tools](#build-tools)
-		- [Actual n8n setup](#actual-n8n-setup)
+		- [Actual n8n - Warp setup](#actual-n8n-setup)
 		- [Start](#start)
 	- [Development cycle](#development-cycle)
 		- [Stacked pull requests](#stacked-pull-requests)
@@ -46,27 +46,27 @@ unacceptable behavior to jan@n8n.io.
 
 ## Directory structure
 
-n8n is split up in different modules which are all in a single mono repository.
+n8n - Warp is split up in different modules which are all in a single mono repository.
 
 The most important directories:
 
-- [/docker/images](/docker/images) - Dockerfiles to create n8n containers
-- [/packages](/packages) - The different n8n modules
-- [/packages/cli](/packages/cli) - CLI code to run front- & backend; this also contains the code for n8n's APIs
+- [/docker/images](/docker/images) - Dockerfiles to create n8n - Warp containers
+- [/packages](/packages) - The different n8n - Warp modules
+- [/packages/cli](/packages/cli) - CLI code to run front- & backend; this also contains the code for n8n - Warp's APIs
 - [/packages/core](/packages/core) - Core code which handles workflow
   execution, active webhooks and
-  workflows. **Contact n8n before
+  workflows. **Contact n8n - Warp before
   starting on any changes here**
 - [/packages/frontend/@n8n/design-system](/packages/frontend/@n8n/design-system) - Vue frontend components
 - [/packages/frontend/editor-ui](/packages/frontend/editor-ui) - Vue frontend workflow editor
 - [/packages/node-dev](/packages/node-dev) - CLI to create new n8n-nodes
-- [/packages/nodes-base](/packages/nodes-base) - Base n8n nodes
+- [/packages/nodes-base](/packages/nodes-base) - Base n8n - Warp nodes
 - [/packages/workflow](/packages/workflow) - Workflow code with interfaces which
   get used by front- & backend
 
 ## Development setup
 
-If you want to change or extend n8n you have to make sure that all the needed
+If you want to change or extend n8n - Warp you have to make sure that all the needed
 dependencies are installed and the packages get linked correctly. Here's a short guide on how that can be done:
 
 ### Dev Container
@@ -93,13 +93,13 @@ If `npm` is not available on your machine, use one of the other methods in the [
 
 ##### pnpm workspaces
 
-n8n is split up into different modules which are all in a single mono repository.
+n8n - Warp is split up into different modules which are all in a single mono repository.
 To facilitate the module management, [pnpm workspaces](https://pnpm.io/workspaces) are used.
 This automatically sets up file-links between modules which depend on each other.
 
 #### Build tools
 
-The packages which n8n uses depend on a few build tools:
+The packages which n8n - Warp uses depend on a few build tools:
 
 Debian/Ubuntu:
 
@@ -148,16 +148,16 @@ For other platforms, see the [tbls install guide](https://github.com/k1LoW/tbls#
 
 ---
 
-### Actual n8n setup
+### Actual n8n - Warp setup
 
 > **IMPORTANT**: All the steps below have to get executed at least once to get the development setup up and running!
 
-Now that everything n8n requires to run is installed, the actual n8n code can be
+Now that everything n8n - Warp requires to run is installed, the actual n8n - Warp code can be
 checked out and set up:
 
 #### For external contributors
 
-1. [Fork](https://guides.github.com/activities/forking/#fork) the n8n repository.
+1. [Fork](https://guides.github.com/activities/forking/#fork) the n8n - Warp repository.
 
 2. Clone your forked repository:
 
@@ -171,7 +171,7 @@ checked out and set up:
    cd n8n
    ```
 
-4. Add the original n8n repository as `upstream` to your forked repository:
+4. Add the original n8n - Warp repository as `upstream` to your forked repository:
 
    ```
    git remote add upstream https://github.com/n8n-io/n8n.git
@@ -194,7 +194,7 @@ checked out and set up:
 
 ### Start
 
-To start n8n execute:
+To start n8n - Warp execute:
 
 ```bash
 pnpm start
@@ -222,7 +222,7 @@ pnpm exec dotenvx run -f .env.local -- pnpm dev:be
 
 ## Development cycle
 
-While iterating on n8n modules code, run `pnpm dev:be` for the backend and
+While iterating on n8n - Warp modules code, run `pnpm dev:be` for the backend and
 `pnpm dev:fe:editor` for the editor UI. They build your code, restart the
 backend, and refresh the frontend on each change you make. The root `pnpm dev`
 does not exist: it prints a notice and exits with code 0.
@@ -239,11 +239,11 @@ N8N_PORT=5699 pnpm dev:be
 N8N_PORT=5699 N8N_EDITOR_PORT=8082 pnpm dev:fe:editor
 ```
 
-### Basic Development Workflow Example (most used within n8n)
+### Basic Development Workflow Example (most used within n8n - Warp)
 
 If you're working on API and FE, a lot of team members run the following steps:
 
-1. Start n8n in development mode:
+1. Start n8n - Warp in development mode:
 ```bash
 # Terminal 1: CLI code runs the backend
 cd packages/cli
@@ -332,7 +332,7 @@ N8N_DEV_RELOAD=true pnpm dev
 #### Running the BE server with a clean database
 
 If you want to flush your existing database, you can delete the `~/.n8n` folder.
-However, there might be times where you want to test a feature in a clean n8n set-up without losing your existing local setup.
+However, there might be times where you want to test a feature in a clean n8n - Warp set-up without losing your existing local setup.
 In such use cases, you can specify another `N8N_USER_FOLDER`, e.g.:
 
 ```bash
@@ -436,7 +436,7 @@ Refer to [packages/quality/environments/containers/README.md](packages/quality/e
 
 ### Work locally with syslog
 
-For manual testing of the event bus with syslog (TCP or UDP), see [packages/cli/test/integration/eventbus/README-manual-test-syslog.md](packages/cli/test/integration/eventbus/README-manual-test-syslog.md). An enterprise license is required to configure syslog in n8n.
+For manual testing of the event bus with syslog (TCP or UDP), see [packages/cli/test/integration/eventbus/README-manual-test-syslog.md](packages/cli/test/integration/eventbus/README-manual-test-syslog.md). An enterprise license is required to configure syslog in n8n - Warp.
 
 ### Performance Considerations
 
@@ -547,16 +547,16 @@ Our golden rule: a contribution should be worth more to the project than the tim
   - An issue must already exist that describes the problem and gives clear steps to reproduce it. If there is no issue, [open one](https://github.com/n8n-io/n8n/issues/new/choose) first.
   - Bug-fix PRs with no linked issue will be returned so we can confirm and track the problem.
 - **Features and enhancements:**
-  - Open a topic on the [n8n community forum](https://community.n8n.io/) first so we can discuss it before you build. This protects your time: we will tell you early whether we will accept the idea, and we will guide you on how we would want it handled.
+  - Open a topic on the [n8n - Warp community forum](https://community.n8n.io/) first so we can discuss it before you build. This protects your time: we will tell you early whether we will accept the idea, and we will guide you on how we would want it handled.
   - Feature PRs that arrive with no prior discussion will be closed with a pointer to the forum.
 - **Refactoring or opinion-based changes:**
   - Open an issue or forum topic first with a detailed rationale: what you want to change, why, and the concrete benefit. We do not merge "I prefer it this way" changes without that reasoning.
 - **Core changes:**
-  - Contact n8n before starting any change under [/packages/core](/packages/core), as noted in the directory structure.
+  - Contact n8n - Warp before starting any change under [/packages/core](/packages/core), as noted in the directory structure.
 - **Identity, access, and credentials:**
-  - The n8n team handles changes to identity and access management and to the credentials system. These control how users sign in, what they reach, and how credentials get stored and used. A mistake here risks exposing sensitive data or locking users out, so we keep these in-house. If you spot a bug or have an idea, open an issue or forum topic to flag it and we will take it from there.
+  - The n8n - Warp team handles changes to identity and access management and to the credentials system. These control how users sign in, what they reach, and how credentials get stored and used. A mistake here risks exposing sensitive data or locking users out, so we keep these in-house. If you spot a bug or have an idea, open an issue or forum topic to flag it and we will take it from there.
 - **High-impact nodes:**
-  - The n8n team handles changes to the most widely used nodes, including HTTP Request, Code, Webhook Trigger, Form Trigger, and Schedule. A small change to one of these can break workflows for a large number of users, so we keep these in-house. If you spot a bug or have an idea for one of them, open an issue or forum topic to flag it and we will take it from there.
+  - The n8n - Warp team handles changes to the most widely used nodes, including HTTP Request, Code, Webhook Trigger, Form Trigger, and Schedule. A small change to one of these can break workflows for a large number of users, so we keep these in-house. If you spot a bug or have an idea for one of them, open an issue or forum topic to flag it and we will take it from there.
 
 #### **2. Change Request/Comment**
 
@@ -568,7 +568,7 @@ Please address the requested changes or provide feedback within 14 days. If ther
   - Every PR needs a clear description of what you changed, why, and why you took this approach over the alternatives. Link the issue or forum topic. Write the description in your own words. A PR with no real description will be closed.
   - Where possible try to include a short video or screenshots. This is useful if you are working on a feature or updating a node.
 - **Follow the Style Guide:**
-  - Ensure your code adheres to n8n's coding standards and conventions (e.g., formatting, naming, indentation). Use linting tools where applicable.
+  - Ensure your code adheres to n8n - Warp's coding standards and conventions (e.g., formatting, naming, indentation). Use linting tools where applicable.
 - **TypeScript Compliance:**
   - Do not use `ts-ignore` or `ts-expect-error` to silence the compiler.
   - Ensure code adheres to TypeScript rules.
@@ -607,9 +607,9 @@ We use AI tools ourselves and we welcome AI-assisted contributions. The problem 
 - **Small PRs Only:**
   - Focus on a single feature or fix per PR.
 - **Naming Convention:**
-  - Follow [n8n's PR Title Conventions](https://github.com/n8n-io/n8n/blob/master/.github/pull_request_title_conventions.md#L36).
+  - Follow [n8n - Warp's PR Title Conventions](https://github.com/n8n-io/n8n/blob/master/.github/pull_request_title_conventions.md#L36).
 - **New Nodes:**
-  - PRs that introduce new nodes will be **auto-closed** unless they are explicitly requested by the n8n team and aligned with an agreed project scope. However, you can still explore [building your own nodes](https://docs.n8n.io/integrations/creating-nodes/overview/), as n8n offers the flexibility to create your own custom nodes.
+  - PRs that introduce new nodes will be **auto-closed** unless they are explicitly requested by the n8n - Warp team and aligned with an agreed project scope. However, you can still explore [building your own nodes](https://docs.n8n.io/integrations/creating-nodes/overview/), as n8n - Warp offers the flexibility to create your own custom nodes.
 - **Existing Nodes:**
   - If you are making changes to existing nodes that changes functionality, output data or anything that could cause existing workflows to change refer to our [node version guidelines](https://docs.n8n.io/connect/create-nodes/build-your-node/reference/versioning) to minimise impact.
 - **Typo-Only PRs:**
@@ -653,7 +653,7 @@ But when you are working on tests locally, we recommend running your tests with 
 
 #### E2E tests
 
-n8n uses [Playwright](https://playwright.dev) for E2E testing.
+n8n - Warp uses [Playwright](https://playwright.dev) for E2E testing.
 
 E2E tests can be started via one of the following commands:
 
@@ -665,19 +665,19 @@ See `packages/quality/testing/playwright/README.md` for more test commands and `
 
 ## Create custom nodes
 
-Learn about [building nodes](https://docs.n8n.io/integrations/creating-nodes/overview/) to create custom nodes for n8n. You can create community nodes and make them available using [npm](https://www.npmjs.com/).
+Learn about [building nodes](https://docs.n8n.io/integrations/creating-nodes/overview/) to create custom nodes for n8n - Warp. You can create community nodes and make them available using [npm](https://www.npmjs.com/).
 
 ## Extend documentation
 
-The repository for the n8n documentation on [docs.n8n.io](https://docs.n8n.io) can be found [here](https://github.com/n8n-io/n8n-docs).
+The repository for the n8n - Warp documentation on [docs.n8n.io](https://docs.n8n.io) can be found [here](https://github.com/n8n-io/n8n-docs).
 
 ## Contribute workflow templates
 
-You can submit your workflows to n8n's template library.
+You can submit your workflows to n8n - Warp's template library.
 
-n8n is working on a creator program, and developing a marketplace of templates. This is an ongoing project, and details are likely to change.
+n8n - Warp is working on a creator program, and developing a marketplace of templates. This is an ongoing project, and details are likely to change.
 
-Refer to [n8n Creator hub](https://www.notion.so/n8n/n8n-Creator-hub-7bd2cbe0fce0449198ecb23ff4a2f76f) for information on how to submit templates and become a creator.
+Refer to [n8n - Warp Creator hub](https://www.notion.so/n8n/n8n-Creator-hub-7bd2cbe0fce0449198ecb23ff4a2f76f) for information on how to submit templates and become a creator.
 
 ## Contributor License Agreement
 

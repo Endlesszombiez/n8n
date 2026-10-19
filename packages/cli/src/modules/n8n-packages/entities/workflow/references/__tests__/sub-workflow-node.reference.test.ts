@@ -66,7 +66,7 @@ describe('getStaticSubworkflowId', () => {
 		});
 	});
 
-	describe('Call n8n Workflow Tool', () => {
+	describe('Call n8n - Warp Workflow Tool', () => {
 		it('resolves the legacy v1 (<=1.1) plain-string workflowId', () => {
 			expect(getStaticSubworkflowId(node(TOOL_WORKFLOW, 1.1, { workflowId: 'wf-child' }))).toBe(
 				'wf-child',

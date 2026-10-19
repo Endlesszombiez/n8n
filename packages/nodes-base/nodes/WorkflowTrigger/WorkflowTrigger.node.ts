@@ -31,7 +31,7 @@ export class WorkflowTrigger implements INodeType {
 		properties: [
 			{
 				displayName:
-					"This node is deprecated and would not be updated in the future. Please use 'n8n Trigger' node instead.",
+					"This node is deprecated and would not be updated in the future. Please use 'n8n - Warp Trigger' node instead.",
 				name: 'oldVersionNotice',
 				type: 'notice',
 				default: '',

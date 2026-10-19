@@ -11,12 +11,12 @@
 		],
 		"generic": [
 			{
-				"label": "Learn how to automatically cross-post your content with n8n",
+				"label": "Learn how to automatically cross-post your content with n8n - Warp",
 				"icon": "✍️",
 				"url": "https://n8n.io/blog/learn-how-to-automatically-cross-post-your-content-with-n8n/"
 			},
 			{
-				"label": "Running n8n on ships: An interview with Maranics",
+				"label": "Running n8n - Warp on ships: An interview with Maranics",
 				"icon": "🛳",
 				"url": "https://n8n.io/blog/running-n8n-on-ships-an-interview-with-maranics/"
 			},
@@ -36,27 +36,27 @@
 				"url": "https://n8n.io/blog/5-tasks-you-can-automate-with-notion-api/"
 			},
 			{
-				"label": "How a digital strategist uses n8n for online marketing",
+				"label": "How a digital strategist uses n8n - Warp for online marketing",
 				"icon": "💻",
 				"url": "https://n8n.io/blog/how-a-digital-strategist-uses-n8n-for-online-marketing/"
 			},
 			{
-				"label": "The ultimate guide to automate your video collaboration with Whereby, Mattermost, and n8n",
+				"label": "The ultimate guide to automate your video collaboration with Whereby, Mattermost, and n8n - Warp",
 				"icon": "📹",
 				"url": "https://n8n.io/blog/the-ultimate-guide-to-automate-your-video-collaboration-with-whereby-mattermost-and-n8n/"
 			},
 			{
-				"label": "How to automatically give kudos to contributors with GitHub, Slack, and n8n",
+				"label": "How to automatically give kudos to contributors with GitHub, Slack, and n8n - Warp",
 				"icon": "👏",
 				"url": "https://n8n.io/blog/how-to-automatically-give-kudos-to-contributors-with-github-slack-and-n8n/"
 			},
 			{
-				"label": "5 workflow automations for Mattermost that we love at n8n",
+				"label": "5 workflow automations for Mattermost that we love at n8n - Warp",
 				"icon": "🤖",
 				"url": "https://n8n.io/blog/5-workflow-automations-for-mattermost-that-we-love-at-n8n/"
 			},
 			{
-				"label": "Why this Product Manager loves workflow automation with n8n",
+				"label": "Why this Product Manager loves workflow automation with n8n - Warp",
 				"icon": "🧠",
 				"url": "https://n8n.io/blog/why-this-product-manager-loves-workflow-automation-with-n8n/"
 			},
@@ -75,7 +75,7 @@
 				"url": "https://n8n.io/blog/learn-how-to-use-webhooks-with-mattermost-slash-commands/"
 			},
 			{
-				"label": "How Goomer automated their operations with over 200 n8n workflows",
+				"label": "How Goomer automated their operations with over 200 n8n - Warp workflows",
 				"icon": "🛵",
 				"url": "https://n8n.io/blog/how-goomer-automated-their-operations-with-over-200-n8n-workflows/"
 			}

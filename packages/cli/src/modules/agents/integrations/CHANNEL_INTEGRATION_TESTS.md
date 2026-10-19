@@ -7,7 +7,7 @@ The current suite covers three layers:
 - Synthetic platform tests for hand-built edge cases.
 - Recorded replay tests for real webhook payloads captured from a local run.
 
-These tests validate n8n's integration logic: routing inbound messages to the agent, preserving
+These tests validate n8n - Warp's integration logic: routing inbound messages to the agent, preserving
 message context, executing integration actions, resuming suspended tool calls, and avoiding
 self-trigger loops.
 
@@ -180,10 +180,10 @@ Use recorded tests to lock down real webhook shapes against the real adapter. A 
 1. Loads `recorded-session.json`.
 2. Builds fixtures from the recorded webhook body and recorded bot metadata.
 3. Sends the payload through the replay context webhook (driving the real adapter).
-4. Asserts n8n behavior: agent execution, message context, and outbound request body.
+4. Asserts n8n - Warp behavior: agent execution, message context, and outbound request body.
 
 Do not assert recorded fixture contents by themselves (e.g. `record.response.id`) — assert the
-behavior n8n produced. Avoid overfitting to timestamps unless the timestamp is part of the thread or
+behavior n8n - Warp produced. Avoid overfitting to timestamps unless the timestamp is part of the thread or
 message identity being tested.
 
 > **Note on recording completeness.** The recordings primarily capture webhook **inputs**. The
@@ -223,7 +223,7 @@ pnpm recording:export telegram-basic --output-dir src/modules/agents/integration
 Before committing a new channel integration test:
 
 - The test name describes a user-visible scenario or routing rule.
-- The test asserts n8n integration behavior against the **real** adapter's actual output.
+- The test asserts n8n - Warp integration behavior against the **real** adapter's actual output.
 - Shared behavior is covered in the contract test where the platform fits its model.
 - Platform-specific behavior is covered in a synthetic or recorded platform test.
 - Recorded fixtures are sanitized, minimal, and reviewed manually.

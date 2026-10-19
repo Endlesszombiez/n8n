@@ -14,9 +14,9 @@ import { getResponseCode, getResponseData } from './utils';
 // Only offered by nodes that pass `includeN8nOAuth2` (not Wait).
 const n8nOAuth2AuthOption: INodePropertyOptions = {
 	// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
-	name: 'n8n User Auth (OAuth2)',
+	name: 'n8n - Warp User Auth (OAuth2)',
 	value: 'n8nOAuth2',
-	description: 'Require user to give consent to use their n8n account',
+	description: 'Require user to give consent to use their n8n - Warp account',
 };
 
 // Each field declares its expression template and native resolver in one place:
@@ -407,7 +407,7 @@ export const optionsProperty: INodeProperties = {
 					name: 'Auto-Detect',
 					value: 'auto',
 					description:
-						'Redirect browser navigations through the n8n login; require a bearer token from everything else',
+						'Redirect browser navigations through the n8n - Warp login; require a bearer token from everything else',
 				},
 				{
 					name: 'Bearer Token Only',
@@ -417,7 +417,7 @@ export const optionsProperty: INodeProperties = {
 				{
 					name: 'Browser (Virtual Client)',
 					value: 'browser',
-					description: 'Always redirect GET requests without a bearer token through the n8n login',
+					description: 'Always redirect GET requests without a bearer token through the n8n - Warp login',
 				},
 			],
 			default: 'auto',
@@ -425,7 +425,7 @@ export const optionsProperty: INodeProperties = {
 			// The resolvers read the raw value to grant `isFirstParty`, so it must be static.
 			noDataExpression: true,
 			description:
-				'How a request without a bearer token is handled when using n8n User Auth (OAuth2). Only GET requests can be redirected.',
+				'How a request without a bearer token is handled when using n8n - Warp User Auth (OAuth2). Only GET requests can be redirected.',
 		},
 		{
 			displayName: 'Raw Body',

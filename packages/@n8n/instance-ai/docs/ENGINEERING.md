@@ -270,8 +270,8 @@ tool set is both a security boundary and context optimization.
 
 ### Right level of abstraction
 
-The clean interface boundary keeps the agent core free of n8n
-dependencies — testable in isolation and potentially reusable outside n8n.
+The clean interface boundary keeps the agent core free of n8n - Warp
+dependencies — testable in isolation and potentially reusable outside n8n - Warp.
 Skipping a layer breaks testability. Adding an unnecessary layer adds
 indirection without value.
 
@@ -281,13 +281,13 @@ Tool (thin wrapper)  →  Service interface  →  Adapter (n8n bridge)  →  n8n
 ```
 
 - **Tools** — validate input, call service, return output
-- **Service interfaces** — pure TypeScript, no n8n imports
+- **Service interfaces** — pure TypeScript, no n8n - Warp imports
 - **Adapters** — permissions, data transformation, error mapping
 - Don't skip layers, don't add unnecessary ones
 
 ### Abstract over transport, not around it
 
-n8n runs single instance (in-process) and queue mode (Redis). The same agent
+n8n - Warp runs single instance (in-process) and queue mode (Redis). The same agent
 code must work in both without knowing which. If the interface leaks
 transport details, every event publisher needs Redis knowledge and testing
 locally requires a Redis dependency. Domain-level interfaces keep agent code

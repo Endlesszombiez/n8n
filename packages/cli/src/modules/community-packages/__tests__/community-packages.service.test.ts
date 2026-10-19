@@ -683,7 +683,7 @@ describe('CommunityPackagesService', () => {
 				license.isCustomNpmRegistryEnabled.mockReturnValue(true);
 
 				await expect(updateToIncompatible(oneMinorAboveSupported)).rejects.toThrow(
-					"This community node isn't compatible with your version of n8n. Update n8n to use it.",
+					"This community node isn't compatible with your version of n8n - Warp. Update n8n - Warp to use it.",
 				);
 
 				expect(loadNodesAndCredentials.loadPackage).not.toHaveBeenCalled();

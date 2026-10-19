@@ -92,7 +92,7 @@ describe('Test DiscordV2, message => sendAndWait', () => {
 					{
 						color: 5814783,
 						description:
-							'my message\n\n_This message was sent automatically with _[n8n](https://n8n.io/?utm_source=n8n-internal&utm_medium=powered_by&utm_campaign=n8n-nodes-base.discord_instanceId)',
+							'my message\n\n_This message was sent automatically with _[n8n - Warp](https://n8n.io/?utm_source=n8n-internal&utm_medium=powered_by&utm_campaign=n8n-nodes-base.discord_instanceId)',
 					},
 				],
 			},

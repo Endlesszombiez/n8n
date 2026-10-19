@@ -57,7 +57,7 @@ export const messageFields: INodeProperties[] = [
 		name: 'text',
 		type: 'string',
 		default: '',
-		placeholder: 'Hello from n8n!',
+		placeholder: 'Hello from n8n - Warp!',
 		displayOptions: {
 			show: {
 				operation: ['create'],

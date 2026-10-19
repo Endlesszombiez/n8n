@@ -41,7 +41,7 @@ export async function execute(this: IExecuteFunctions, i: number, instanceId: st
 	if (config.appendAttribution !== false) {
 		const attributionText = 'This message was sent automatically with';
 		const link = createUtmCampaignLink('n8n-nodes-base.microsoftTeams', instanceId);
-		const attribution = `<em>${attributionText} <a href="${link}">n8n</a></em>`;
+		const attribution = `<em>${attributionText} <a href="${link}">n8n - Warp</a></em>`;
 		content += `<br><br>${attribution}`;
 	}
 

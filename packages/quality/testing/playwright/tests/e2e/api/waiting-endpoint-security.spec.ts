@@ -85,7 +85,7 @@ test.describe(
 				await n8n.ndv.fillParameterInputByName('fieldLabel', 'First field');
 				await n8n.ndv.clickBackToCanvasButton();
 
-				await n8n.canvas.addNode('n8n Form', { closeNDV: false, action: 'Next Form Page' });
+				await n8n.canvas.addNode('n8n - Warp Form', { closeNDV: false, action: 'Next Form Page' });
 				await n8n.ndv.addFixedCollectionItem();
 				await n8n.ndv.fillParameterInputByName('fieldLabel', 'Second field');
 				await n8n.ndv.clickBackToCanvasButton();

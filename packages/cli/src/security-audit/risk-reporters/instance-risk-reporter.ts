@@ -85,7 +85,7 @@ export class InstanceRiskReporter implements RiskReporter {
 		if (securitySettings !== null) {
 			report.sections.push({
 				title: INSTANCE_REPORT.SECTIONS.SECURITY_SETTINGS,
-				description: 'This n8n instance has the following security settings.',
+				description: 'This n8n - Warp instance has the following security settings.',
 				recommendation: `Consider adjusting the security settings for your n8n instance based on your needs. See: ${ENV_VARS_DOCS_URL}`,
 				settings: securitySettings,
 			});
@@ -196,7 +196,7 @@ export class InstanceRiskReporter implements RiskReporter {
 			versions = await this.getNextVersions(localVersion).then((v) => this.removeIconData(v));
 		} catch (error) {
 			if (inDevelopment) {
-				this.logger.error('Failed to fetch n8n versions. Skipping outdated instance report...');
+				this.logger.error('Failed to fetch n8n - Warp versions. Skipping outdated instance report...');
 			}
 			return null;
 		}

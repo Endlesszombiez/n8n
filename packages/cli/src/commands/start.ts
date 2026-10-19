@@ -53,7 +53,7 @@ const flagsSchema = z.object({
 
 @Command({
 	name: 'start',
-	description: 'Starts n8n. Makes Web-UI available and starts active workflows',
+	description: 'Starts n8n - Warp. Makes Web-UI available and starts active workflows',
 	examples: ['', '-o'],
 	flagsSchema,
 })
@@ -93,7 +93,7 @@ export class Start extends BaseCommand<z.infer<typeof flagsSchema>> {
 	 * get removed.
 	 */
 	async stopProcess() {
-		this.logger.info('\nStopping n8n...');
+		this.logger.info('\nStopping n8n - Warp...');
 
 		try {
 			// Stop with trying to activate workflows that could not be activated
@@ -201,7 +201,7 @@ export class Start extends BaseCommand<z.infer<typeof flagsSchema>> {
 	async init() {
 		await this.initCrashJournal();
 
-		this.logger.info('Initializing n8n process');
+		this.logger.info('Initializing n8n - Warp process');
 		if (this.globalConfig.executions.mode === 'queue') {
 			const scopedLogger = this.logger.scoped('scaling');
 			scopedLogger.debug('Starting main instance in scaling mode');

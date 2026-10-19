@@ -4,7 +4,7 @@
 
 Every component in the enriched release SBOM carries a valid SPDX license
 identifier. The two dual-licensed packages in the tree (`jszip`, `mailsplit`)
-offer MIT as an alternative to their copyleft option; n8n elects MIT for both,
+offer MIT as an alternative to their copyleft option; n8n - Warp elects MIT for both,
 recorded as `cdx:license:elected` in the SBOM. No copyleft license is in force.
 
 ---
@@ -19,7 +19,7 @@ recorded as `cdx:license:elected` in the SBOM. No copyleft license is in force.
 | All third-party npm dependencies | Permissive OSI | No copyleft; dual-licensed packages elect MIT |
 
 A human-readable rendering is at `/rest/third-party-licenses` on any running
-n8n instance and as `THIRD_PARTY_LICENSES.md` attached to each GitHub release.
+n8n - Warp instance and as `THIRD_PARTY_LICENSES.md` attached to each GitHub release.
 
 ---
 
@@ -160,7 +160,7 @@ because they belong to a parent npm package, which is in the SBOM and does carry
 a gated license.
 
 They are inert on a Linux image. The authoritative statement is the SPDX gate:
-**every npm component carries a valid SPDX license or an allowed n8n
+**every npm component carries a valid SPDX license or an allowed n8n - Warp
 LicenseRef**, enforced on every release.
 
 ---
@@ -170,8 +170,8 @@ LicenseRef**, enforced on every release.
 The Docker image SBOM will show GPL/LGPL entries in `grant list`. These come
 entirely from Alpine OS system packages (`busybox` GPL-2.0-only, `git`
 GPL-2.0-only, `libgcc` and `libstdc++` GPL-2.0-or-later AND LGPL-2.1-or-later,
-and similar). GPL in an OS binary has no effect on n8n's licensing
-obligations or your use of n8n; they are inventoried in the SBOM for
+and similar). GPL in an OS binary has no effect on n8n - Warp's licensing
+obligations or your use of n8n - Warp; they are inventoried in the SBOM for
 completeness but are not gated by the license pipeline.
 
 The npm layer contains no copyleft in force. The two dual-licensed packages

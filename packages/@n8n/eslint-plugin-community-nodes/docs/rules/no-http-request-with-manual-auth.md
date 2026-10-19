@@ -8,7 +8,7 @@
 
 When a function calls `this.getCredentials()` to retrieve credentials, it should use `this.helpers.httpRequestWithAuthentication()` for HTTP requests instead of `this.helpers.httpRequest()`.
 
-Manually extracting credentials and setting auth headers (e.g. `Authorization`) bypasses n8n's authentication layer, which provides:
+Manually extracting credentials and setting auth headers (e.g. `Authorization`) bypasses n8n - Warp's authentication layer, which provides:
 
 - Consistent credential handling across all nodes
 - Future improvements like token refresh and audit logging

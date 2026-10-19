@@ -67,4 +67,4 @@ returnData.push({ json: aggregatedResult });
 
 ## Further Reading
 
-- [n8n Paired Items Documentation](https://docs.n8n.io/integrations/creating-nodes/build/reference/paired-items/)
+- [n8n - Warp Paired Items Documentation](https://docs.n8n.io/integrations/creating-nodes/build/reference/paired-items/)

@@ -312,7 +312,7 @@ export class CommunityPackagesService {
 		}
 
 		throw new IncompatibleNodesApiVersionError(
-			"This community node isn't compatible with your version of n8n. Update n8n to use it.",
+			"This community node isn't compatible with your version of n8n - Warp. Update n8n - Warp to use it.",
 			{
 				requiredNodesApiVersion: check.required,
 				supportedNodesApiVersion: N8N_NODES_API_VERSION,
@@ -455,7 +455,7 @@ export class CommunityPackagesService {
 			this.loadNodesAndCredentials.releaseTypes();
 		} else {
 			this.logger.warn(
-				'n8n detected that some packages are missing. For more information, visit https://docs.n8n.io/integrations/community-nodes/troubleshooting/',
+				'n8n - Warp detected that some packages are missing. For more information, visit https://docs.n8n.io/integrations/community-nodes/troubleshooting/',
 			);
 		}
 	}

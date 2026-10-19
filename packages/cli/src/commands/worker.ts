@@ -31,7 +31,7 @@ const flagsSchema = z.object({
 
 @Command({
 	name: 'worker',
-	description: 'Starts a n8n worker',
+	description: 'Starts a n8n - Warp worker',
 	examples: ['--concurrency=5'],
 	flagsSchema,
 })
@@ -110,7 +110,7 @@ export class Worker extends BaseCommand<z.infer<typeof flagsSchema>> {
 		}
 		await this.initCrashJournal();
 
-		this.logger.debug('Starting n8n worker...');
+		this.logger.debug('Starting n8n - Warp worker...');
 		this.logger.debug(`Host ID: ${this.instanceSettings.hostId}`);
 
 		await this.setConcurrency();

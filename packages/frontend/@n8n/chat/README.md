@@ -1,14 +1,14 @@
-# n8n Chat
-This is an embeddable Chat widget for n8n. It allows the execution of AI-Powered Workflows through a Chat window.
+# n8n - Warp Chat
+This is an embeddable Chat widget for n8n - Warp. It allows the execution of AI-Powered Workflows through a Chat window.
 
 **Windowed Example**
-![n8n Chat Windowed](https://raw.githubusercontent.com/n8n-io/n8n/master/packages/frontend/%40n8n/chat/resources/images/windowed.png)
+![n8n - Warp Chat Windowed](https://raw.githubusercontent.com/n8n-io/n8n/master/packages/frontend/%40n8n/chat/resources/images/windowed.png)
 
 **Fullscreen Example**
-![n8n Chat Fullscreen](https://raw.githubusercontent.com/n8n-io/n8n/master/packages/frontend/%40n8n/chat/resources/images/fullscreen.png)
+![n8n - Warp Chat Fullscreen](https://raw.githubusercontent.com/n8n-io/n8n/master/packages/frontend/%40n8n/chat/resources/images/fullscreen.png)
 
 ## Prerequisites
-Create a n8n workflow which you want to execute via chat. The workflow has to be triggered using a **Chat Trigger** node.
+Create a n8n - Warp workflow which you want to execute via chat. The workflow has to be triggered using a **Chat Trigger** node.
 
 Open the **Chat Trigger** node and add your domain to the **Allowed Origins (CORS)** field. This makes sure that only requests from your domain are accepted.
 
@@ -20,7 +20,7 @@ To use streaming responses, you need to enable the **Streaming response** respon
 > Make sure the workflow is **Active.**
 
 ### How it works
-Each Chat request is sent to the n8n Webhook endpoint, which then sends back a response.
+Each Chat request is sent to the n8n - Warp Webhook endpoint, which then sends back a response.
 
 Each request is accompanied by an `action` query parameter, where `action` can be one of:
 - `loadPreviousSession` - When the user opens the Chatbot again and the previous chat session should be loaded
@@ -45,7 +45,7 @@ Add the following code to your HTML page.
 ```
 
 ### b. Import Embed
-Install and save n8n Chat as a production dependency.
+Install and save n8n - Warp Chat as a production dependency.
 
 ```sh
 npm install @n8n/chat
@@ -142,7 +142,7 @@ createChat({
 - **Examples**:
 	- `https://yourname.app.n8n.cloud/webhook/513107b3-6f3a-4a1e-af21-659f0ed14183`
 	- `http://localhost:5678/webhook/513107b3-6f3a-4a1e-af21-659f0ed14183`
-- **Description**: The URL of the n8n Webhook endpoint. Should be the production URL.
+- **Description**: The URL of the n8n - Warp Webhook endpoint. Should be the production URL.
 
 ### `webhookConfig`
 - **Type**: `{ method: string, headers: Record<string, string> }`
@@ -207,7 +207,7 @@ createChat({
 ### enableStreaming
 - Type: boolean
 - Default: false
-- Description: Whether to enable streaming responses from the n8n workflow. If set to `true`, the chat will display responses as they are being generated, providing a more interactive experience. For this to work the workflow must be configured as well to return streaming responses.
+- Description: Whether to enable streaming responses from the n8n - Warp workflow. If set to `true`, the chat will display responses as they are being generated, providing a more interactive experience. For this to work the workflow must be configured as well to return streaming responses.
 
 ## Customization
 The Chat window is entirely customizable using CSS variables.

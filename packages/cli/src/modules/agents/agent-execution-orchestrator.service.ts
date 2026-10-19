@@ -993,7 +993,7 @@ export class AgentExecutionOrchestratorService {
 				identity.principalHash !==
 					hashAgentSandboxPrincipal({ type: 'n8n-user', userId: productionUserId })
 			) {
-				throw new OperationalError('Production n8n Chat wake identity is no longer valid');
+				throw new OperationalError('Production n8n - Warp Chat wake identity is no longer valid');
 			}
 			try {
 				setup = await this.prepareN8nChat({
@@ -1006,7 +1006,7 @@ export class AgentExecutionOrchestratorService {
 				});
 			} catch {
 				// A silent return would mark these job results consumed and lose them.
-				throw new OperationalError('Production n8n Chat wake identity is no longer valid');
+				throw new OperationalError('Production n8n - Warp Chat wake identity is no longer valid');
 			}
 		}
 		if (isDraft) {

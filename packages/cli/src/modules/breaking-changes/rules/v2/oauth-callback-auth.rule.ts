@@ -17,7 +17,7 @@ export class OAuthCallbackAuthRule implements IBreakingChangeInstanceRule {
 			version: 'v2',
 			title: 'Require auth on OAuth callback URLs by default',
 			description:
-				'OAuth callbacks now enforce n8n user authentication by default for improved security',
+				'OAuth callbacks now enforce n8n - Warp user authentication by default for improved security',
 			category: BreakingChangeCategory.instance,
 			impact: 'behaviorChanges',
 			documentationUrl:
@@ -38,7 +38,7 @@ export class OAuthCallbackAuthRule implements IBreakingChangeInstanceRule {
 				{
 					title: 'OAuth callback authentication now required',
 					description:
-						'OAuth callbacks will now enforce n8n user authentication by default unless N8N_SKIP_AUTH_ON_OAUTH_CALLBACK is explicitly set to true.',
+						'OAuth callbacks will now enforce n8n - Warp user authentication by default unless N8N_SKIP_AUTH_ON_OAUTH_CALLBACK is explicitly set to true.',
 					level: 'warning',
 				},
 			],

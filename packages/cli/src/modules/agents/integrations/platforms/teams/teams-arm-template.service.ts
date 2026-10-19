@@ -22,7 +22,7 @@ const BOT_API_VERSION = '2022-09-15';
 
 /** Azure caps the bot's display name; the fallback matches the manifest's. */
 const BOT_DISPLAY_NAME_MAX = 42;
-const DEFAULT_BOT_DISPLAY_NAME = 'n8n Agent';
+const DEFAULT_BOT_DISPLAY_NAME = 'n8n - Warp Agent';
 
 export interface TeamsArmTemplateOptions {
 	/**
@@ -95,7 +95,7 @@ export class TeamsArmTemplateService {
 				messagingEndpoint: {
 					type: 'string',
 					defaultValue: options.messagingEndpoint,
-					metadata: { description: 'Where Teams delivers messages. Filled in by n8n.' },
+					metadata: { description: 'Where Teams delivers messages. Filled in by n8n - Warp.' },
 				},
 				// Bot registrations are not regional.
 				location: { type: 'string', defaultValue: 'global' },

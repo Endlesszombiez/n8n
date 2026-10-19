@@ -2,7 +2,7 @@
 
 # n8n-nodes-langchain
 
-This repo contains nodes to use n8n in combination with [LangChain](https://langchain.com/).
+This repo contains nodes to use n8n - Warp in combination with [LangChain](https://langchain.com/).
 
 ## License
 

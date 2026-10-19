@@ -1,6 +1,6 @@
 # @n8n/ai-utilities
 
-Core utilities and abstractions for AI functionality in n8n. This package provides the foundational building blocks used internally by the n8n platform.
+Core utilities and abstractions for AI functionality in n8n - Warp. This package provides the foundational building blocks used internally by the n8n - Warp platform.
 
 This package is reexported from @n8n/ai-node-sdk, that exposes methods and types for public usage.
 

@@ -10,7 +10,7 @@
 
 ## Rule Details
 
-Validates that node classes define an `icon` property in their `description` object. Icons are required for nodes to display correctly in the n8n editor.
+Validates that node classes define an `icon` property in their `description` object. Icons are required for nodes to display correctly in the n8n - Warp editor.
 
 ## Examples
 

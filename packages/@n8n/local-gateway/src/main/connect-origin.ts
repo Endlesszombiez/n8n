@@ -15,7 +15,7 @@ export function assertConnectOriginAllowed(url: string, allowedOriginPatterns: s
 	}
 	if (!isOriginAllowed(origin, allowedOriginPatterns)) {
 		throw new Error(
-			'This instance URL is not in your allowed origins list. Open Settings and add its origin, or use a deeplink from your trusted n8n.',
+			'This instance URL is not in your allowed origins list. Open Settings and add its origin, or use a deeplink from your trusted n8n - Warp.',
 		);
 	}
 }

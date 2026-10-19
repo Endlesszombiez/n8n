@@ -14,7 +14,7 @@ export class ManualTrigger implements INodeType {
 		iconColor: 'black',
 		group: ['trigger'],
 		version: 1,
-		description: 'Runs the flow on clicking a button in n8n',
+		description: 'Runs the flow on clicking a button in n8n - Warp',
 		eventTriggerDescription: '',
 		maxNodes: 1,
 		defaults: {

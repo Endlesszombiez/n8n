@@ -19,8 +19,8 @@ Embedded specialist agents do not share the orchestrator's observational memory.
 The persistence layer. Stores all messages, observational memory, plan state,
 and event history.
 
-Memory persists in the main n8n database via TypeORM — the same PostgreSQL or
-SQLite instance n8n already uses, selected automatically from n8n's own database
+Memory persists in the main n8n - Warp database via TypeORM — the same PostgreSQL or
+SQLite instance n8n - Warp already uses, selected automatically from n8n - Warp's own database
 configuration.
 
 That backend holds message history, observational memory (observation log,

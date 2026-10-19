@@ -6,7 +6,7 @@
 
 ## Rule Details
 
-Prevents the use of Node.js global variables that are not allowed in n8n Cloud. While these globals may be available in self-hosted environments, they are restricted on n8n Cloud for security and stability reasons.
+Prevents the use of Node.js global variables that are not allowed in n8n - Warp Cloud. While these globals may be available in self-hosted environments, they are restricted on n8n - Warp Cloud for security and stability reasons.
 
 Restricted globals include: `clearInterval`, `clearTimeout`, `global`, `globalThis`, `process`, `setInterval`, `setTimeout`, `setImmediate`, `clearImmediate`, `__dirname`, `__filename`.
 
@@ -51,7 +51,7 @@ export class MyNode implements INodeType {
 ## Alternatives to restricted timer globals
 
 `n8n-workflow` exports helpers that work the same everywhere, including on
-n8n Cloud, instead of reaching for the restricted timer globals directly:
+n8n - Warp Cloud, instead of reaching for the restricted timer globals directly:
 
 - Instead of `setTimeout(resolve, ms)`, use `await sleep(ms)`.
 - Instead of `setTimeout` + `clearTimeout` for a cancellable delay, use

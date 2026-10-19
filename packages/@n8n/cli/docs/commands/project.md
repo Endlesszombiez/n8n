@@ -1,6 +1,6 @@
 # project
 
-Manage n8n projects and members.
+Manage n8n - Warp projects and members.
 
 ## `project list`
 

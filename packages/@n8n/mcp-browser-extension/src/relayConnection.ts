@@ -527,7 +527,7 @@ export class RelayConnection {
 			case 'createTab':
 				return await this.handleCreateTab(message.params ?? {});
 			case 'closeTab':
-				throw new Error('The n8n browser extension does not allow closing tabs.');
+				throw new Error('The n8n - Warp browser extension does not allow closing tabs.');
 			case 'attachTab':
 				return await this.handleAttachTab(message.params ?? {});
 			case 'listTabs':

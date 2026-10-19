@@ -693,7 +693,7 @@ export function createNodesTool(
 
 	return new Tool('nodes')
 		.description(
-			'Work with n8n node types. Use `suggested` for known workflow categories, `search` for service-specific discovery, `type-definition` before configuring nodes, `explore-resources` for live credential-backed lists, and `execute` to run one node standalone (requires user approval, real side effects).',
+			'Work with n8n - Warp node types. Use `suggested` for known workflow categories, `search` for service-specific discovery, `type-definition` before configuring nodes, `explore-resources` for live credential-backed lists, and `execute` to run one node standalone (requires user approval, real side effects).',
 		)
 		.input(fullInputSchema)
 		.suspend(suspendSchema)

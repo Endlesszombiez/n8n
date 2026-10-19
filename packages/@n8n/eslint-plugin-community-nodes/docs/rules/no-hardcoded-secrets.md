@@ -15,7 +15,7 @@ than 16 characters, with the shape of a hex digest or a base64/token string,
 assigned to a variable, property, or field whose name contains `key`, `secret`,
 `token`, `password`, `passwd`, or `auth`.
 
-Secrets belong in n8n credentials or environment variables, never in code:
+Secrets belong in n8n - Warp credentials or environment variables, never in code:
 
 ```typescript
 // Read from the node's configured credential instead.

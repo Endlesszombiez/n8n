@@ -360,7 +360,7 @@ export class AiController {
 		}
 		if (!this.globalConfig.ai.allowSendingParameterValues) {
 			throw new BadRequestError(
-				'Sending parameter values is turned off by the N8N_AI_ALLOW_SENDING_PARAMETER_VALUES environment variable. Remove it and restart n8n to turn this on.',
+				'Sending parameter values is turned off by the N8N_AI_ALLOW_SENDING_PARAMETER_VALUES environment variable. Remove it and restart n8n - Warp to turn this on.',
 			);
 		}
 		try {

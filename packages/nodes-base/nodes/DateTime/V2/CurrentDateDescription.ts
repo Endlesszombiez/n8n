@@ -5,7 +5,7 @@ import { includeInputFields } from './common.descriptions';
 export const CurrentDateDescription: INodeProperties[] = [
 	{
 		displayName:
-			'You can also refer to the current date in n8n expressions by using <code>{{$now}}</code> or <code>{{$today}}</code>. <a target="_blank" href="https://docs.n8n.io/code/cookbook/luxon/">More info</a>',
+			'You can also refer to the current date in n8n - Warp expressions by using <code>{{$now}}</code> or <code>{{$today}}</code>. <a target="_blank" href="https://docs.n8n.io/code/cookbook/luxon/">More info</a>',
 		name: 'notice',
 		type: 'notice',
 		default: '',
@@ -60,7 +60,7 @@ export const CurrentDateDescription: INodeProperties[] = [
 				placeholder: 'America/New_York',
 				default: '',
 				description:
-					'The timezone to use. If not set, the timezone of the n8n instance will be used. Use ‘GMT’ for +00:00 timezone.',
+					'The timezone to use. If not set, the timezone of the n8n - Warp instance will be used. Use ‘GMT’ for +00:00 timezone.',
 			},
 		],
 	},

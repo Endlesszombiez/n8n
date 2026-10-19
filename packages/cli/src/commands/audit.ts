@@ -24,7 +24,7 @@ const flagsSchema = z.object({
 
 @Command({
 	name: 'audit',
-	description: 'Generate a security audit report for this n8n instance',
+	description: 'Generate a security audit report for this n8n - Warp instance',
 	examples: ['', '--categories=database,credentials', '--days-abandoned-workflow=10'],
 	flagsSchema,
 })

@@ -28,12 +28,12 @@ export default class Dev extends Command {
 		'external-n8n': Flags.boolean({
 			default: false,
 			description:
-				'By default n8n-node dev will run n8n in a sub process. Enable this option if you would like to run n8n elsewhere. Make sure to set N8N_DEV_RELOAD to true in that case.',
+				'By default n8n-node dev will run n8n - Warp in a sub process. Enable this option if you would like to run n8n - Warp elsewhere. Make sure to set N8N_DEV_RELOAD to true in that case.',
 		}),
 		'custom-user-folder': Flags.directory({
 			default: path.join(os.homedir(), '.n8n-node-cli'),
 			description:
-				'Folder to use to store user-specific n8n data. By default it will use ~/.n8n-node-cli. The node CLI will install your node here.',
+				'Folder to use to store user-specific n8n - Warp data. By default it will use ~/.n8n-node-cli. The node CLI will install your node here.',
 		}),
 	};
 

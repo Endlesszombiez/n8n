@@ -1,8 +1,8 @@
 # Build and run this fork with Docker Compose
 
 This repository already has Dockerfiles and application build scripts.
-The upstream build workflow uses n8n infrastructure and registry settings.
-The upstream Compose examples pull official n8n images.
+The upstream build workflow uses n8n - Warp infrastructure and registry settings.
+The upstream Compose examples pull official n8n - Warp images.
 Those images do not include changes in this fork.
 
 Use the fork workflow to build this source and publish two images to GitHub
@@ -19,7 +19,7 @@ It does not publish ARM64 images for Raspberry Pi or ARM servers.
 5. Wait for the workflow to finish. Read the image names in its summary.
 
 The workflow uses GitHub-hosted runners and the automatic `GITHUB_TOKEN`.
-It needs permission to write packages. It does not need n8n registry secrets
+It needs permission to write packages. It does not need n8n - Warp registry secrets
 or a Blacksmith account. GitHub Actions usage limits still apply.
 The build can take a long time because it compiles the full application.
 
@@ -70,14 +70,14 @@ Open <http://localhost:5678>. Create the owner account on the first start.
 The port binds to the deployment host's loopback interface.
 For a remote host, use an SSH tunnel, such as
 `ssh -L 5678:localhost:5678 user@server`, then open the same local URL.
-For public access, configure an HTTPS reverse proxy and the n8n public URL
+For public access, configure an HTTPS reverse proxy and the n8n - Warp public URL
 settings. See the [hosting guide](https://docs.n8n.io/hosting/).
 
-The named volume stores the SQLite database and n8n settings, including the
+The named volume stores the SQLite database and n8n - Warp settings, including the
 credential encryption key. Keep the volume when you replace the containers.
 The runner connects through the Compose network. Its broker port is not
 published on the host.
-This setup provides n8n and its Code node runners. The optional sandbox
+This setup provides n8n - Warp and its Code node runners. The optional sandbox
 services from `get-n8n-compose.yml` are not included.
 
 ## Update or select a fixed build

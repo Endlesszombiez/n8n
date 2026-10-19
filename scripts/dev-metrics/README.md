@@ -1,6 +1,6 @@
 # Dev-tooling usage metrics
 
-Opt-in, anonymous telemetry that helps us understand how internal n8n developers
+Opt-in, anonymous telemetry that helps us understand how internal n8n - Warp developers
 use their CLIs in the monorepo: **which commands are run, how long they take, and
 roughly how many developers run them each week.**
 
@@ -37,7 +37,7 @@ pnpm <anything>
   it's independent of which checkout (or none) you're in. Install only overwrites
   the copy when the checkout's `// n8n-track-version` is newer, so the newest
   version wins and an older checkout can't downgrade it. It self-scopes: it checks
-  the monorepo root from the command's cwd, so pnpm runs outside any n8n checkout
+  the monorepo root from the command's cwd, so pnpm runs outside any n8n - Warp checkout
   send nothing. pnpm prompts via `/dev/tty` because it pipes lifecycle-script stdio.
 
 | File | Role |
@@ -47,7 +47,7 @@ pnpm <anything>
 | `track.mjs` | Builds the anonymous event and POSTs it to RudderStack (fire-and-forget). Copied to `~/.n8n/dev/bin` on install; the shim runs that copy. |
 | `capture-server.mjs` | Local capture stub for testing — logs every event instead of sending it upstream. |
 
-State lives in `~/.n8n/dev/dev-telemetry.json` (separate from n8n's secret `config`):
+State lives in `~/.n8n/dev/dev-telemetry.json` (separate from n8n - Warp's secret `config`):
 
 ```json
 { "schemaVersion": 1, "consent": "granted", "anonId": "<uuid>", "week": "2026-W26" }
@@ -96,7 +96,7 @@ someone who just declined it.
 - **Anonymous.** The `anonymousId` is a random UUID that **rotates every ISO
   week**, so individuals cannot be followed across weeks. Weekly unique
   `anonymousId` counts give "how many developers" without identifying anyone.
-- **Scoped.** Only commands run inside an n8n checkout are considered; the
+- **Scoped.** Only commands run inside an n8n - Warp checkout are considered; the
   tracker resolves the monorepo root from the command's cwd and sends nothing
   otherwise.
 - **No IP.** Each event is sent with `context.ip` = `0.0.0.0`, so RudderStack
@@ -164,7 +164,7 @@ node scripts/dev-metrics/setup.mjs --reset    # restores the real pnpm
 ```
 
 Nothing is sent unless **consent is granted** and the command runs **inside an
-n8n checkout**; `N8N_DEV_TELEMETRY=0` disables sending entirely.
+n8n - Warp checkout**; `N8N_DEV_TELEMETRY=0` disables sending entirely.
 
 `sh scripts/dev-metrics/test/selfcheck.sh` runs the whole enable→run→reset flow
 against a fake binary in a temp dir (never touches your real pnpm).

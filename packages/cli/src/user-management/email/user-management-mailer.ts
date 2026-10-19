@@ -92,7 +92,7 @@ export class UserManagementMailer {
 		const template = await this.getTemplate('user-invited');
 		return await this.mailer.sendMail({
 			emailRecipients: inviteEmailData.email,
-			subject: 'You have been invited to n8n',
+			subject: 'You have been invited to n8n - Warp',
 			body: template({ ...this.basePayload, ...inviteEmailData }),
 		});
 	}
@@ -103,7 +103,7 @@ export class UserManagementMailer {
 		const template = await this.getTemplate('password-reset-requested');
 		return await this.mailer.sendMail({
 			emailRecipients: passwordResetData.email,
-			subject: 'n8n password reset',
+			subject: 'n8n - Warp password reset',
 			body: template({ ...this.basePayload, ...passwordResetData }),
 		});
 	}
@@ -113,7 +113,7 @@ export class UserManagementMailer {
 		const template = await this.getTemplate('email-change-requested');
 		return await this.mailer.sendMail({
 			emailRecipients: data.email,
-			subject: 'Confirm your n8n email change',
+			subject: 'Confirm your n8n - Warp email change',
 			body: template({ ...this.basePayload, ...data }),
 		});
 	}
@@ -123,7 +123,7 @@ export class UserManagementMailer {
 		const template = await this.getTemplate('email-change-completed');
 		return await this.mailer.sendMail({
 			emailRecipients: data.email,
-			subject: 'Your n8n email was changed',
+			subject: 'Your n8n - Warp email was changed',
 			body: template({ ...this.basePayload, ...data }),
 		});
 	}
@@ -142,7 +142,7 @@ export class UserManagementMailer {
 
 		return await this.mailer.sendMail({
 			emailRecipients: apiKey.user.email,
-			subject: 'Your n8n API key was revoked',
+			subject: 'Your n8n - Warp API key was revoked',
 			body: template({
 				...this.basePayload,
 				email: apiKey.user.email,
@@ -172,7 +172,7 @@ export class UserManagementMailer {
 
 		return await this.mailer.sendMail({
 			emailRecipients: owner.email,
-			subject: 'Your n8n MCP client access was revoked',
+			subject: 'Your n8n - Warp MCP client access was revoked',
 			body: template({
 				...this.basePayload,
 				email: owner.email,
@@ -346,7 +346,7 @@ export class UserManagementMailer {
 				workflowName: workflow.name,
 				workflowUrl: `${baseUrl}/workflow/${workflow.id}`,
 			}),
-			subjectBuilder: () => 'n8n has automatically autodeactivated a workflow',
+			subjectBuilder: () => 'n8n - Warp has automatically autodeactivated a workflow',
 			messageType: 'Workflow auto-deactivated',
 		});
 	}

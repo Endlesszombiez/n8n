@@ -505,7 +505,7 @@ export class LoadNodesAndCredentials {
 				// This ensures hookName is always serialized in the workflow JSON
 				default: '',
 				description:
-					'Configure how n8n extracts the identity token of the user triggering a webhook. It is used to run each execution with the correct user.',
+					'Configure how n8n - Warp extracts the identity token of the user triggering a webhook. It is used to run each execution with the correct user.',
 				required: true,
 			},
 		];
@@ -558,13 +558,13 @@ export class LoadNodesAndCredentials {
 				},
 			],
 			description:
-				'Configure how n8n extracts the identity token of the user triggering a webhook. It is used to run each execution with the correct user.',
+				'Configure how n8n - Warp extracts the identity token of the user triggering a webhook. It is used to run each execution with the correct user.',
 		};
 
 		// Create a notice that always appears after the hooks collection
 		const contextHooksNotice: INodeProperties = {
 			displayName:
-				'Configure how n8n extracts the identity token of the user triggering a webhook. It is used to run each execution with the correct user.',
+				'Configure how n8n - Warp extracts the identity token of the user triggering a webhook. It is used to run each execution with the correct user.',
 			name: 'contextHooksNotice',
 			type: 'notice',
 			default: '',

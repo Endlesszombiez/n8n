@@ -24,10 +24,10 @@ new Agent('assistant')
   .instructions(LONG_SYSTEM_PROMPT);
 ```
 
-## The n8n Agent JSON config is a mandatory, simplified surface
+## The n8n - Warp Agent JSON config is a mandatory, simplified surface
 
 The richer SDK shape above (OpenAI key/retention overrides) is for direct SDK
-callers. The n8n Agent product (JSON config / builder UI) exposes
+callers. The n8n - Warp Agent product (JSON config / builder UI) exposes
 `config.promptCaching: { enabled: boolean; anthropic?: { ttl?: '5m' | '1h' } }`
 and maps it straight to `agent.promptCaching(config.promptCaching)`. Two
 differences from the general SDK usage worth knowing:

@@ -28,7 +28,7 @@ export function createCodeBuilderSearchTool(
 		{
 			name: 'search_nodes',
 			description:
-				'Search for n8n nodes by name or service. Accepts multiple search queries and returns separate result lists for each. Use this when you need to find nodes for specific integrations or services (e.g., ["salesforce", "http", "gmail"]).',
+				'Search for n8n - Warp nodes by name or service. Accepts multiple search queries and returns separate result lists for each. Use this when you need to find nodes for specific integrations or services (e.g., ["salesforce", "http", "gmail"]).',
 			schema: z.object({
 				queries: z
 					.array(z.string())

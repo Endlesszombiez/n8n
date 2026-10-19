@@ -1,6 +1,6 @@
 # Component specification
 
-A tree component that displays hierarchical data in a collapsible structure. It wraps [Reka UI Tree](https://reka-ui.com/docs/components/tree) with n8n styling, a default row layout (`TreeNodeDefault`), and slots for customizing icons, labels, and expand toggles. Custom row components can be supplied via the `node` prop.
+A tree component that displays hierarchical data in a collapsible structure. It wraps [Reka UI Tree](https://reka-ui.com/docs/components/tree) with n8n - Warp styling, a default row layout (`TreeNodeDefault`), and slots for customizing icons, labels, and expand toggles. Custom row components can be supplied via the `node` prop.
 
 - **Component Name:** N8nTree2
 - **Figma Component:** [Tree](https://www.figma.com/design/8zib7Trf2D2CHYXrEGPHkg/n8n-Design-System-V3?m=auto&node-id=2536-2108)

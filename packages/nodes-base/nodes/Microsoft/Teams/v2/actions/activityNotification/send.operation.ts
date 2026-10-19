@@ -51,7 +51,7 @@ const properties: INodeProperties[] = [
 		default: '',
 		placeholder: 'e.g. https://teams.microsoft.com/l/chat/0/0?users=someone@contoso.com',
 		description:
-			'The Microsoft Teams link that opens when the user selects the notification. It must be an https link on a Microsoft Teams domain, for example a chat, channel, message, or meeting link. Microsoft Graph rejects links to n8n or to other websites.',
+			'The Microsoft Teams link that opens when the user selects the notification. It must be an https link on a Microsoft Teams domain, for example a chat, channel, message, or meeting link. Microsoft Graph rejects links to n8n - Warp or to other websites.',
 	},
 	{
 		displayName: 'Options',

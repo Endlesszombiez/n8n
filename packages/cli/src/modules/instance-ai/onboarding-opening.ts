@@ -29,10 +29,10 @@ interface OnboardingOpening {
 
 // biome-ignore format: one app list per line reads as the table it is
 export const ONBOARDING_OPENING: OnboardingOpening = {
-	title: 'Welcome to n8n',
+	title: 'Welcome to n8n - Warp',
 	greeting: [
 		"Hi {{firstName}}, I'm your Assistant.",
-		'Think of me as your n8n expert.',
+		'Think of me as your n8n - Warp expert.',
 		'Two final questions, so I can suggest automations for you.',
 	].join('\n\n'),
 	followUp: 'Last one: what do you usually do in {{apps}}?',

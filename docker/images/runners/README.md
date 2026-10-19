@@ -1,13 +1,13 @@
-# n8n - Task runners (`n8nio/runners`) - (PREVIEW)
+# n8n - Warp - Task runners (`n8nio/runners`) - (PREVIEW)
 
 `n8nio/runners` image includes [JavaScript runner](https://github.com/n8n-io/n8n/tree/master/packages/%40n8n/task-runner),
 [Python runner](https://github.com/n8n-io/n8n/tree/master/packages/%40n8n/task-runner-python) and
 [Task runner launcher](https://github.com/n8n-io/task-runner-launcher) that connects to a Task Broker
-running on the main n8n instance when running in `external` mode.  This image is to be launched as a sidecar
-container to the main n8n container.
+running on the main n8n - Warp instance when running in `external` mode.  This image is to be launched as a sidecar
+container to the main n8n - Warp container.
 
 [Task runners](https://docs.n8n.io/hosting/configuration/task-runners/) are used to execute user-provided code
-in the [Code Node](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.code/), isolated from the n8n instance.
+in the [Code Node](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.code/), isolated from the n8n - Warp instance.
 
 For official documentation, please see [here](https://docs.n8n.io/hosting/configuration/task-runners/).
 
@@ -17,7 +17,7 @@ For development purposes only, see below.
 
 ## Testing locally
 
-### 1) Make a production build of n8n
+### 1) Make a production build of n8n - Warp
 
 ```
 pnpm run build:n8n
@@ -32,7 +32,7 @@ docker buildx build \
   .
 ```
 
-### 3) Start n8n on your host machine with Task Broker enabled
+### 3) Start n8n - Warp on your host machine with Task Broker enabled
 
 ```
 N8N_RUNNERS_MODE=external \

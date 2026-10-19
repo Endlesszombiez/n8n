@@ -28,10 +28,10 @@ describe('FormTrigger', () => {
 
 	it('should tell builders to keep inbound authentication disabled unless requested', () => {
 		const formTriggerV2 = new FormTriggerV2({
-			displayName: 'n8n Form Trigger',
+			displayName: 'n8n - Warp Form Trigger',
 			name: 'formTrigger',
 			group: ['trigger'],
-			description: 'Generate webforms in n8n and pass their responses to the workflow',
+			description: 'Generate webforms in n8n - Warp and pass their responses to the workflow',
 			defaultVersion: 2.5,
 		});
 
@@ -52,10 +52,10 @@ describe('FormTrigger', () => {
 
 	it('should expose n8nUserAuth option only on typeVersion >= 2.6', () => {
 		const formTriggerV2 = new FormTriggerV2({
-			displayName: 'n8n Form Trigger',
+			displayName: 'n8n - Warp Form Trigger',
 			name: 'formTrigger',
 			group: ['trigger'],
-			description: 'Generate webforms in n8n and pass their responses to the workflow',
+			description: 'Generate webforms in n8n - Warp and pass their responses to the workflow',
 			defaultVersion: 2.6,
 		});
 
@@ -79,10 +79,10 @@ describe('FormTrigger', () => {
 
 	describe('requireExecuteAccess', () => {
 		const formTriggerV2 = new FormTriggerV2({
-			displayName: 'n8n Form Trigger',
+			displayName: 'n8n - Warp Form Trigger',
 			name: 'formTrigger',
 			group: ['trigger'],
-			description: 'Generate webforms in n8n and pass their responses to the workflow',
+			description: 'Generate webforms in n8n - Warp and pass their responses to the workflow',
 			defaultVersion: 2.6,
 		});
 
@@ -608,10 +608,10 @@ describe('FormTrigger', () => {
 	describe('sensitiveOutputFields', () => {
 		it('declares authorization and cookie headers as sensitive', () => {
 			const formTriggerV2 = new FormTriggerV2({
-				displayName: 'n8n Form Trigger',
+				displayName: 'n8n - Warp Form Trigger',
 				name: 'formTrigger',
 				group: ['trigger'],
-				description: 'Generate webforms in n8n and pass their responses to the workflow',
+				description: 'Generate webforms in n8n - Warp and pass their responses to the workflow',
 				defaultVersion: 2.5,
 			});
 			expect(formTriggerV2.description.sensitiveOutputFields).toContain('headers.authorization');
@@ -621,10 +621,10 @@ describe('FormTrigger', () => {
 
 		it('does not mark other headers as sensitive', () => {
 			const formTriggerV2 = new FormTriggerV2({
-				displayName: 'n8n Form Trigger',
+				displayName: 'n8n - Warp Form Trigger',
 				name: 'formTrigger',
 				group: ['trigger'],
-				description: 'Generate webforms in n8n and pass their responses to the workflow',
+				description: 'Generate webforms in n8n - Warp and pass their responses to the workflow',
 				defaultVersion: 2.5,
 			});
 			expect(formTriggerV2.description.sensitiveOutputFields).not.toContain('headers.content-type');

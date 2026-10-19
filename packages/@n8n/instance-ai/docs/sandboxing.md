@@ -2,7 +2,7 @@
 
 Instance AI uses a remote sandbox workspace to build workflows from
 `@n8n/workflow-sdk` source. The sandbox keeps file writes and command execution
-off the n8n host. Workflow building is unavailable when sandboxing is disabled.
+off the n8n - Warp host. Workflow building is unavailable when sandboxing is disabled.
 
 Agent building is separate. `build-agent` delegates to
 `AgentsBuilderService` in the agents module and does not use the Instance AI
@@ -43,7 +43,7 @@ runtime filters the model-facing set to `CORE_WORKSPACE_TOOL_NAMES`.
 
 ## Providers
 
-### n8n sandbox service
+### n8n - Warp sandbox service
 
 `n8n-sandbox` is the default provider. The service manages remote sandbox
 containers through its HTTP API. Instance AI assigns each thread a stable
@@ -93,7 +93,7 @@ background tasks keep the entry alive. A TTL of `0` disables this cache
 eviction.
 
 Cache eviction does not destroy the remote sandbox. Daytona reclaims remote
-state through its configured lifecycle. Remote reclamation for the n8n sandbox
+state through its configured lifecycle. Remote reclamation for the n8n - Warp sandbox
 service is governed by that service's deployment policy, outside Instance AI.
 
 Explicit thread cleanup destroys a cached workspace. If no cache entry exists,
@@ -138,7 +138,7 @@ manifest again.
 The runtime skills bundle contains every bundled skill, whatever the prompt
 profile, skill flags or enabled modules. The image, the snapshot and the
 setup write the same set, so a sandbox from an image or snapshot of the same
-n8n version reuses it. A bundle from an older image or snapshot has a
+n8n - Warp version reuses it. A bundle from an older image or snapshot has a
 different hash, so setup writes it again one time. `load_skill` serves only
 the skills that the profile, the flags and the enabled modules allow.
 
@@ -202,7 +202,7 @@ the provider does not respond. Compiler failures and timeouts preserve the
 original build errors. User cancellation still stops the build.
 
 The async API collects the native process exit status after normal completion.
-In n8n sandbox image 1.3.0, forced termination can leave exited native processes
+In n8n - Warp sandbox image 1.3.0, forced termination can leave exited native processes
 unreaped under PID 1. The provider stops execution, but its init process must
 also collect these exit records.
 
@@ -274,8 +274,8 @@ provider notifications or polling.
 | ----------------------------------------------- | ------------------------- | ----------------------------------------------------------------------------- |
 | `N8N_INSTANCE_AI_SANDBOX_ENABLED`               | `false`                   | Enable the sandbox-backed workspace                                           |
 | `N8N_INSTANCE_AI_SANDBOX_PROVIDER`              | `n8n-sandbox`             | Select `n8n-sandbox` or `daytona`                                             |
-| `N8N_SANDBOX_SERVICE_URL`                       | empty                     | n8n sandbox service URL                                                       |
-| `N8N_SANDBOX_SERVICE_API_KEY`                   | empty                     | n8n sandbox service API key                                                   |
+| `N8N_SANDBOX_SERVICE_URL`                       | empty                     | n8n - Warp sandbox service URL                                                       |
+| `N8N_SANDBOX_SERVICE_API_KEY`                   | empty                     | n8n - Warp sandbox service API key                                                   |
 | `DAYTONA_API_URL`                               | empty                     | Daytona API URL                                                               |
 | `DAYTONA_API_KEY`                               | empty                     | Daytona API key for direct mode                                               |
 | `N8N_INSTANCE_AI_SANDBOX_IMAGE`                 | `daytonaio/sandbox:0.5.0` | Daytona base image                                                            |

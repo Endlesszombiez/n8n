@@ -2,7 +2,7 @@
 
 `@n8n/di` is a dependency injection (DI) container library, based on [`typedi`](https://github.com/typestack/typedi).
 
-n8n no longer uses `typedi` because:
+n8n - Warp no longer uses `typedi` because:
 
 - `typedi` is no longer officially maintained
 - Need for future-proofing, e.g. stage-3 decorators

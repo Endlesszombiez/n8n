@@ -872,7 +872,7 @@ export const itemFields: INodeProperties[] = [
 		placeholder: 'Add Filter',
 		default: {},
 		description:
-			'Server-side column-value filters (items_page query params) — far cheaper than fetching everything and filtering in n8n',
+			'Server-side column-value filters (items_page query params) — far cheaper than fetching everything and filtering in n8n - Warp',
 		displayOptions: { show: { operation: ['getItems'] } },
 		options: [
 			{

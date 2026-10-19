@@ -1,10 +1,10 @@
 # @n8n/expression-runtime
 
-Secure, isolated expression evaluation runtime for n8n workflows.
+Secure, isolated expression evaluation runtime for n8n - Warp workflows.
 
 ## Status
 
-**Shipped — the `vm` engine is n8n's default expression engine.**
+**Shipped — the `vm` engine is n8n - Warp's default expression engine.**
 
 - ✅ TypeScript interfaces and architecture design
 - ✅ Runtime bundle: extension functions, deep lazy proxy system
@@ -189,7 +189,7 @@ interface EvaluatorConfig {
 
 ## Environment Variables
 
-In n8n, the evaluator is configured via `ExpressionEngineConfig` (`@n8n/config`):
+In n8n - Warp, the evaluator is configured via `ExpressionEngineConfig` (`@n8n/config`):
 
 ```bash
 # Engine selection ('vm' is the default; 'legacy' opts out of isolation)
@@ -306,14 +306,14 @@ Future security features (Phase 2+):
 
 ## Contributing
 
-See the main n8n repository for contribution guidelines.
+See the main n8n - Warp repository for contribution guidelines.
 
 ## License
 
-See [LICENSE.md](../../LICENSE.md) in the n8n repository root.
+See [LICENSE.md](../../LICENSE.md) in the n8n - Warp repository root.
 
 ## Related
 
-- [n8n workflow package](../workflow/)
+- [n8n - Warp workflow package](../workflow/)
 - [isolated-vm](https://github.com/laverdet/isolated-vm)
 - [@n8n/tournament](https://github.com/n8n-io/tournament)

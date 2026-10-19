@@ -1,4 +1,4 @@
-# Validate the structure of the "n8n" object in community node package.json (required keys, types, and dist/ paths) (`@n8n/community-nodes/n8n-object-validation`)
+# Validate the structure of the "n8n - Warp" object in community node package.json (required keys, types, and dist/ paths) (`@n8n/community-nodes/n8n-object-validation`)
 
 💼 This rule is enabled in the following configs: ✅ `recommended`, ☑️ `recommendedWithoutN8nCloudSupport`.
 
@@ -7,7 +7,7 @@
 ## Rule Details
 
 Every community node package declares its nodes and credentials inside the
-top-level `n8n` object in `package.json`. n8n loads packages by reading this
+top-level `n8n` object in `package.json`. n8n - Warp loads packages by reading this
 object: it looks up `n8n.n8nNodesApiVersion` to pick the correct loader, and it
 loads each path in `n8n.nodes` and `n8n.credentials` as compiled JavaScript
 relative to the package root. If any of those fields are missing, mistyped, or
@@ -25,7 +25,7 @@ This rule enforces the structural contract:
   with `dist/`.
 
 The `dist/` prefix is required because community nodes ship compiled
-JavaScript; n8n cannot load TypeScript sources at runtime. Variants such as
+JavaScript; n8n - Warp cannot load TypeScript sources at runtime. Variants such as
 `./dist/...` or `DIST/...` are rejected to keep the convention consistent with
 the templates published by `@n8n/node-cli` and `@n8n/create-node`.
 

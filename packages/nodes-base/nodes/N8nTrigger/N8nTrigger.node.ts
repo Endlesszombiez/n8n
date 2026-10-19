@@ -10,13 +10,13 @@ type eventType = 'Instance started' | 'Workflow published' | 'Workflow updated' 
 
 export class N8nTrigger implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'n8n Trigger',
+		displayName: 'n8n - Warp Trigger',
 		name: 'n8nTrigger',
 		icon: 'node:n8n-trigger',
 		iconColor: 'pink-red',
 		group: ['trigger'],
 		version: 1,
-		description: 'Handle events and perform actions on your n8n instance',
+		description: 'Handle events and perform actions on your n8n - Warp instance',
 		eventTriggerDescription: '',
 		mockManualExecution: true,
 		defaults: {
@@ -34,7 +34,7 @@ export class N8nTrigger implements INodeType {
 				description: `Specifies under which conditions an execution should happen:
 				<ul>
 					<li><b>Published Workflow Updated</b>: Triggers when workflow version is published from a published state (workflow was already published)</li>
-					<li><b>Instance Started</b>:  Triggers when this n8n instance is started or re-started</li>
+					<li><b>Instance Started</b>:  Triggers when this n8n - Warp instance is started or re-started</li>
 					<li><b>Workflow Published</b>: Triggers when workflow version is published from an unpublished state (workflow was unpublished)</li>
 				</ul>`,
 				options: [
@@ -47,7 +47,7 @@ export class N8nTrigger implements INodeType {
 					{
 						name: 'Instance Started',
 						value: 'init',
-						description: 'Triggers when this n8n instance is started or re-started',
+						description: 'Triggers when this n8n - Warp instance is started or re-started',
 					},
 					{
 						name: 'Workflow Published',

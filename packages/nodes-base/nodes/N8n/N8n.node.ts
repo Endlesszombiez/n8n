@@ -13,16 +13,16 @@ import { searchWorkflows } from './WorkflowLocator';
  */
 export class N8n implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'n8n',
+		displayName: 'n8n - Warp',
 		name: 'n8n',
 		icon: 'node:n8n',
 		iconColor: 'pink-red',
 		group: ['transform'],
 		version: 1,
 		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
-		description: 'Handle events and perform actions on your n8n instance',
+		description: 'Handle events and perform actions on your n8n - Warp instance',
 		defaults: {
-			name: 'n8n',
+			name: 'n8n - Warp',
 		},
 		inputs: [NodeConnectionTypes.Main],
 		outputs: [NodeConnectionTypes.Main],

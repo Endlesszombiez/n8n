@@ -41,7 +41,7 @@ export const parseRangeQuery = (req: Request, res: Response, next: NextFunction)
 	try {
 		if (firstId !== undefined || lastId !== undefined)
 			throw new BadRequestError(
-				'Use cursor to load execution pages. Your n8n instance has most likely updated. Please refresh the page.',
+				'Use cursor to load execution pages. Your n8n - Warp instance has most likely updated. Please refresh the page.',
 			);
 
 		if (req.query.cursor !== undefined && typeof req.query.cursor !== 'string')

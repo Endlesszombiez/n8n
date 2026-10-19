@@ -6,7 +6,7 @@
 
 ## Rule Details
 
-`builderHint` texts and AI-builder prompts are authored as human-facing guidance, but they sometimes leak n8n's internal wire format:
+`builderHint` texts and AI-builder prompts are authored as human-facing guidance, but they sometimes leak n8n - Warp's internal wire format:
 
 - Raw expression syntax such as `={{ $json.foo }}`, which only makes sense inside the execution engine.
 - `NodeConnectionType` string literals such as `ai_languageModel` or `ai_tool`, which are structured connection identifiers rather than prose.

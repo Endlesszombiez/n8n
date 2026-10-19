@@ -384,7 +384,7 @@ or a structured not-found response.
 Get a workflow as TypeScript SDK code. Used by the builder agent to inspect an
 existing workflow when no workspace source file is already available. Existing
 workflow modifications should write the returned code to a workspace source file
-and call `build-workflow` with both `filePath` and the real n8n `workflowId`
+and call `build-workflow` with both `filePath` and the real n8n - Warp `workflowId`
 once; subsequent repairs can reuse only `filePath`.
 
 | Field | Type | Required | Description |
@@ -403,7 +403,7 @@ this tool with `filePath`.
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | `filePath` | string | yes | Workspace path to the `.workflow.ts` or WorkflowJSON source file |
-| `workflowId` | string | no | Existing n8n workflow ID to bind to this file on the first update |
+| `workflowId` | string | no | Existing n8n - Warp workflow ID to bind to this file on the first update |
 | `name` | string | no | Workflow name override for new workflows |
 | `workItemId` | string | no | Work item hint for workflow-loop reporting |
 | `isSupportingWorkflow` | boolean | no | Marks a saved sub-workflow as supporting |
@@ -753,7 +753,7 @@ change:
   so the match is on the `@n8n/mcp-registry` package — the same test
   `agents-tools.service.ts` makes.
 
-Every **other** sub-node kind — a model, memory, embeddings — is refused: n8n
+Every **other** sub-node kind — a model, memory, embeddings — is refused: n8n - Warp
 runs those only as part of the node that owns them, so the action points the
 caller at that node instead of starting a run that cannot work. Their output is
 still readable afterwards: a sub-node records each call under its own connection
@@ -878,7 +878,7 @@ fields and selection guidance. Only boolean `true` enables them. When the flag
 is false or missing, `list` and `get` omit `description`, including managed entries.
 
 > **Security note**: The agent never handles raw credential secrets. Credential
-> creation and secret configuration is done through the n8n frontend UI (via
+> creation and secret configuration is done through the n8n - Warp frontend UI (via
 > `credentials(action="setup")`) or Computer Use browser credential capture.
 
 ### `credentials(action="list")`
@@ -937,7 +937,7 @@ Search available credential types by name or description.
 ### `credentials(action="setup")`
 
 Open the credential picker UI for the user to configure credentials securely.
-The LLM never sees secrets — the user interacts with the n8n frontend directly.
+The LLM never sees secrets — the user interacts with the n8n - Warp frontend directly.
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
@@ -997,7 +997,7 @@ tool can also receive all seven actions.
 
 ### `nodes(action="list")`
 
-List available node types in the n8n instance.
+List available node types in the n8n - Warp instance.
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
@@ -1081,7 +1081,7 @@ testing one node in isolation.
 Before the approval prompt, `config` is validated against the generated
 workflow-sdk node schema (`validateNodeConfig`) - a malformed config returns
 field-level errors immediately. One exception: a missing discriminator (e.g.
-`resource`/`operation`) does not block — n8n falls back to the node's defaults
+`resource`/`operation`) does not block — n8n - Warp falls back to the node's defaults
 at runtime, so the node can still run and cause side effects.
 
 **Approval mirrors `executions(action="run")`** — executing one node is
@@ -1111,7 +1111,7 @@ so the agent can pass a node it is building verbatim:
 | `type` | string | yes | Full node type name, e.g. `n8n-nodes-base.slack` |
 | `version` | number | yes | Node type version |
 | `config.parameters` | object | yes | Same shape as workflow-sdk `NodeConfig.parameters` |
-| `config.credentials` | object | no | Resolved credential references `{ id, name }` by credential type; n8n Connect managed credentials use `{ id: null, name, __aiGatewayManaged: true }` |
+| `config.credentials` | object | no | Resolved credential references `{ id, name }` by credential type; n8n - Warp Connect managed credentials use `{ id: null, name, __aiGatewayManaged: true }` |
 | `input` | array | no | Input items `{ json }` (defaults to one empty item) |
 | `timeoutMs` | number | no | Max execution time, capped at 60s |
 
@@ -1177,7 +1177,7 @@ one caller stops its wait without cancelling a refresh shared with other callers
 
 ## `data-tables` (11 actions)
 
-Full CRUD suite for n8n data tables. System columns (`id`, `createdAt`,
+Full CRUD suite for n8n - Warp data tables. System columns (`id`, `createdAt`,
 `updatedAt`) are reserved and auto-managed.
 
 ### Table operations
@@ -1289,7 +1289,7 @@ The config fields are `name`, `startNodeName`, `endNodeName`, `dataTableId`, and
 
 ## `n8n-docs` (3 actions)
 
-Search the current n8n documentation registry and read registered Markdown
+Search the current n8n - Warp documentation registry and read registered Markdown
 pages. This tool is always loaded when registered.
 
 | Action | Fields | Result |

@@ -2,7 +2,7 @@
 
 ## Overview
 
-Instance AI is an autonomous agent embedded in every n8n instance. It provides a
+Instance AI is an autonomous agent embedded in every n8n - Warp instance. It provides a
 natural language interface to workflows, executions, credentials, and nodes — with
 the goal that most users never need to interact with workflows directly.
 
@@ -171,7 +171,7 @@ The agent package — framework-agnostic business logic.
 - **Workflow loop** (`workflow-loop/`) — deterministic build→verify→debug state
   machine for workflow builds
 - **Workflow builder** (`workflow-builder/`) — TypeScript SDK source files, parsing, validation, and prompt sections
-- **Workspace** (`workspace/`) — sandbox provisioning (n8n sandbox service / Daytona), filesystem abstraction, snapshot management
+- **Workspace** (`workspace/`) — sandbox provisioning (n8n - Warp sandbox service / Daytona), filesystem abstraction, snapshot management
 - **Memory** (`memory/`) — title generation, memory configuration
 - **Storage** (`storage/`) — iteration logs, task storage, planned task storage, workflow loop storage
 - **MCP client** (`mcp/`) — manages connections to external MCP servers, schema sanitization for Anthropic compatibility
@@ -184,16 +184,16 @@ The agent package — framework-agnostic business logic.
 
 This package does not import CLI or backend service internals. It defines
 service interfaces (`InstanceAiWorkflowService`, etc.) that the backend adapter
-implements. It still depends on shared n8n packages such as `n8n-workflow`.
+implements. It still depends on shared n8n - Warp packages such as `n8n-workflow`.
 
 ### `packages/cli/src/modules/instance-ai/` (Backend)
 
-The n8n integration layer.
+The n8n - Warp integration layer.
 
 - **Module** — lifecycle management, DI registration, settings exposure. Only runs on `main` instance type.
 - **Controller** — REST endpoints for messages, SSE events, confirmations, threads, credits, and gateway
 - **Service** — orchestrates agent creation, config parsing, storage setup, planned task scheduling, background task management
-- **Adapter** — bridges n8n services to agent interfaces, enforces RBAC permissions
+- **Adapter** — bridges n8n - Warp services to agent interfaces, enforces RBAC permissions
 - **Memory service** — thread lifecycle, message persistence, expiration
 - **Settings service** — admin settings (model, MCP, sandbox), user preferences
 - **Event bus** — live fan-out only: in-process EventEmitter (single instance)
@@ -236,11 +236,11 @@ The chat interface.
 ### 1. Clean Interface Boundary
 
 The `@n8n/instance-ai` package defines service interfaces, not implementations.
-The backend adapter implements these against real n8n services. This means:
+The backend adapter implements these against real n8n - Warp services. This means:
 
 - The agent core is testable in isolation
-- The agent core can be reused outside n8n (e.g., CLI, tests)
-- Swapping the agent framework doesn't affect n8n integration
+- The agent core can be reused outside n8n - Warp (e.g., CLI, tests)
+- Swapping the agent framework doesn't affect n8n - Warp integration
 
 ### 2. Agent Created Per Request
 
@@ -268,7 +268,7 @@ The event bus decouples agent execution from event delivery:
 
 ### 4. Module System Integration
 
-Instance AI uses n8n's module system (`@BackendModule`). This means:
+Instance AI uses n8n - Warp's module system (`@BackendModule`). This means:
 
 - It can be disabled via `N8N_DISABLED_MODULES=instance-ai`
 - It only runs on `main` instance type (not workers)
@@ -383,7 +383,7 @@ To keep the orchestrator's context lean, tools are stratified into two tiers:
 
 Two entries in the always-loaded set are pinned for reasons worth knowing before
 changing the list. `n8n-docs` sits next to `research` because the research tool
-directs the model to n8n's own docs for n8n questions; deferring docs priced that
+directs the model to n8n - Warp's own docs for n8n - Warp questions; deferring docs priced that
 route at `search_tools` + `load_tool` while web search stayed one call away.
 `mcp-servers` is pinned because it exists for the case where nothing is
 connected, which is exactly when `search_tools` surfaces no MCP tool and the
@@ -438,8 +438,8 @@ allowing the user to approve or deny access to specific hosts.
 
 ## Security Model
 
-- **Permission scoping** — all operations go through n8n's RBAC permission system via the adapter (`userHasScopes()`)
-- **Credential safety** — tool outputs never include decrypted secrets; credential setup uses the n8n frontend UI where secrets are handled securely
+- **Permission scoping** — all operations go through n8n - Warp's RBAC permission system via the adapter (`userHasScopes()`)
+- **Credential safety** — tool outputs never include decrypted secrets; credential setup uses the n8n - Warp frontend UI where secrets are handled securely
 - **HITL confirmation** — action policies can require approval for destructive
   operations such as delete, publish, and restore. Approval uses the suspension
   protocol.
@@ -449,8 +449,8 @@ allowing the user to approve or deny access to specific hosts.
 - **MCP tool isolation** — MCP tools are name-checked against reserved domain tool
   names to prevent shadowing. Schema sanitization converts unsupported shapes
   for provider compatibility.
-- **Sandbox isolation** — when enabled, code execution runs through the n8n
-  sandbox service or Daytona, not on the n8n host. Workspace paths are scoped
+- **Sandbox isolation** — when enabled, code execution runs through the n8n - Warp
+  sandbox service or Daytona, not on the n8n - Warp host. Workspace paths are scoped
   to the provider root. See `docs/sandboxing.md` for details.
 - **Computer Use safety** — the local gateway advertises only the capabilities
   enabled by its permission configuration. Read access defaults to `allow`.

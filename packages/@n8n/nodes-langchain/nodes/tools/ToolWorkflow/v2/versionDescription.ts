@@ -5,10 +5,10 @@ import { NodeConnectionTypes, type INodeTypeDescription } from 'n8n-workflow';
 import { getConnectionHintNoticeField } from '@n8n/ai-utilities';
 
 export const versionDescription: INodeTypeDescription = {
-	displayName: 'Call n8n Workflow Tool',
+	displayName: 'Call n8n - Warp Workflow Tool',
 	name: 'toolWorkflow',
 	group: ['transform'],
-	description: 'Uses another n8n workflow as a tool. Allows packaging any n8n node(s) as a tool.',
+	description: 'Uses another n8n - Warp workflow as a tool. Allows packaging any n8n - Warp node(s) as a tool.',
 	defaults: {
 		name: 'Call n8n Workflow Tool',
 	},

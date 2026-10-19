@@ -1,6 +1,6 @@
 # @n8n/rest-api-client
 
-This package contains the REST API calls for n8n.
+This package contains the REST API calls for n8n - Warp.
 
 ## Table of Contents
 
@@ -10,7 +10,7 @@ This package contains the REST API calls for n8n.
 
 ## Features
 
-- Provides a REST API for n8n
+- Provides a REST API for n8n - Warp
 - Supports authentication and authorization
 
 ## Contributing

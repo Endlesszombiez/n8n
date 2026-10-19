@@ -506,7 +506,7 @@ export class McpAgentToolsService {
 		registerResource({
 			name: 'agent-builder-reference',
 			uri: AGENT_BUILDER_REFERENCE_URI,
-			config: { description: 'Reference for creating and managing n8n Agents through MCP.' },
+			config: { description: 'Reference for creating and managing n8n - Warp Agents through MCP.' },
 			read: () => ({
 				contents: [
 					{
@@ -752,7 +752,7 @@ export class McpAgentToolsService {
 			name: 'validate_agent',
 			config: {
 				description:
-					'Validate an Agent draft, sidecar references, and user-accessible credentials. Returns its n8n editor URL.',
+					'Validate an Agent draft, sidecar references, and user-accessible credentials. Returns its n8n - Warp editor URL.',
 				inputSchema: agentIdentityShape,
 				annotations: {
 					title: 'Validate Agent',
@@ -1077,7 +1077,7 @@ export class McpAgentToolsService {
 			name: 'update_agent_integration',
 			config: {
 				description:
-					"Configure or disconnect a Slack, Telegram, or Linear conversation integration. This is the only way to manage integrations; config.replace and config.patch can't change them. Configuration never publishes the Agent. If the Agent is already published, connecting starts the channel immediately. Otherwise, the channel stays inactive until publish_agent is called. For Slack, connect without credentialId first: n8n returns the workspaces where it can create a Slack app for the Agent, or the steps the user must take in n8n. Then call again with managerCredentialId and workspaceId after the user confirms the workspace.",
+					"Configure or disconnect a Slack, Telegram, or Linear conversation integration. This is the only way to manage integrations; config.replace and config.patch can't change them. Configuration never publishes the Agent. If the Agent is already published, connecting starts the channel immediately. Otherwise, the channel stays inactive until publish_agent is called. For Slack, connect without credentialId first: n8n - Warp returns the workspaces where it can create a Slack app for the Agent, or the steps the user must take in n8n - Warp. Then call again with managerCredentialId and workspaceId after the user confirms the workspace.",
 				inputSchema: updateIntegrationInput,
 				annotations: {
 					title: 'Update Agent Integration',

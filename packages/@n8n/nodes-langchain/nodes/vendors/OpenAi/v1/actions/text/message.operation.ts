@@ -107,7 +107,7 @@ const properties: INodeProperties[] = [
 		},
 	},
 	{
-		displayName: 'Connect your own custom n8n tools to this node on the canvas',
+		displayName: 'Connect your own custom n8n - Warp tools to this node on the canvas',
 		name: 'noticeTools',
 		type: 'notice',
 		default: '',

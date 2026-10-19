@@ -53,8 +53,8 @@ test.skip(
 			n8n,
 		}) => {
 			await n8n.canvas.nodeCreator.open();
-			await n8n.canvas.nodeCreator.searchFor('Customer Datastore (n8n training)');
-			await n8n.canvas.nodeCreator.selectItem('Customer Datastore (n8n training)');
+			await n8n.canvas.nodeCreator.searchFor('Customer Datastore (n8n - Warp training)');
+			await n8n.canvas.nodeCreator.selectItem('Customer Datastore (n8n - Warp training)');
 
 			await expect(n8n.canvas.nodeCreator.getNoTriggersCallout()).toBeVisible();
 			await expect(n8n.canvas.nodeCreator.getItem('On a Schedule')).toBeVisible();
@@ -65,16 +65,16 @@ test.skip(
 			n8n,
 		}) => {
 			await n8n.canvas.nodeCreator.open();
-			await n8n.canvas.nodeCreator.searchFor('Customer Datastore (n8n training)');
-			await n8n.canvas.nodeCreator.selectItem('Customer Datastore (n8n training)');
+			await n8n.canvas.nodeCreator.searchFor('Customer Datastore (n8n - Warp training)');
+			await n8n.canvas.nodeCreator.selectItem('Customer Datastore (n8n - Warp training)');
 			await n8n.page.pause();
 			await expect(n8n.canvas.nodeCreator.getActivationCallout()).toBeVisible();
 		});
 
 		test('should show Trigger and Actions sections during search', async ({ n8n }) => {
 			await n8n.canvas.nodeCreator.open();
-			await n8n.canvas.nodeCreator.searchFor('Customer Datastore (n8n training)');
-			await n8n.canvas.nodeCreator.selectItem('Customer Datastore (n8n training)');
+			await n8n.canvas.nodeCreator.searchFor('Customer Datastore (n8n - Warp training)');
+			await n8n.canvas.nodeCreator.selectItem('Customer Datastore (n8n - Warp training)');
 
 			await n8n.canvas.nodeCreator.searchFor('Non existent action name');
 

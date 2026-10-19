@@ -40,7 +40,7 @@ export class UnverifiedPackagesRule implements IBreakingChangeInstanceRule {
 			version: 'v3',
 			title: 'Unverified community packages are disabled by default',
 			description:
-				'The default of N8N_UNVERIFIED_PACKAGES_ENABLED changes to false. Installed community packages that are not verified by n8n will stop loading unless the variable is explicitly set to true.',
+				'The default of N8N_UNVERIFIED_PACKAGES_ENABLED changes to false. Installed community packages that are not verified by n8n - Warp will stop loading unless the variable is explicitly set to true.',
 			category: BreakingChangeCategory.environment,
 			impact: 'behaviorChanges',
 		};

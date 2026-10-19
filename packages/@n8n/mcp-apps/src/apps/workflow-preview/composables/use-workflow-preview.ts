@@ -140,7 +140,7 @@ export function useWorkflowPreview({
 		if (!mcpApp || !url) return;
 
 		if (!isAllowedWorkflowUrl(url)) {
-			console.warn('[n8n MCP App] Refusing to open unexpected workflow URL', { url });
+			console.warn('[n8n - Warp MCP App] Refusing to open unexpected workflow URL', { url });
 			return;
 		}
 
@@ -152,10 +152,10 @@ export function useWorkflowPreview({
 		try {
 			const result = await mcpApp.openLink({ url });
 			if (result.isError) {
-				console.warn('[n8n MCP App] Host denied open-link request', { url });
+				console.warn('[n8n - Warp MCP App] Host denied open-link request', { url });
 			}
 		} catch (error) {
-			console.error('[n8n MCP App] Failed to open workflow link', error);
+			console.error('[n8n - Warp MCP App] Failed to open workflow link', error);
 		}
 	}
 
@@ -297,7 +297,7 @@ export function useWorkflowPreview({
 				return;
 			}
 
-			console.warn('[n8n MCP App] Failed to load workflow preview data', error);
+			console.warn('[n8n - Warp MCP App] Failed to load workflow preview data', error);
 			trackPreviewToolCallCompleted({
 				outcome: WORKFLOW_PREVIEW_TOOL_CALL_OUTCOMES.REQUEST_ERROR,
 				requestId,
@@ -346,7 +346,7 @@ export function useWorkflowPreview({
 			previewUrl.value = undefined;
 
 			if (candidateUrl !== undefined) {
-				console.warn('[n8n MCP App] Ignoring unexpected workflow URL in tool result', {
+				console.warn('[n8n - Warp MCP App] Ignoring unexpected workflow URL in tool result', {
 					url: candidateUrl,
 				});
 			}

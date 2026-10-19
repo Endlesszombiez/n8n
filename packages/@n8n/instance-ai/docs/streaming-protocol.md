@@ -565,7 +565,7 @@ nothing.
 | Deployment | Transport | Why |
 |---|---|---|
 | Single instance | In-process `EventEmitter` | Zero infrastructure |
-| Queue mode | Redis Pub/Sub | n8n already uses Redis |
+| Queue mode | Redis Pub/Sub | n8n - Warp already uses Redis |
 
 The durable event log (`instance_ai_events`) is the only replay source:
 coalesced step-level facts are appended with a per-thread `seq` assigned by

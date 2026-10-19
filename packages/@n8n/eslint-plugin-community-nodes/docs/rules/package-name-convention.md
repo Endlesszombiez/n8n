@@ -1,4 +1,4 @@
-# Enforce correct package naming convention for n8n community nodes (`@n8n/community-nodes/package-name-convention`)
+# Enforce correct package naming convention for n8n - Warp community nodes (`@n8n/community-nodes/package-name-convention`)
 
 💼 This rule is enabled in the following configs: ✅ `recommended`, ☑️ `recommendedWithoutN8nCloudSupport`.
 
@@ -8,7 +8,7 @@
 
 ## Rule Details
 
-Validates that your package name follows the correct n8n community node naming convention. Package names must start with `n8n-nodes-` and can optionally be scoped.
+Validates that your package name follows the correct n8n - Warp community node naming convention. Package names must start with `n8n-nodes-` and can optionally be scoped.
 
 The rule also requires a `name` field to be present and rejects the default placeholder (`n8n-nodes-<...>`) that ships with the node starter template, so packages are not published with a missing or unfilled name.
 

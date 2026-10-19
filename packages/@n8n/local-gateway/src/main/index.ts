@@ -41,7 +41,7 @@ if (!app.requestSingleInstanceLock()) {
 
 			const settingsStore = new SettingsStore();
 			configure({ level: settingsStore.get().logLevel });
-			logger.info('n8n Gateway starting');
+			logger.info('n8n - Warp Gateway starting');
 
 			const controller = new DaemonController();
 
@@ -55,7 +55,7 @@ if (!app.requestSingleInstanceLock()) {
 				const token = payload.apiKey?.trim();
 				if (!token || token.length === 0) {
 					throw new Error(
-						'Missing gateway token in deeplink. Connect from n8n using the computer-use link.',
+						'Missing gateway token in deeplink. Connect from n8n - Warp using the computer-use link.',
 					);
 				}
 				if (isAlreadyConnectedTo(payload.url, controller.getSnapshot())) {
@@ -100,7 +100,7 @@ if (!app.requestSingleInstanceLock()) {
 				controller,
 				() => openSettingsWindow(preloadPath, rendererPath),
 				() => {
-					logger.info('n8n Gateway quitting');
+					logger.info('n8n - Warp Gateway quitting');
 					void controller
 						.disconnect()
 						.catch((error: unknown) => {

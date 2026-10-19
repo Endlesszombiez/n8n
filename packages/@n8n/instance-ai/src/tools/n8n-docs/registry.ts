@@ -220,7 +220,7 @@ async function fetchRegistry(abortSignal?: AbortSignal): Promise<ParsedN8nDocsRe
 	});
 	const registry = parseN8nDocsRegistry(response.text, fetchedAt);
 	if (registry.entries.length === 0) {
-		throw new Error('n8n docs registry was empty');
+		throw new Error('n8n - Warp docs registry was empty');
 	}
 	registryCache = registry;
 	registryFetchedAtMs = Date.now();

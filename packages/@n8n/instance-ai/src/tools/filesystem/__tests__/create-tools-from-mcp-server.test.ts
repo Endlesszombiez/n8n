@@ -528,7 +528,7 @@ describe('createToolsFromLocalMcpServer', () => {
 			['No captured fields found for credentialsKey "slack-setup"', 'missing_captured_fields'],
 			['resolveData references field "apiKey" which was not captured', 'unresolved_field'],
 			[
-				'This tool is only available when running inside the n8n gateway context.',
+				'This tool is only available when running inside the n8n - Warp gateway context.',
 				'gateway_context_missing',
 			],
 			['Something else went wrong', 'credential_create_failed'],

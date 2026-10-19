@@ -599,7 +599,7 @@ describe('buildSteps', () => {
 					{
 						action: {
 							actionType: 'ExecutionNodeAction',
-							nodeName: 'Call n8n Workflow Tool',
+							nodeName: 'Call n8n - Warp Workflow Tool',
 							input: {
 								id: 'call_123',
 								input: { test: {} },
@@ -643,7 +643,7 @@ describe('buildSteps', () => {
 					{
 						action: {
 							actionType: 'ExecutionNodeAction',
-							nodeName: 'Call n8n Workflow Tool',
+							nodeName: 'Call n8n - Warp Workflow Tool',
 							input: {
 								id: 'call_456',
 								input: { query: 'test' },
@@ -689,7 +689,7 @@ describe('buildSteps', () => {
 					{
 						action: {
 							actionType: 'ExecutionNodeAction',
-							nodeName: 'Call n8n Workflow Tool',
+							nodeName: 'Call n8n - Warp Workflow Tool',
 							input: {
 								id: 'call_789',
 								input: { test: 'invalid' },
@@ -732,7 +732,7 @@ describe('buildSteps', () => {
 					{
 						action: {
 							actionType: 'ExecutionNodeAction',
-							nodeName: 'Call n8n Workflow Tool',
+							nodeName: 'Call n8n - Warp Workflow Tool',
 							input: {
 								id: 'call_error',
 								input: { test: {} },

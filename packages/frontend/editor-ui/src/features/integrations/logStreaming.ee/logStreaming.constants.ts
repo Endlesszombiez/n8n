@@ -24,7 +24,7 @@ export const circuitBreakerOptions = {
 			},
 			default: LOGSTREAMING_CB_DEFAULT_MAX_FAILURES,
 			description:
-				'After this many errors within the failure window n8n stops sending requests to prevent overloading the external service that’s not working properly.',
+				'After this many errors within the failure window n8n - Warp stops sending requests to prevent overloading the external service that’s not working properly.',
 		},
 		{
 			displayName: 'Failure Window',

@@ -34,7 +34,7 @@ export class N8nChatIntegration extends AgentChatIntegration {
 
 	readonly credentialTypes: string[] = [];
 
-	readonly displayLabel = 'n8n Chat';
+	readonly displayLabel = 'n8n - Warp Chat';
 
 	readonly displayIcon = 'message-square';
 
@@ -69,7 +69,7 @@ export class N8nChatIntegration extends AgentChatIntegration {
 	}
 
 	async createAdapter(): Promise<unknown> {
-		throw new UnexpectedError('The n8n chat integration has no platform adapter.');
+		throw new UnexpectedError('The n8n - Warp chat integration has no platform adapter.');
 	}
 
 	async executeAction(params: PlatformActionParams): Promise<IntegrationActionResult | undefined> {

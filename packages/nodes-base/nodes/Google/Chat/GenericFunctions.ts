@@ -172,7 +172,7 @@ export function createSendAndWaitMessageBody(context: IExecuteFunctions) {
 		const instanceId = context.getInstanceId();
 		const attributionText = '_This_ _message_ _was_ _sent_ _automatically_ _with_';
 		const link = createUtmCampaignLink('n8n-nodes-base.googleChat', instanceId);
-		const attribution = `${attributionText} _<${link}|n8n>_`;
+		const attribution = `${attributionText} _<${link}|n8n - Warp>_`;
 		text += `\n\n${attribution}`;
 	}
 

@@ -34,7 +34,7 @@ const useWorkflowTimezone: INodeProperties = {
 };
 
 const descriptionV2: INodeTypeDescription = {
-	displayName: 'n8n Form Trigger',
+	displayName: 'n8n - Warp Form Trigger',
 	name: 'formTrigger',
 	icon: 'node:form-trigger',
 	iconColor: 'teal',
@@ -42,7 +42,7 @@ const descriptionV2: INodeTypeDescription = {
 	// since trigger and node are sharing descriptions and logic we need to sync the versions
 	// and keep them aligned in both nodes
 	version: [2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6],
-	description: 'Generate webforms in n8n and pass their responses to the workflow',
+	description: 'Generate webforms in n8n - Warp and pass their responses to the workflow',
 	defaults: {
 		name: 'On form submission',
 	},
@@ -127,9 +127,9 @@ const descriptionV2: INodeTypeDescription = {
 				},
 				{
 					// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
-					name: 'n8n User Auth',
+					name: 'n8n - Warp User Auth',
 					value: 'n8nUserAuth',
-					description: 'Require user to be logged in with their n8n account',
+					description: 'Require user to be logged in with their n8n - Warp account',
 				},
 				{
 					name: 'None',

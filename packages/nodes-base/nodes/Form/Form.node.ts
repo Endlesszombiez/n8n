@@ -154,7 +154,7 @@ const completionProperties = updateDisplayOptions(
 	[
 		{
 			// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
-			displayName: 'On n8n Form Submission',
+			displayName: 'On n8n - Warp Form Submission',
 			name: 'respondWith',
 			type: 'options',
 			default: 'text',
@@ -263,7 +263,7 @@ const completionProperties = updateDisplayOptions(
 				{
 					...appendAttributionToForm,
 					description:
-						'Whether to include the link “Form automated with n8n” at the bottom of the page. Defaults to the Form Trigger’s setting.',
+						'Whether to include the link “Form automated with n8n - Warp” at the bottom of the page. Defaults to the Form Trigger’s setting.',
 				},
 				{
 					displayName: 'Custom Form Styling',
@@ -290,7 +290,7 @@ export class Form extends Node {
 	nodeInputData: INodeExecutionData[] = [];
 
 	description: INodeTypeDescription = {
-		displayName: 'n8n Form',
+		displayName: 'n8n - Warp Form',
 		name: 'form',
 		icon: 'node:form-trigger',
 		iconColor: 'teal',
@@ -298,7 +298,7 @@ export class Form extends Node {
 		// since trigger and node are sharing descriptions and logic we need to sync the versions
 		// and keep them aligned in both nodes
 		version: [1, 2.3, 2.4, 2.5],
-		description: 'Generate webforms in n8n and pass their responses to the workflow',
+		description: 'Generate webforms in n8n - Warp and pass their responses to the workflow',
 		defaults: {
 			name: 'Form',
 		},
@@ -336,7 +336,7 @@ export class Form extends Node {
 		],
 		properties: [
 			{
-				displayName: 'An n8n Form Trigger node must be set up before this node',
+				displayName: 'An n8n - Warp Form Trigger node must be set up before this node',
 				name: 'triggerNotice',
 				type: 'notice',
 				default: '',

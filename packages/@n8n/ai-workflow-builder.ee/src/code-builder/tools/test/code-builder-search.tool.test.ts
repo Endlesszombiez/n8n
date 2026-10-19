@@ -157,11 +157,11 @@ const mockVectorStoreNode: INodeTypeDescription = {
 // Mock nodes for builder hint tests
 const mockFormTriggerNode: INodeTypeDescription = {
 	name: 'n8n-nodes-base.formTrigger',
-	displayName: 'n8n Form Trigger',
+	displayName: 'n8n - Warp Form Trigger',
 	description: 'Trigger workflows with an n8n Form submission',
 	group: ['trigger'],
 	version: 2,
-	defaults: { name: 'n8n Form Trigger' },
+	defaults: { name: 'n8n - Warp Form Trigger' },
 	inputs: [],
 	outputs: ['main'],
 	properties: [],
@@ -174,11 +174,11 @@ const mockFormTriggerNode: INodeTypeDescription = {
 
 const mockFormNode: INodeTypeDescription = {
 	name: 'n8n-nodes-base.form',
-	displayName: 'n8n Form',
+	displayName: 'n8n - Warp Form',
 	description: 'Create a multi-page form for the Form Trigger',
 	group: ['input'],
 	version: 1,
-	defaults: { name: 'n8n Form' },
+	defaults: { name: 'n8n - Warp Form' },
 	inputs: ['main'],
 	outputs: ['main'],
 	properties: [],

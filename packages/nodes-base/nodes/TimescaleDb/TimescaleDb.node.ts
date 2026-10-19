@@ -82,7 +82,7 @@ export class TimescaleDb implements INodeType {
 				placeholder: 'SELECT id, name FROM product WHERE quantity > $1 AND price <= $2',
 				required: true,
 				description:
-					'The SQL query to execute. You can use n8n expressions or $1 and $2 in conjunction with query parameters.',
+					'The SQL query to execute. You can use n8n - Warp expressions or $1 and $2 in conjunction with query parameters.',
 			},
 
 			// ----------------------------------

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { N8nIcon } from '@n8n/design-system';
 import { computed } from 'vue';
+import { useI18n } from '@n8n/i18n';
 
 type Size = 'hero' | 'inline' | 'tile';
 
@@ -11,8 +12,12 @@ const props = withDefaults(
 	}>(),
 	{
 		size: 'hero',
-		ariaLabel: 'MCP connects n8n with AI agents',
 	},
+);
+
+const i18n = useI18n();
+const accessibleLabel = computed(
+	() => props.ariaLabel ?? i18n.baseText('experiments.surfaceMcp.bridgeGraphic.ariaLabel'),
 );
 
 const isTile = computed(() => props.size === 'tile');
@@ -23,7 +28,7 @@ const isHero = computed(() => props.size === 'hero');
 	<div
 		:class="[$style.bridge, $style[`bridge--${size}`]]"
 		role="img"
-		:aria-label="ariaLabel"
+		:aria-label="accessibleLabel"
 		data-test-id="surface-mcp-bridge-graphic"
 	>
 		<template v-if="!isTile">

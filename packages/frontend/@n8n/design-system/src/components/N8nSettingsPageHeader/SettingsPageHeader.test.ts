@@ -75,7 +75,7 @@ describe('N8nSettingsPageHeader', () => {
 		render(N8nSettingsPageHeader, {
 			props: {
 				title: 'API keys',
-				description: 'Use your API keys to control n8n programmatically.',
+				description: 'Use your API keys to control n8n - Warp programmatically.',
 				docsLeadingText: 'Read the ',
 				docsLabel: 'API reference',
 				docsUrl: 'https://docs.n8n.io/api/',

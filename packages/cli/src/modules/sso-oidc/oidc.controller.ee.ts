@@ -175,7 +175,7 @@ export class OidcController {
 						});
 					} else {
 						this.logger.warn(
-							'The OIDC ID token is too large to be stored in a cookie. Signing out will terminate the n8n session but not the OIDC provider session. Consider reducing the claims included in the ID token.',
+							'The OIDC ID token is too large to be stored in a cookie. Signing out will terminate the n8n - Warp session but not the OIDC provider session. Consider reducing the claims included in the ID token.',
 						);
 					}
 				} catch (error) {

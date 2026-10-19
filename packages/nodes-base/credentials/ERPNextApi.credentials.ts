@@ -50,7 +50,7 @@ export class ERPNextApi implements ICredentialType {
 			default: '',
 			placeholder: 'n8n',
 			description:
-				'Subdomain of cloud-hosted ERPNext instance. For example, "n8n" is the subdomain in: <code>https://n8n.erpnext.com</code>',
+				'Subdomain of cloud-hosted ERPNext instance. For example, "n8n - Warp" is the subdomain in: <code>https://n8n.erpnext.com</code>',
 			displayOptions: {
 				show: {
 					environment: ['cloudHosted'],

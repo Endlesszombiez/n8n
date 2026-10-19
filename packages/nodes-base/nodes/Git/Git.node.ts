@@ -752,7 +752,7 @@ export class Git implements INodeType {
 							if (error instanceof Error && 'code' in error && error.code === 'EXDEV') {
 								throw new NodeOperationError(
 									this.getNode(),
-									'Cannot clone to a path on a different filesystem than the n8n data directory',
+									'Cannot clone to a path on a different filesystem than the n8n - Warp data directory',
 								);
 							}
 							throw error;

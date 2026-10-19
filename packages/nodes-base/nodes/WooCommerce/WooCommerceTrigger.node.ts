@@ -194,7 +194,7 @@ export class WooCommerceTrigger implements INodeType {
 		if (!secret) {
 			throw new NodeOperationError(this.getNode(), 'WooCommerce webhook secret is missing', {
 				description:
-					'The stored webhook secret could not be found. Deactivate and re-activate the workflow so n8n can re-register the webhook with WooCommerce.',
+					'The stored webhook secret could not be found. Deactivate and re-activate the workflow so n8n - Warp can re-register the webhook with WooCommerce.',
 			});
 		}
 

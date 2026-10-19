@@ -18,7 +18,7 @@ const baseProps = (overrides: Record<string, unknown> = {}) => ({
 	modelValue: '',
 	integration: {
 		type: 'n8n_chat',
-		label: 'n8n Chat',
+		label: 'n8n - Warp Chat',
 		icon: 'message-circle',
 		credentialTypes: [],
 	},

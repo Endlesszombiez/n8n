@@ -301,7 +301,7 @@ export async function verifyIntegrity(
 		const integrity = metadata?.dist?.integrity;
 		if (integrity !== expectedIntegrity) {
 			throw new UnexpectedError(
-				'Checksum verification failed. Package integrity does not match. Try restarting n8n and attempting the installation again.',
+				'Checksum verification failed. Package integrity does not match. Try restarting n8n - Warp and attempting the installation again.',
 			);
 		}
 		return;
@@ -315,7 +315,7 @@ export async function verifyIntegrity(
 			const integrity = jsonParse(stdout);
 			if (integrity !== expectedIntegrity) {
 				throw new UnexpectedError(
-					'Checksum verification failed. Package integrity does not match. Try restarting n8n and attempting the installation again.',
+					'Checksum verification failed. Package integrity does not match. Try restarting n8n - Warp and attempting the installation again.',
 				);
 			}
 			return;
@@ -326,7 +326,7 @@ export async function verifyIntegrity(
 				);
 			}
 			throw new UnexpectedError(
-				'Failed to verify package checksum. Try restarting n8n and attempting the installation again.',
+				'Failed to verify package checksum. Try restarting n8n - Warp and attempting the installation again.',
 			);
 		}
 	}

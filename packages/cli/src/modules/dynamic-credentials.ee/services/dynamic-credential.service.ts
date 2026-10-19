@@ -111,7 +111,7 @@ export class DynamicCredentialService implements ICredentialResolutionProvider {
 			// subject, so it would hand that token to the external provider it validates
 			// against (its identifier reads `context.identity` as its own token). Refuse
 			// instead of leaking it on a request that cannot succeed anyway.
-			this.logger.debug('Refused to resolve external-subject credential with n8n identity', {
+			this.logger.debug('Refused to resolve external-subject credential with n8n - Warp identity', {
 				credentialId: credentialsResolveMetadata.id,
 				credentialName: credentialsResolveMetadata.name,
 				resolverId,

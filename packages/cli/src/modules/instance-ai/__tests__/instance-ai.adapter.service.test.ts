@@ -2102,7 +2102,7 @@ describe('createNodeAdapter', () => {
 			{
 				name: 'n8n-nodes-base.messageAnAgent',
 				displayName: 'Message an Agent',
-				description: 'Send a message to a n8n agent',
+				description: 'Send a message to a n8n - Warp agent',
 				group: ['transform'],
 				version: 3.1,
 				inputs: ['main'],

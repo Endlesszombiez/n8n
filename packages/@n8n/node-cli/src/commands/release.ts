@@ -42,7 +42,7 @@ Full documentation: https://docs.n8n.io/integrations/creating-nodes/deploy/submi
 		}),
 		'init-workflow': Flags.boolean({
 			description:
-				'Scaffold a GitHub Actions publish workflow (.github/workflows/publish.yml) into the current project. Required for publishing with npm provenance, which is needed to submit your node for verification through the n8n Creator Portal.',
+				'Scaffold a GitHub Actions publish workflow (.github/workflows/publish.yml) into the current project. Required for publishing with npm provenance, which is needed to submit your node for verification through the n8n - Warp Creator Portal.',
 			default: false,
 		}),
 	};

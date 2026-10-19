@@ -299,7 +299,7 @@ export class ChatTrigger extends Node {
 		group: ['trigger'],
 		version: [1, 1.1, 1.2, 1.3, 1.4, 1.5],
 		defaultVersion: 1.5,
-		description: 'Runs the workflow when an n8n generated webchat is submitted',
+		description: 'Runs the workflow when an n8n - Warp generated webchat is submitted',
 		defaults: {
 			name: 'When chat message received',
 		},
@@ -419,7 +419,7 @@ export class ChatTrigger extends Node {
 					{
 						name: 'Hosted Chat',
 						value: 'hostedChat',
-						description: 'Chat on a page served by n8n',
+						description: 'Chat on a page served by n8n - Warp',
 					},
 					{
 						name: 'Embedded Chat',
@@ -477,9 +477,9 @@ export class ChatTrigger extends Node {
 					},
 					{
 						// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
-						name: 'n8n User Auth',
+						name: 'n8n - Warp User Auth',
 						value: 'n8nUserAuth',
-						description: 'Require user to be logged in with their n8n account',
+						description: 'Require user to be logged in with their n8n - Warp account',
 					},
 					{
 						name: 'None',
@@ -550,13 +550,13 @@ export class ChatTrigger extends Node {
 			},
 			{
 				// eslint-disable-next-line n8n-nodes-base/node-param-display-name-miscased
-				displayName: 'Make Available in n8n Chat Hub',
+				displayName: 'Make Available in n8n - Warp Chat Hub',
 				name: 'availableInChat',
 				type: 'boolean',
 				default: false,
 				noDataExpression: true,
 				description:
-					'Whether to make the agent available in n8n Chat Hub for n8n instance users to chat with',
+					'Whether to make the agent available in n8n - Warp Chat Hub for n8n - Warp instance users to chat with',
 			},
 			{
 				displayName:
@@ -573,7 +573,7 @@ export class ChatTrigger extends Node {
 			},
 			{
 				displayName:
-					'Your n8n users will be able to use this agent in <a href="/home/chat/" target="_blank">Chat</a> once this workflow is published. Make sure to share this workflow with at least Project Chat User access to all users who should use it.',
+					'Your n8n - Warp users will be able to use this agent in <a href="/home/chat/" target="_blank">Chat</a> once this workflow is published. Make sure to share this workflow with at least Project Chat User access to all users who should use it.',
 				name: 'availableInChatNotice',
 				type: 'notice',
 				displayOptions: {
@@ -590,7 +590,7 @@ export class ChatTrigger extends Node {
 				type: 'icon',
 				default: { type: 'icon', value: 'bot' },
 				noDataExpression: true,
-				description: 'The icon of the agent on n8n Chat',
+				description: 'The icon of the agent on n8n - Warp Chat',
 				displayOptions: {
 					show: {
 						availableInChat: [true],
@@ -605,7 +605,7 @@ export class ChatTrigger extends Node {
 				default: '',
 				noDataExpression: true,
 				description:
-					'The name of the agent on n8n Chat. Name of the workflow is used if left empty.',
+					'The name of the agent on n8n - Warp Chat. Name of the workflow is used if left empty.',
 				displayOptions: {
 					show: {
 						availableInChat: [true],
@@ -622,7 +622,7 @@ export class ChatTrigger extends Node {
 				},
 				default: '',
 				noDataExpression: true,
-				description: 'The description of the agent on n8n Chat',
+				description: 'The description of the agent on n8n - Warp Chat',
 				displayOptions: {
 					show: {
 						availableInChat: [true],
@@ -639,7 +639,7 @@ export class ChatTrigger extends Node {
 				noDataExpression: true,
 				placeholder: 'Add Prompt',
 				description:
-					'Suggested prompts shown to users in n8n Chat Hub to start a conversation with the agent',
+					'Suggested prompts shown to users in n8n - Warp Chat Hub to start a conversation with the agent',
 				displayOptions: {
 					show: {
 						availableInChat: [true],

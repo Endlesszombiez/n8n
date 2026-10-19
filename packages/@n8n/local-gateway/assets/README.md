@@ -2,7 +2,7 @@
 
 ## Tray Icons
 
-Tray icons are derived from the official n8n brand guidelines:
+Tray icons are derived from the official n8n - Warp brand guidelines:
 - Dark logo: https://n8n.io/brandguidelines/logo-dark.svg
 - White logo: https://n8n.io/brandguidelines/logo-white.svg
 

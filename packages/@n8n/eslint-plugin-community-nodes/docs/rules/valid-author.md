@@ -8,7 +8,7 @@
 
 A published community node package should identify its author. This rule
 requires the `package.json` to declare an `author` with at minimum a non-empty
-`name` and `email`, so users and n8n can reach the maintainer.
+`name` and `email`, so users and n8n - Warp can reach the maintainer.
 
 Both npm `author` forms are supported:
 

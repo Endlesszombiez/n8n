@@ -91,7 +91,7 @@ describe('N8nTrigger', () => {
 	describe('description', () => {
 		it('should have correct properties', () => {
 			expect(n8nTrigger.description).toMatchObject({
-				displayName: 'n8n Trigger',
+				displayName: 'n8n - Warp Trigger',
 				name: 'n8nTrigger',
 				group: ['trigger'],
 				version: 1,

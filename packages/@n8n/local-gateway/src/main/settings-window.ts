@@ -24,7 +24,7 @@ export function openSettingsWindow(preloadPath: string, rendererPath: string): v
 		minimizable: false,
 		maximizable: false,
 		titleBarStyle: 'default',
-		title: 'n8n Gateway Settings',
+		title: 'n8n - Warp Gateway Settings',
 		webPreferences: {
 			preload: preloadPath,
 			sandbox: true,

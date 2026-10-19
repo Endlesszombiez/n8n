@@ -78,7 +78,7 @@ export class ProcessEnvAccessRule implements IBreakingChangeWorkflowRule {
 		return [
 			{
 				action: 'Remove process.env usage',
-				description: 'Replace process.env with environment variables configured in n8n',
+				description: 'Replace process.env with environment variables configured in n8n - Warp',
 			},
 			{
 				action: 'Enable access if required',

@@ -69,9 +69,9 @@ test.describe(
 				await n8n.ndv.clickBackToCanvasButton();
 				await n8n.canvas.deselectAll();
 				await n8n.canvas.nodeByName('Set').click();
-				await n8n.canvas.addNode('Customer Datastore (n8n training)');
+				await n8n.canvas.addNode('Customer Datastore (n8n - Warp training)');
 
-				await n8n.canvas.openNode('Customer Datastore (n8n training)');
+				await n8n.canvas.openNode('Customer Datastore (n8n - Warp training)');
 
 				await n8n.ndv.execute();
 

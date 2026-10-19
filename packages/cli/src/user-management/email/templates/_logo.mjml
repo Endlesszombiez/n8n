@@ -1,1 +1,1 @@
-<mj-image src="cid:n8n-logo" href="https://n8n.io/" align="left" width="125px" alt="n8n" padding-top="20px" padding-bottom="40px" />
+<mj-text font-size="22px" font-weight="700" padding-top="20px" padding-bottom="40px"><a href="https://n8n.io/">n8n - Warp</a></mj-text>

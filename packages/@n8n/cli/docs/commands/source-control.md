@@ -1,6 +1,6 @@
 # source-control
 
-Interact with n8n's source control integration.
+Interact with n8n - Warp's source control integration.
 
 ## `source-control pull`
 

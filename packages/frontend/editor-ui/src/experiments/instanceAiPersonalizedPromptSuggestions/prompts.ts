@@ -74,7 +74,7 @@ export const INSTANCE_AI_PERSONALIZED_PROMPT_SUGGESTIONS = [
 		order: 3,
 		style: 'tool-specific',
 		shortTitle: 'Back up credentials to GitHub',
-		description: 'Keep a versioned backup of your n8n setup.',
+		description: 'Keep a versioned backup of your n8n - Warp setup.',
 		builderPrompt:
 			'Build a scheduled workflow that exports my n8n workflows and credentials and commits them to a private GitHub repo, so I always have a versioned backup.',
 	},

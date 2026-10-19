@@ -113,7 +113,7 @@ export function createGetExecutionSchemaTool(logger?: Logger): BuilderTool {
 		{
 			name: GET_EXECUTION_SCHEMA_TOOL.toolName,
 			description:
-				'Get the execution schema showing the output data structure from the last workflow execution. Returns the raw n8n schema format with node names and their output schemas. Use this to understand what fields are available from each node.',
+				'Get the execution schema showing the output data structure from the last workflow execution. Returns the raw n8n - Warp schema format with node names and their output schemas. Use this to understand what fields are available from each node.',
 			schema: getExecutionSchemaSchema,
 		},
 	);

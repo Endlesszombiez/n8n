@@ -122,7 +122,7 @@ const properties: INodeProperties[] = [
 	},
 	{
 		displayName:
-			'Add custom n8n tools when you <i>message</i> your assistant (rather than when creating it)',
+			'Add custom n8n - Warp tools when you <i>message</i> your assistant (rather than when creating it)',
 		name: 'noticeTools',
 		type: 'notice',
 		default: '',

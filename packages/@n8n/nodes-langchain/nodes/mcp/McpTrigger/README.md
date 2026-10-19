@@ -1,6 +1,6 @@
 # MCP Server
 
-Model Context Protocol (MCP) server implementation for the n8n McpTrigger node.
+Model Context Protocol (MCP) server implementation for the n8n - Warp McpTrigger node.
 
 ## Overview
 

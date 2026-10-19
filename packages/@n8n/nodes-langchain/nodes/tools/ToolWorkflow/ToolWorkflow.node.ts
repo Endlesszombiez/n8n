@@ -7,13 +7,13 @@ import { ToolWorkflowV2 } from './v2/ToolWorkflowV2.node';
 export class ToolWorkflow extends VersionedNodeType {
 	constructor() {
 		const baseDescription: INodeTypeBaseDescription = {
-			displayName: 'Call n8n Sub-Workflow Tool',
+			displayName: 'Call n8n - Warp Sub-Workflow Tool',
 			name: 'toolWorkflow',
 			icon: 'node:call-n8n-sub-workflow-tool',
 			iconColor: 'black',
 			group: ['transform'],
 			description:
-				'Uses another n8n workflow as a tool. Allows packaging any n8n node(s) as a tool.',
+				'Uses another n8n - Warp workflow as a tool. Allows packaging any n8n - Warp node(s) as a tool.',
 			codex: {
 				categories: ['AI'],
 				subcategories: {
