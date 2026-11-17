@@ -1,12 +1,18 @@
 import type { Logger } from '@n8n/backend-common';
 import type { OutboundHttp } from '@n8n/backend-network';
+import { InstanceRegistryProxyService, type PostHogClient } from '@n8n/backend-services';
 import { mockInstance } from '@n8n/backend-test-utils';
 import type { GlobalConfig } from '@n8n/config';
 import { ProjectRelationRepository, ProjectRepository, UserRepository } from '@n8n/db';
 import type { WorkflowRepository } from '@n8n/db';
-import { defineTelemetryEvents, TELEMETRY_EVENT } from '@n8n/telemetry';
+import {
+	defineTelemetryEvents,
+	PUBLIC_API_USAGE_JSON_FIELDS,
+	TELEMETRY_EVENT,
+} from '@n8n/telemetry';
 import type RudderStack from '@rudderstack/rudder-sdk-node';
 import { InstanceSettings } from 'n8n-core';
+import { jsonParse } from 'n8n-workflow';
 import type { MockInstance } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 import { z } from 'zod/v4';
@@ -14,11 +20,9 @@ import { z } from 'zod/v4';
 import type { License } from '@/license';
 import { USER_CALLED_MCP_TOOL_EVENT } from '@/modules/mcp/mcp.constants';
 import { SourceControlPreferencesService } from '@/modules/source-control.ee/source-control-preferences.service.ee';
-import { PostHogClient } from '@/posthog';
 import { Telemetry } from '@/telemetry';
 
 vi.unmock('@/telemetry');
-vi.mock('@/posthog');
 
 const rudderStackConstructor = vi.fn().mockImplementation(function () {
 	return mock<RudderStack>();
@@ -58,8 +62,7 @@ describe('Telemetry', () => {
 	beforeEach(async () => {
 		spyTrack = vi.spyOn(Telemetry.prototype, 'track').mockName('track');
 
-		postHog = new PostHogClient(instanceSettings, mock());
-		await postHog.init();
+		postHog = mock<PostHogClient>();
 
 		telemetry = new Telemetry(
 			mock(),
@@ -100,7 +103,7 @@ describe('Telemetry', () => {
 			initConfig.diagnostics.backendConfig = 'test-key;https://data-plane.test';
 			initTelemetry = new Telemetry(
 				mock(),
-				new PostHogClient(instanceSettings, mock()),
+				mock<PostHogClient>(),
 				mock(),
 				instanceSettings,
 				mock(),
@@ -237,6 +240,34 @@ describe('Telemetry', () => {
 			expect(execBuffer['1'].instance_ai_real_prod_success?.first).toEqual(
 				instanceAiRealProdExecTime,
 			);
+		});
+
+		test('should count runs that use personal credentials in the aggregate, not as events', async () => {
+			const payload: Parameters<Telemetry['trackWorkflowExecution']>[0] = {
+				workflow_id: '1',
+				is_manual: false,
+				success: true,
+				personal_credentials_count: 2,
+			};
+
+			const firstProdExecTime = fakeTestSystemTime('2022-01-01 12:00:00');
+			telemetry.trackWorkflowExecution(payload);
+			fakeTestSystemTime('2022-01-01 12:30:00');
+			telemetry.trackWorkflowExecution({ ...payload, success: false });
+
+			const manualExecTime = fakeTestSystemTime('2022-01-01 13:00:00');
+			telemetry.trackWorkflowExecution({ ...payload, is_manual: true });
+
+			telemetry.trackWorkflowExecution({ ...payload, personal_credentials_count: undefined });
+
+			expect(spyTrack).not.toHaveBeenCalled();
+
+			const execBuffer = telemetry.getCountsBuffer();
+
+			expect(execBuffer['1'].personal_credentials_prod?.count).toBe(2);
+			expect(execBuffer['1'].personal_credentials_prod?.first).toEqual(firstProdExecTime);
+			expect(execBuffer['1'].personal_credentials_manual?.count).toBe(1);
+			expect(execBuffer['1'].personal_credentials_manual?.first).toEqual(manualExecTime);
 		});
 
 		test('should fire "Workflow execution errored" event for failed executions', async () => {
@@ -738,6 +769,8 @@ describe('Telemetry', () => {
 							tool_call_count: 1,
 							num_skills: 2,
 							turn_count: 1,
+							skill_load_count: 0,
+							loaded_skill_ids: new Set(),
 						},
 					},
 				}),
@@ -788,6 +821,8 @@ describe('Telemetry', () => {
 				token_count_sum: 15500,
 				tool_call_count_sum: 18,
 				num_skills_sum: 6,
+				skill_load_count_sum: 0,
+				loaded_skill_ids: [],
 				counts_by_source: {
 					chat: {
 						session_count: 2,
@@ -797,6 +832,8 @@ describe('Telemetry', () => {
 						token_count_sum: 5500,
 						tool_call_count_sum: 8,
 						num_skills_sum: 4,
+						skill_load_count_sum: 0,
+						loaded_skill_ids: [],
 					},
 					'instance-ai': {
 						session_count: 2,
@@ -806,6 +843,8 @@ describe('Telemetry', () => {
 						token_count_sum: 10000,
 						tool_call_count_sum: 10,
 						num_skills_sum: 4,
+						skill_load_count_sum: 0,
+						loaded_skill_ids: [],
 					},
 				},
 			});
@@ -818,6 +857,54 @@ describe('Telemetry', () => {
 			// Saved agents carry no agent_type (the exact toEqual above also
 			// guards against it sneaking in).
 			expect(payload).not.toHaveProperty('agent_type');
+		});
+
+		test('should sum skill loads and report the distinct loaded skills', () => {
+			for (const [thread_id, source, skill_load_count, loaded_skill_ids] of [
+				['thread-1', 'chat', 2, ['skill_b', 'skill_a']],
+				['thread-1', 'chat', 1, ['skill_a']],
+				['thread-2', 'slack', 1, ['skill_c']],
+				['thread-3', 'slack', 0, []],
+			] as const) {
+				telemetry.trackAgentTurnFinished({
+					agent_id: 'agent-1',
+					thread_id,
+					source,
+					run_type: 'production',
+					turn_status: 'succeeded',
+					configuration,
+					latency_ms: 100,
+					cost: 10,
+					token_count: 1000,
+					tool_call_count: skill_load_count,
+					skill_load_count,
+					loaded_skill_ids: [...loaded_skill_ids],
+				});
+			}
+
+			// @ts-expect-error Calling private method
+			telemetry.flushAgentSessionMetrics();
+
+			const payload = spyTrack.mock.calls.find(
+				([eventName]) => eventName === TELEMETRY_EVENT.AGENTS.AGENT_SESSION_METRICS,
+			)?.[1];
+			expect(payload).toEqual(
+				expect.objectContaining({
+					skill_load_count_sum: 4,
+					loaded_skill_ids: ['skill_a', 'skill_b', 'skill_c'],
+					counts_by_source: {
+						chat: expect.objectContaining({
+							skill_load_count_sum: 3,
+							loaded_skill_ids: ['skill_a', 'skill_b'],
+						}),
+						slack: expect.objectContaining({
+							skill_load_count_sum: 1,
+							loaded_skill_ids: ['skill_c'],
+						}),
+					},
+				}),
+			);
+			expect(TELEMETRY_EVENT.AGENTS.AGENT_SESSION_METRICS.getValidationError(payload)).toBeNull();
 		});
 
 		test('should carry agent_type through to the flushed payload for inline runs', () => {
@@ -1012,31 +1099,34 @@ describe('Telemetry', () => {
 			vi.setSystemTime(testDateTime);
 		});
 
-		test('should count calls per user and endpoint', () => {
+		test('should count calls per user', () => {
 			const execTime1 = fakeTestSystemTime('2022-01-01 12:00:00');
 
 			telemetry.trackApiInvocation({
 				user_id: 'user1',
-				path: '/workflows',
-				method: 'GET',
+				route: 'GET /workflows',
+				result: '2xx',
 				api_version: 'v1',
 				user_agent: 'n8n-cli/1.0',
+				client: 'other',
 			});
 
 			telemetry.trackApiInvocation({
 				user_id: 'user1',
-				path: '/workflows',
-				method: 'GET',
+				route: 'GET /workflows',
+				result: '2xx',
 				api_version: 'v1',
 				user_agent: 'n8n-cli/1.0',
+				client: 'other',
 			});
 
 			telemetry.trackApiInvocation({
 				user_id: 'user1',
-				path: '/executions',
-				method: 'POST',
+				route: 'POST /executions',
+				result: '2xx',
 				api_version: 'v1',
 				user_agent: 'custom-app/2.0',
+				client: 'other',
 			});
 
 			const buffer = telemetry.getApiInvocationsBuffer();
@@ -1047,14 +1137,49 @@ describe('Telemetry', () => {
 			expect(buffer['user1'].endpoints['POST /executions']).toBe(1);
 			expect(buffer['user1'].user_agents['n8n-cli/1.0']).toBe(2);
 			expect(buffer['user1'].user_agents['custom-app/2.0']).toBe(1);
+			expect(buffer['user1'].clients).toEqual({ editor_ui: 0, n8n_node: 0, other: 3 });
+		});
+
+		test('should count calls per route, result and caller', () => {
+			telemetry.trackApiInvocation({
+				user_id: 'user1',
+				route: 'GET /workflows/{workflowId}',
+				result: '2xx',
+				api_version: 'v1',
+				client: 'other',
+			});
+
+			telemetry.trackApiInvocation({
+				user_id: 'user1',
+				route: 'GET /workflows/{workflowId}',
+				result: '4xx',
+				api_version: 'v1',
+				client: 'editor_ui',
+			});
+
+			telemetry.trackApiInvocation({
+				user_id: 'user1',
+				route: 'GET /workflows/{workflowId}',
+				result: '2xx',
+				api_version: 'v1',
+				client: 'other',
+			});
+
+			const buffer = telemetry.getApiInvocationsBuffer();
+
+			expect(buffer['user1'].routes).toStrictEqual([
+				{ route: 'GET /workflows/{workflowId}', result: '2xx', caller: 'other', calls: 2 },
+				{ route: 'GET /workflows/{workflowId}', result: '4xx', caller: 'editor_ui', calls: 1 },
+			]);
 		});
 
 		test('should handle missing user_agent', () => {
 			telemetry.trackApiInvocation({
 				user_id: 'user1',
-				path: '/workflows',
-				method: 'GET',
+				route: 'GET /workflows',
+				result: '2xx',
 				api_version: 'v1',
+				client: 'other',
 			});
 
 			const buffer = telemetry.getApiInvocationsBuffer();
@@ -1066,18 +1191,20 @@ describe('Telemetry', () => {
 		test('should track multiple users independently', () => {
 			telemetry.trackApiInvocation({
 				user_id: 'user1',
-				path: '/workflows',
-				method: 'GET',
+				route: 'GET /workflows',
+				result: '2xx',
 				api_version: 'v1',
 				user_agent: 'n8n-cli/1.0',
+				client: 'other',
 			});
 
 			telemetry.trackApiInvocation({
 				user_id: 'user2',
-				path: '/executions',
-				method: 'POST',
+				route: 'POST /executions',
+				result: '2xx',
 				api_version: 'v1',
 				user_agent: 'custom-app/2.0',
+				client: 'other',
 			});
 
 			const buffer = telemetry.getApiInvocationsBuffer();
@@ -1088,15 +1215,83 @@ describe('Telemetry', () => {
 			expect(buffer['user2'].endpoints['POST /executions']).toBe(1);
 		});
 
+		test.each([
+			{
+				client: 'editor_ui',
+				clients: { editor_ui: 1, n8n_node: 0, other: 2 },
+				endpointsByClient: { editor_ui: { 'GET /workflows': 1 }, n8n_node: {} },
+				routes: [
+					{ route: 'GET /workflows', result: '2xx', caller: 'other', calls: 1 },
+					{ route: 'GET /workflows', result: '2xx', caller: 'editor_ui', calls: 1 },
+					{ route: 'GET /executions', result: '2xx', caller: 'other', calls: 1 },
+				],
+			},
+			{
+				client: 'n8n_node',
+				clients: { editor_ui: 0, n8n_node: 1, other: 2 },
+				endpointsByClient: { editor_ui: {}, n8n_node: { 'GET /workflows': 1 } },
+				routes: [
+					{ route: 'GET /workflows', result: '2xx', caller: 'other', calls: 1 },
+					{ route: 'GET /workflows', result: '2xx', caller: 'n8n_node', calls: 1 },
+					{ route: 'GET /executions', result: '2xx', caller: 'other', calls: 1 },
+				],
+			},
+		] as const)(
+			'should count endpoints for the $client client in the same entry',
+			({ client, clients, endpointsByClient, routes }) => {
+				telemetry.trackApiInvocation({
+					user_id: 'user1',
+					route: 'GET /workflows',
+					result: '2xx',
+					api_version: 'v1',
+					client: 'other',
+				});
+
+				telemetry.trackApiInvocation({
+					user_id: 'user1',
+					route: 'GET /workflows',
+					result: '2xx',
+					api_version: 'v1',
+					client,
+				});
+
+				telemetry.trackApiInvocation({
+					user_id: 'user1',
+					route: 'GET /executions',
+					result: '2xx',
+					api_version: 'v1',
+					client: 'other',
+				});
+
+				const buffer = telemetry.getApiInvocationsBuffer();
+
+				expect(buffer).toStrictEqual({
+					user1: {
+						clients,
+						total_calls: 3,
+						endpoints: {
+							'GET /workflows': 2,
+							'GET /executions': 1,
+						},
+						endpoints_by_client: endpointsByClient,
+						routes,
+						first: expect.any(Date),
+						user_agents: {},
+					},
+				});
+			},
+		);
+
 		test('should not buffer when rudderStack is not initialized', () => {
 			// @ts-expect-error Assigning to private property
 			telemetry.rudderStack = undefined;
 
 			telemetry.trackApiInvocation({
 				user_id: 'user1',
-				path: '/workflows',
-				method: 'GET',
+				route: 'GET /workflows',
+				result: '2xx',
 				api_version: 'v1',
+				client: 'other',
 			});
 
 			const buffer = telemetry.getApiInvocationsBuffer();
@@ -1342,7 +1537,7 @@ describe('Telemetry', () => {
 			const logger = mock<Logger>();
 			const validationTelemetry = new Telemetry(
 				logger,
-				new PostHogClient(instanceSettings, mock()),
+				mock<PostHogClient>(),
 				mock(),
 				instanceSettings,
 				mock(),
@@ -1374,7 +1569,7 @@ describe('Telemetry', () => {
 			const logger = mock<Logger>();
 			const uninitializedTelemetry = new Telemetry(
 				logger,
-				new PostHogClient(instanceSettings, mock()),
+				mock<PostHogClient>(),
 				mock(),
 				instanceSettings,
 				mock(),
@@ -1403,7 +1598,7 @@ describe('Telemetry', () => {
 				const logger = mock<Logger>();
 				const instance = new Telemetry(
 					logger,
-					new PostHogClient(instanceSettings, mock()),
+					mock<PostHogClient>(),
 					mock(),
 					instanceSettings,
 					mock(),
@@ -1466,7 +1661,7 @@ describe('Telemetry', () => {
 
 			pulseTelemetry = new Telemetry(
 				mock(),
-				new PostHogClient(instanceSettings, mock()),
+				mock<PostHogClient>(),
 				license,
 				instanceSettings,
 				workflowRepository,
@@ -1502,6 +1697,10 @@ describe('Telemetry', () => {
 					'project:personalOwner': 0,
 					'project:viewer': 0,
 				},
+				processes: [
+					{ type: 'main', cpu: 2, memory_kib: 2048, version: '1.0.0', count: 1 },
+					{ type: 'worker', cpu: null, memory_kib: null, version: '1.0.0', count: 1 },
+				],
 			});
 		});
 
@@ -1516,19 +1715,49 @@ describe('Telemetry', () => {
 		test('should send the buffered events and empty the buffers', () => {
 			telemetry.trackApiInvocation({
 				user_id: 'user1',
-				path: '/workflows',
-				method: 'GET',
+				route: 'GET /workflows',
+				result: '2xx',
 				api_version: 'v1',
+				client: 'other',
 			});
 
 			telemetry.flushBuffers();
 
 			expect(spyTrack).toHaveBeenCalledWith(
-				'Public API usage',
-				expect.objectContaining({ user_id: 'user1', total_calls: 1 }),
+				TELEMETRY_EVENT.PUBLIC_API.PUBLIC_API_USAGE,
+				expect.objectContaining({
+					user_id: 'user1',
+					total_calls: 1,
+					clients: JSON.stringify({ editor_ui: 0, n8n_node: 0, other: 1 }),
+					endpoints_by_client: JSON.stringify({ editor_ui: {}, n8n_node: {} }),
+					routes: JSON.stringify([
+						{ route: 'GET /workflows', result: '2xx', caller: 'other', calls: 1 },
+					]),
+				}),
 			);
 			expect(spyTrack).not.toHaveBeenCalledWith('pulse', expect.anything());
 			expect(telemetry.getApiInvocationsBuffer()).toEqual({});
+		});
+
+		test('should send a Public API usage report that passes its registry schema', () => {
+			telemetry.trackApiInvocation({
+				user_id: 'user1',
+				route: 'GET /workflows/{workflowId}',
+				result: '4xx',
+				api_version: 'v1',
+				user_agent: 'n8n-cli/1.0',
+				client: 'editor_ui',
+			});
+
+			telemetry.flushBuffers();
+
+			const [event, report] = spyTrack.mock.calls.find(
+				([e]) => e === TELEMETRY_EVENT.PUBLIC_API.PUBLIC_API_USAGE,
+			)!;
+			expect(event.getValidationError(report)).toBeNull();
+			for (const [field, schema] of Object.entries(PUBLIC_API_USAGE_JSON_FIELDS)) {
+				expect(schema.safeParse(jsonParse(report[field] as string)).success).toBe(true);
+			}
 		});
 
 		test('should send nothing when RudderStack is not initialized', () => {
@@ -1540,10 +1769,61 @@ describe('Telemetry', () => {
 			expect(spyTrack).not.toHaveBeenCalled();
 		});
 	});
+
+	describe('stopTracking', () => {
+		test('should send the buffered events before it drains the queue', async () => {
+			telemetry.trackApiInvocation({
+				user_id: 'user1',
+				route: 'GET /workflows',
+				result: '2xx',
+				api_version: 'v1',
+				client: 'other',
+			});
+
+			await telemetry.stopTracking();
+
+			expect(spyTrack).toHaveBeenCalledWith(
+				TELEMETRY_EVENT.PUBLIC_API.PUBLIC_API_USAGE,
+				expect.objectContaining({ user_id: 'user1', total_calls: 1 }),
+			);
+			expect(mockRudderStack.track.mock.invocationCallOrder.at(-1)).toBeLessThan(
+				mockRudderStack.flush.mock.invocationCallOrder.at(-1)!,
+			);
+			expect(telemetry.getApiInvocationsBuffer()).toEqual({});
+		});
+	});
 });
 
 /** Registers the services the pulse packet reads its counters from. */
 const mockPulsePacketSources = () => {
+	mockInstance(InstanceRegistryProxyService, {
+		getAllInstances: async () => [
+			{
+				schemaVersion: 1,
+				instanceKey: 'k1',
+				hostId: 'main-1',
+				instanceType: 'main',
+				instanceRole: 'leader',
+				version: '1.0.0',
+				registeredAt: 0,
+				lastSeen: 0,
+				cpuLimit: 2,
+				memoryLimit: 2048 * 1024,
+			},
+			{
+				schemaVersion: 1,
+				instanceKey: 'k2',
+				hostId: 'worker-1',
+				instanceType: 'worker',
+				instanceRole: 'unset',
+				version: '1.0.0',
+				registeredAt: 0,
+				lastSeen: 0,
+				cpuLimit: null,
+				memoryLimit: null,
+			},
+		],
+	});
 	mockInstance(SourceControlPreferencesService, {
 		getPreferences: () => mock({ branchName: 'main', branchReadOnly: true }),
 		isSourceControlSetup: () => 'main',

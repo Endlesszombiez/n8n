@@ -5,9 +5,10 @@ import {
 	testDb,
 } from '@n8n/backend-test-utils';
 import { GlobalConfig } from '@n8n/config';
-import type { User } from '@n8n/db';
+import type { Person } from '@n8n/db';
 import { WebhookRepository, WorkflowRepository } from '@n8n/db';
 import { Container } from '@n8n/di';
+import { DataSource } from '@n8n/typeorm';
 import type { INode } from 'n8n-workflow';
 import { CHAT_TRIGGER_NODE_TYPE, CHAT_TRIGGER_PATH_SUFFIX, WEBHOOK_NODE_TYPE } from 'n8n-workflow';
 import { randomUUID } from 'node:crypto';
@@ -26,20 +27,25 @@ import { ProtectedResourceRegistry } from '@n8n/backend-services/auth';
 
 /** Root-level (no `/rest` prefix) agent authenticated as `user` — `authAgentFor` always
  * prefixes `/rest`, which 404s against root-level routes like `/oauth/authorize`. */
-const rootAgentFor = (user: User) => {
+const rootAgentFor = (user: Person) => {
 	const agent = request.agent(testServer.app);
 	const token = Container.get(AuthService).issueJWT(user, user.mfaEnabled);
 	agent.jar.setCookie(`${AUTH_COOKIE_NAME}=${token}`);
 	return agent;
 };
 
-import { OAuthClientRepository } from '../database/repositories/oauth-client.repository';
+import { OAuthClient } from '../database/entities/oauth-client.entity';
 import { UserConsentRepository } from '../database/repositories/oauth-user-consent.repository';
 
-const testServer = setupTestServer({ modules: ['oauth-server', 'mcp'], endpointGroups: ['mcp'] });
+// The OAuth server owns chat metadata. Loading instance MCP also loads its tool graph
+// in the setup hook and can exceed the hook timeout under CI load.
+const testServer = setupTestServer({
+	modules: ['inbound-auth-core', 'oauth-server'],
+	endpointGroups: ['oauth-server'],
+});
 
-let owner: User;
-let member: User;
+let owner: Person;
+let member: Person;
 let webhookEndpoint: string;
 
 /** The path a chat trigger registers under: `{webhookId}/chat`. */
@@ -57,6 +63,7 @@ const chatTriggerNode = ({
 	authentication = 'n8nUserAuth',
 	disabled = false,
 	requireExecuteAccess,
+	trustedSource,
 }: {
 	name?: string;
 	// `null` drops the key entirely, so the "parameter stripped at its default" shape the
@@ -66,6 +73,7 @@ const chatTriggerNode = ({
 	authentication?: string | null;
 	disabled?: boolean;
 	requireExecuteAccess?: boolean;
+	trustedSource?: string;
 } = {}): INode => ({
 	id: randomUUID(),
 	name,
@@ -79,6 +87,7 @@ const chatTriggerNode = ({
 		...(mode === null ? {} : { mode }),
 		...(authentication === null ? {} : { authentication }),
 		...(requireExecuteAccess === undefined ? {} : { requireExecuteAccess }),
+		...(trustedSource === undefined ? {} : { trustedSource }),
 	},
 });
 
@@ -301,6 +310,24 @@ describe('protected resource metadata for chat triggers', () => {
 });
 
 describe('authorize gate (workflow:execute)', () => {
+	test("accepts only the instance's own OAuth2 server when the node has no trustedSource", async () => {
+		const path = chatPath();
+		await createPublishedChatWorkflow(path, chatTriggerNode());
+
+		const resource = await resolveResource(path);
+
+		expect(resource?.getAcceptedSourceIds?.()).toEqual(['n8n-internal']);
+	});
+
+	test('accepts only the trusted source the node selected', async () => {
+		const path = chatPath();
+		await createPublishedChatWorkflow(path, chatTriggerNode({ trustedSource: 'customer-idp' }));
+
+		const resource = await resolveResource(path);
+
+		expect(resource?.getAcceptedSourceIds?.()).toEqual(['customer-idp']);
+	});
+
 	test('authorizes the owner but denies a visitor without execute access', async () => {
 		const path = chatPath();
 		await createPublishedChatWorkflow(path, chatTriggerNode({ requireExecuteAccess: true }));
@@ -357,7 +384,8 @@ describe('runtime gate: verifyOAuthAccessToken enforces workflow:execute', () =>
 		const tokenService = Container.get(OAuthTokenService);
 		// A registered client is needed only to satisfy the token rows' FK.
 		const clientId = `client-${randomUUID()}`;
-		await Container.get(OAuthClientRepository).save({
+		const clients = Container.get(DataSource).getRepository(OAuthClient);
+		await clients.save({
 			id: clientId,
 			name: 'Chat resolver tests',
 			redirectUris: ['https://example.com/callback'],
@@ -492,7 +520,8 @@ describe('consent reuse on a second visit', () => {
 
 		// Seed a prior consent for this exact (clientId, user) pair, as a previous visit
 		// would have left behind.
-		await Container.get(OAuthClientRepository).upsert(
+		const clients = Container.get(DataSource).getRepository(OAuthClient);
+		await clients.upsert(
 			{
 				id: resourceUrl,
 				name: 'chat trigger',

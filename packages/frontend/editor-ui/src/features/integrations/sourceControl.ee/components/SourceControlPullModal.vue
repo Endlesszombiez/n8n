@@ -47,6 +47,7 @@ import {
 	N8nIconButton,
 	N8nInfoTip,
 	N8nLink,
+	N8nNewBadge,
 	N8nNotice,
 	N8nOption,
 	N8nSelect,
@@ -326,17 +327,17 @@ const filtersNoResultText = computed(() => {
 const tabs = computed(() => {
 	return [
 		{
-			label: 'Workflows',
+			label: i18n.baseText('settings.sourceControl.modals.tabs.workflows'),
 			value: SOURCE_CONTROL_FILE_TYPE.workflow,
 			total: groupedFilesByType.value[SOURCE_CONTROL_FILE_TYPE.workflow]?.length || 0,
 		},
 		{
-			label: 'Credentials',
+			label: i18n.baseText('settings.sourceControl.modals.tabs.credentials'),
 			value: SOURCE_CONTROL_FILE_TYPE.credential,
 			total: groupedFilesByType.value[SOURCE_CONTROL_FILE_TYPE.credential]?.length || 0,
 		},
 		{
-			label: 'Data Tables',
+			label: i18n.baseText('settings.sourceControl.modals.tabs.dataTables'),
 			value: SOURCE_CONTROL_FILE_TYPE.datatable,
 			total: groupedFilesByType.value[SOURCE_CONTROL_FILE_TYPE.datatable]?.length || 0,
 		},
@@ -589,7 +590,12 @@ onMounted(() => {
 							>
 								<div>{{ tab.label }}</div>
 								<N8nText tag="div" color="text-light">
-									{{ tab.total }} {{ tab.total === 1 ? 'item' : 'items' }}
+									{{
+										i18n.baseText('settings.sourceControl.modals.pull.itemCount', {
+											adjustToNumber: tab.total,
+											interpolate: { count: `${tab.total}` },
+										})
+									}}
 								</N8nText>
 							</button>
 						</template>
@@ -598,7 +604,9 @@ onMounted(() => {
 						<div :class="[$style.table]">
 							<div :class="[$style.tableHeader]">
 								<div :class="$style.headerTitle">
-									<N8nText>Title</N8nText>
+									<N8nText>{{
+										i18n.baseText('settings.sourceControl.modals.tableHeader.title')
+									}}</N8nText>
 								</div>
 							</div>
 							<div style="flex: 1; overflow: hidden">
@@ -767,7 +775,12 @@ onMounted(() => {
 															</div>
 														</template>
 													</N8nHoverCard>
-													<N8nBadge :variant="getStatusTheme(row.file.status)" size="xsmall">
+													<N8nNewBadge
+														v-if="row.file.status === 'created'"
+														:text="getStatusText(row.file.status)"
+														size="xsmall"
+													/>
+													<N8nBadge v-else :variant="getStatusTheme(row.file.status)" size="xsmall">
 														{{ getStatusText(row.file.status) }}
 													</N8nBadge>
 													<template v-if="isWorkflowDiffsEnabled">

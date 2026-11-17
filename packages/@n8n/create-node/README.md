@@ -1,26 +1,32 @@
 # @n8n/create-node
 
-A powerful scaffolding tool to quickly create custom n8n - Warp community nodes with best practices built-in.
+A powerful scaffolding tool to quickly create custom n8n community nodes with best practices built-in.
 
 ## 🚀 Quick Start
 
-Create a new n8n - Warp node in seconds:
+Create a new n8n node in seconds with the `create` command of your package manager ([npm](https://docs.npmjs.com/cli/commands/npm-init), [pnpm](https://pnpm.io/cli/create), or [yarn](https://classic.yarnpkg.com/en/docs/cli/create)):
 
 ```bash
-npm create @n8n/node@latest # or pnpm/yarn/...
+npm create @n8n/node@latest
+pnpm create @n8n/node@latest
+yarn create @n8n/node
 ```
 
 Follow the interactive prompts to configure your node, or specify options directly:
 
 ```bash
-npm create @n8n/node my-awesome-node --template declarative/custom
+npm create @n8n/node n8n-nodes-my-app -- --template declarative/custom
 ```
+
+> **Note:** This package is a small wrapper around the `n8n-node new` command from [`@n8n/node-cli`](https://www.npmjs.com/package/@n8n/node-cli). The `create` command of each package manager resolves `@n8n/node` to this package.
 
 ## 📋 Command Line Options
 
 ```bash
-npm create @n8n/node [NAME] [OPTIONS]
+npm create @n8n/node [NAME] -- [OPTIONS]
 ```
+
+With npm, put `--` before the options. Without it, npm reads the options as its own settings and does not pass them to this tool.
 
 ### Options
 
@@ -44,11 +50,11 @@ The CLI will guide you through setting up your node:
 $ npm create @n8n/node
 ┌ @n8n/create-node
 │
-◇ What is your node called?
-│ my-awesome-api-node
+◇ Package name (must start with 'n8n-nodes-' or '@org/n8n-nodes-')
+│ n8n-nodes-my-app
 │
 ◇ What kind of node are you building?
-│ HTTP API
+│ Declarative
 │
 ◇ What template do you want to use?
 │ Start from scratch
@@ -65,14 +71,14 @@ $ npm create @n8n/node
 │
 ◇ Next Steps ─────────────────────────────────────────────────────────────────────╮
 │                                                                                  │
-│  cd ./my-awesome-api-node && npm run dev                                       │
+│  cd ./n8n-nodes-my-app && npm run dev                                          │
 │                                                                                  │
 │  📚 Documentation: https://docs.n8n.io/integrations/creating-nodes/            │
 │  💬 Community: https://community.n8n.io                                        │
 │                                                                                  │
 ├──────────────────────────────────────────────────────────────────────────────────╯
 │
-└ Created ./my-awesome-api-node ✨
+└ Created ./n8n-nodes-my-app ✨
 ```
 
 ## 🛠️ Development Workflow
@@ -80,7 +86,7 @@ $ npm create @n8n/node
 ### 1. Navigate to your project
 
 ```bash
-cd ./my-awesome-api-node
+cd ./n8n-nodes-my-app
 ```
 
 ### 2. Start development server
@@ -90,15 +96,15 @@ npm run dev
 ```
 
 This command:
-- Starts n8n - Warp in development mode on `http://localhost:5678`
+- Starts n8n in development mode on `http://localhost:5678`
 - Enables hot reload for your node changes
-- Automatically includes your node in the n8n - Warp instance
+- Automatically includes your node in the n8n instance
 - Links your node to `~/.n8n-node-cli/.n8n/custom` for development
 - Watches for file changes and rebuilds automatically
 
 ### 3. Test your node
 
-- Open n8n - Warp at `http://localhost:5678`
+- Open n8n at `http://localhost:5678`
 - Create a new workflow
 - Find your node in the node panel
 - Test parameters and functionality in real-time
@@ -156,7 +162,7 @@ npm run lint
 
 Validates:
 - Code style and formatting
-- n8n - Warp node conventions
+- n8n node conventions
 - Common integration issues
 - Cloud publication readiness
 
@@ -166,7 +172,7 @@ Validates:
 npx n8n-node cloud-support
 ```
 
-Manage n8n - Warp Cloud publication eligibility. In strict mode, your node must use the default ESLint config and pass all community node rules to be eligible for n8n - Warp Cloud publication.
+Manage n8n Cloud publication eligibility. In strict mode, your node must use the default ESLint config and pass all community node rules to be eligible for n8n Cloud publication.
 
 Fix issues automatically:
 
@@ -195,14 +201,13 @@ Runs [release-it](https://github.com/release-it/release-it) to handle the comple
 Your generated project includes:
 
 ```
-my-awesome-api-node/
-├── src/
-│   ├── nodes/
-│   │   └── MyAwesomeApi/
-│   │       ├── MyAwesomeApi.node.ts    # Main node logic
-│   │       └── MyAwesomeApi.node.json  # Node metadata
-│   └── credentials/
-│       └── MyAwesomeApiAuth.credentials.ts
+n8n-nodes-my-app/
+├── nodes/
+│   └── MyApp/
+│       ├── MyApp.node.ts    # Main node logic
+│       └── MyApp.node.json  # Node metadata
+├── credentials/
+│   └── MyAppApi.credentials.ts
 ├── package.json
 ├── tsconfig.json
 └── README.md
@@ -216,14 +221,14 @@ The CLI reads configuration from your `package.json`:
 
 ```json
 {
-  "name": "n8n-nodes-my-awesome-node",
+  "name": "n8n-nodes-my-app",
   "n8n": {
     "n8nNodesApiVersion": 1,
     "nodes": [
-      "dist/nodes/MyAwesomeApi/MyAwesomeApi.node.js"
+      "dist/nodes/MyApp/MyApp.node.js"
     ],
     "credentials": [
-      "dist/credentials/MyAwesomeApiAuth.credentials.js"
+      "dist/credentials/MyAppApi.credentials.js"
     ]
   }
 }
@@ -272,9 +277,9 @@ npm run dev
 
 ## 🔧 Advanced Usage
 
-### Using External n8n - Warp Instance
+### Using External n8n Instance
 
-If you prefer to use your own n8n - Warp installation:
+If you prefer to use your own n8n installation:
 
 ```bash
 npm run dev --external-n8n
@@ -282,7 +287,7 @@ npm run dev --external-n8n
 
 ### Custom User Folder
 
-Specify a custom location for n8n - Warp user data:
+Specify a custom location for n8n user data:
 
 ```bash
 npm run dev --custom-user-folder /path/to/custom/folder
@@ -298,7 +303,7 @@ npm run dev --custom-user-folder /path/to/custom/folder
 
 ## 🤝 Contributing
 
-Found a bug or want to contribute? Check out the [n8n - Warp repository](https://github.com/n8n-io/n8n) and join our community!
+Found a bug or want to contribute? Check out the [n8n repository](https://github.com/n8n-io/n8n) and join our community!
 
 ---
 

@@ -2,9 +2,9 @@
 
 Instance AI uses a remote sandbox workspace to build workflows from
 `@n8n/workflow-sdk` source. The sandbox keeps file writes and command execution
-off the n8n - Warp host. Workflow building is unavailable when sandboxing is disabled.
+off the n8n host. Workflow building is unavailable when sandboxing is disabled.
 
-Agent building is separate. `build-agent` delegates to
+Agent building is separate. `agent_builder_build_agent` delegates to
 `AgentsBuilderService` in the agents module and does not use the Instance AI
 sandbox.
 
@@ -33,9 +33,11 @@ is created only when the agent first uses a workspace capability. Instance AI
 exposes this core workspace tool set:
 
 - `workspace_read_file`
+- `workspace_read_files` (several files or line ranges in one call)
 - `workspace_read_tool_result`
 - `workspace_write_file`
 - `workspace_str_replace_file`
+- `workspace_edit_files` (several writes and replacements in one call)
 - `workspace_execute_command`
 
 The underlying `Workspace` supports more filesystem operations. The lazy
@@ -43,7 +45,7 @@ runtime filters the model-facing set to `CORE_WORKSPACE_TOOL_NAMES`.
 
 ## Providers
 
-### n8n - Warp sandbox service
+### n8n sandbox service
 
 `n8n-sandbox` is the default provider. The service manages remote sandbox
 containers through its HTTP API. Instance AI assigns each thread a stable
@@ -93,7 +95,7 @@ background tasks keep the entry alive. A TTL of `0` disables this cache
 eviction.
 
 Cache eviction does not destroy the remote sandbox. Daytona reclaims remote
-state through its configured lifecycle. Remote reclamation for the n8n - Warp sandbox
+state through its configured lifecycle. Remote reclamation for the n8n sandbox
 service is governed by that service's deployment policy, outside Instance AI.
 
 Explicit thread cleanup destroys a cached workspace. If no cache entry exists,
@@ -128,19 +130,51 @@ and installed dependencies. The node-type catalog is written after sandbox
 creation because it is instance-specific and too large for the Daytona image
 request.
 
-The knowledge base and runtime skills each have a manifest with a content
-hash. Setup compares the manifest hash with the expected hash. When the
-hashes do not match, setup writes the bundle again and writes the manifest
-last. A matching manifest is trusted, and setup reads no other bundle file.
-Each cached sandbox entry keeps the result, so later runs do not read the
-manifest again.
+The release snapshot packs the workflow SDK and its runtime workspace
+dependencies from the release checkout. Its `package.json` installs these local
+tarballs instead of waiting for the same versions to become available from npm.
+Run this focused smoke test without the release pipeline or Daytona credentials:
 
-The runtime skills bundle contains every bundled skill, whatever the prompt
-profile, skill flags or enabled modules. The image, the snapshot and the
-setup write the same set, so a sandbox from an image or snapshot of the same
-n8n - Warp version reuses it. A bundle from an older image or snapshot has a
-different hash, so setup writes it again one time. `load_skill` serves only
-the skills that the profile, the flags and the enabled modules allow.
+```sh
+pnpm --filter @n8n/instance-ai test:snapshot-packages
+```
+
+The smoke test builds the SDK dependency graph, packs the same packages as the
+release snapshot, installs them in a temporary workspace, and rejects any n8n
+workspace package that resolves from the npm registry.
+
+To test the complete remote Daytona image build from a branch, dispatch the
+snapshot workflow in verification mode:
+
+```sh
+gh workflow run release-build-daytona-snapshot.yml \
+  --ref <branch> \
+  -f n8n_version=<version> \
+  -f verify_image_only=true
+```
+
+This mode uses the dev Daytona environment. It builds the branch's image as a
+uniquely named, non-versioned verification snapshot. It requires the snapshot
+to become active and then deletes it. It does not publish or retain a release
+snapshot.
+
+The knowledge base has a manifest with a content hash. Setup compares the
+manifest hash with the expected hash. When the hashes do not match, setup
+writes the bundle again and writes the manifest last. A matching manifest is
+trusted, and setup reads no other bundle file. Each cached sandbox entry keeps
+the result, so later runs do not read the manifest again.
+
+Skills are not stored in the sandbox. `load_skill` serves built-in text from memory.
+Built-in knowledge paths, such as `knowledge-base/index.json`, are relative to the
+workspace root.
+
+Hub skills require the `skills`, `agents`, and `instance-ai` modules,
+`N8N_AGENTS_SKILLS_HUB_ENABLED=true` at startup, and the instance PostHog flag
+`130_attach_skills_to_assistant`. Discovery reads summaries only. Instructions load
+when a skill is selected. Markdown reference bodies load separately through
+`load_skill({ skillId, filePath })`. Both reads use the version selected for the
+turn and check current access. Paths under `.n8n/skills/hub/<stable-id>/` are virtual
+identifiers. No files are written to the workspace.
 
 With `N8N_LOG_LEVEL=debug`, these messages show the bundle file traffic:
 
@@ -159,7 +193,7 @@ starting a new thread.
 
 ## Workflow Build Path
 
-The `build-workflow` tool reads TypeScript (`.ts` or `.tsx`) or WorkflowJSON
+The `workflow_builder_build_workflow` tool reads TypeScript (`.ts` or `.tsx`) or WorkflowJSON
 (`.json`) from the runtime workspace. The conventional filenames are
 `.workflow.ts` and `.workflow.json`.
 
@@ -202,7 +236,7 @@ the provider does not respond. Compiler failures and timeouts preserve the
 original build errors. User cancellation still stops the build.
 
 The async API collects the native process exit status after normal completion.
-In n8n - Warp sandbox image 1.3.0, forced termination can leave exited native processes
+In n8n sandbox image 1.3.0, forced termination can leave exited native processes
 unreaped under PID 1. The provider stops execution, but its init process must
 also collect these exit records.
 
@@ -217,27 +251,26 @@ when the sandbox is unavailable.
 
 ## Boundaries
 
-The runtime sandbox is not the local Computer Use gateway. The sandbox is a
-private provider workspace for Instance AI. The local gateway exposes tools on
-the user's machine under daemon permissions.
+The runtime sandbox is not the user's browser. The sandbox is a
+private provider workspace for Instance AI. Browser Use exposes tools in the
+user's browser under extension permissions.
 
 Sandbox isolation does not grant product authorization. Backend services still
 apply RBAC, project scope, session grants, and HITL confirmation rules.
 
-The workspace is for Instance AI build and runtime-skill work. It is not a
-general user workload platform.
+The workspace is for Instance AI build work. It is not a general user
+workload platform.
 
 ## Tracing
 
 Sandbox operations use the active Instance AI trace. Each span inherits the
-thread metadata. The sandbox does not retain a turn's trace handle. Skill
-preparation runs inside the agent's lazy build and uses the same trace context.
+thread metadata. The sandbox does not retain a turn's trace handle.
 
 | Operation                              | Trace data                                                                                |
 | -------------------------------------- | ----------------------------------------------------------------------------------------- |
 | Acquire and start                      | Provider, sandbox ID, cached reuse, shared acquisition, duration, and errors              |
 | Initialize workspace                   | Marker check, node catalog, base files, dependency installation, and optional SDK linking |
-| Sync skills and knowledge base         | Bundle hash, file counts, byte counts, reuse or upload, and manifest check result         |
+| Sync knowledge base                    | Bundle hash, file counts, byte counts, reuse or upload, and manifest check result         |
 | Read, write, and edit files            | File operations under the existing tool span, paths, byte counts, and errors              |
 | Execute commands and compile workflows | Command size, exit code, timeout or cancellation, compile result, and bounded diagnostics |
 | Retry and fallback                     | File path, failed attempt, retry delay, and command fallback                              |
@@ -268,14 +301,34 @@ end with a cancelled status; their underlying work can finish independently.
 Provider-side automatic stop and deletion are not reported. They require
 provider notifications or polling.
 
+## Workspace root
+
+The n8n sandbox service and current Daytona snapshots use `/home/user/workspace`
+as the workspace root, so the prompt is the same for both. A custom
+`N8N_INSTANCE_AI_SANDBOX_IMAGE` gets the same root, because n8n builds the
+workspace on top of it. These Daytona sandboxes still use
+`/home/daytona/workspace`:
+
+- Sandboxes created before this change, which a thread reconnects to.
+- Sandboxes from a snapshot built before this change, including a pinned
+  `N8N_INSTANCE_AI_SANDBOX_SNAPSHOT`.
+
+The agent does not know about the Daytona path. When n8n first resolves the
+root of one of these sandboxes, it creates `/home/user` (using passwordless
+`sudo` when running as a non-root user). It then
+links `/home/user/workspace` to `/home/daytona/workspace`. The prompt and shell
+commands can then use `/home/user/workspace` on every sandbox. Tool output can
+show the real path, so the workflow tools accept absolute paths under both
+roots. If n8n cannot create the link, the tools use `/home/daytona/workspace`.
+
 ## Configuration
 
 | Variable                                        | Default                   | Purpose                                                                       |
 | ----------------------------------------------- | ------------------------- | ----------------------------------------------------------------------------- |
 | `N8N_INSTANCE_AI_SANDBOX_ENABLED`               | `false`                   | Enable the sandbox-backed workspace                                           |
 | `N8N_INSTANCE_AI_SANDBOX_PROVIDER`              | `n8n-sandbox`             | Select `n8n-sandbox` or `daytona`                                             |
-| `N8N_SANDBOX_SERVICE_URL`                       | empty                     | n8n - Warp sandbox service URL                                                       |
-| `N8N_SANDBOX_SERVICE_API_KEY`                   | empty                     | n8n - Warp sandbox service API key                                                   |
+| `N8N_SANDBOX_SERVICE_URL`                       | empty                     | n8n sandbox service URL                                                       |
+| `N8N_SANDBOX_SERVICE_API_KEY`                   | empty                     | n8n sandbox service API key                                                   |
 | `DAYTONA_API_URL`                               | empty                     | Daytona API URL                                                               |
 | `DAYTONA_API_KEY`                               | empty                     | Daytona API key for direct mode                                               |
 | `N8N_INSTANCE_AI_SANDBOX_IMAGE`                 | `daytonaio/sandbox:0.5.0` | Daytona base image                                                            |

@@ -15,8 +15,8 @@ const LogStreamingPlaceholderView = async () =>
 export const LogStreamingModule = defineFrontendModule({
 	id: 'log-streaming',
 	name: 'Log streaming',
-	description: 'Send n8n - Warp events to external destinations',
-	icon: 'log-in',
+	description: 'Send n8n events to external destinations',
+	icon: 'satellite-dish',
 	modals: LOG_STREAMING_MODALS,
 	placeholderPage: {
 		licenseFlag: EnterpriseEditionFeature.LogStreaming,
@@ -25,8 +25,9 @@ export const LogStreamingModule = defineFrontendModule({
 	settingsPages: [
 		{
 			id: 'settings-log-streaming',
-			order: 170,
-			icon: 'log-in',
+			order: 40,
+			section: 'operations',
+			icon: 'satellite-dish',
 			get label() {
 				return i18n.baseText('settings.log-streaming');
 			},
